@@ -6,6 +6,8 @@ var geometry, material, mesh;
 
 var ball;
 
+var bernardoBox, bernardoTorus, HugoTorus, wheelCenter;
+
 function addTableLeg(obj, x, y, z) {
     'use strict';
 
@@ -39,6 +41,72 @@ function createBall(x, y, z) {
     scene.add(ball);
 }
 
+function createBernardoBox(x, y, z) {
+    'use strict';
+    
+    bernardoBox = new THREE.Object3D();
+    bernardoBox.userData = { jumping: true, step: 0 };
+    
+    material = new THREE.MeshNormalMaterial({ color: 0x00aaff, wireframe: false });
+    geometry = new THREE.CubeGeometry(10, 10, 10, 1, 1, 1);
+    mesh = new THREE.Mesh(geometry, material);
+    
+    bernardoBox.add(mesh);
+    bernardoBox.position.set(x, y, z);
+    
+    scene.add(bernardoBox);
+}
+
+
+function createBernardoTorus(x, y, z) {
+    'use strict';
+    
+    bernardoTorus = new THREE.Object3D();
+    bernardoTorus.userData = { jumping: true, step: 0 };
+    
+    material = new THREE.MeshBasicMaterial({ color: 0x00aaff, wireframe: false });
+    geometry = new THREE.TorusGeometry(12, 2, 16, 1000, 360);
+    mesh = new THREE.Mesh(geometry, material);
+    
+    bernardoTorus.add(mesh);
+    bernardoTorus.position.set(x, y, z);
+    
+    scene.add(bernardoTorus);
+}
+
+function createHugoTorus(x, y, z) {
+    'use strict';
+    
+    HugoTorus = new THREE.Object3D();
+    HugoTorus.userData = { jumping: true, step: 0};
+
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+
+    geometry = new THREE.TorusGeometry(10, 3, 16, 10);
+    mesh = new THREE.Mesh(geometry, material);
+
+    HugoTorus.add(mesh);
+    HugoTorus.position.set(x, y, z);
+
+    scene.add(HugoTorus);
+}
+
+function createHugoWheel(x, y, z) {
+    'use strict';
+    
+    wheelCenter = new THREE.Object3D();
+    wheelCenter.userData = { jumping: true, step: 0 };
+
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+
+    geometry = new THREE.SphereGeometry(4, 10, 10);
+    mesh = new THREE.Mesh(geometry, material);
+
+    wheelCenter.add(mesh);
+    wheelCenter.position.set(x, y, z);
+    
+    scene.add(wheelCenter);
+}
 
 function createTable(x, y, z) {
     'use strict';
@@ -66,8 +134,12 @@ function createScene() {
 
     scene.add(new THREE.AxisHelper(10));
     
-    createTable(0, 8, 0);
-    createBall(0, 0, 15);
+    //createTable(0, 8, 0);
+    //createBall(0, 0, 15);
+    createBernardoBox(0, 0, 30);
+    createBernardoTorus(0, 0, 30);
+    createHugoTorus(0, 0, 10);
+    createHugoWheel(0, 0, 10);
 }
 
 function createCamera() {
@@ -108,7 +180,7 @@ function onKeyDown(e) {
         break;
     case 83:  //S
     case 115: //s
-        ball.userData.jumping = !ball.userData.jumping;
+        bernardoBox.userData.jumping = !bernardoBox.userData.jumping;
         break;
     case 69:  //E
     case 101: //e
@@ -144,13 +216,39 @@ function init() {
 }
 
 function animate() {
-    'use strict';
     
-    if (ball.userData.jumping) {
-        ball.userData.step += 0.04;
-        ball.position.y = Math.abs(30 * (Math.sin(ball.userData.step)));
-        ball.position.z = 15 * (Math.cos(ball.userData.step));
+    
+    if (bernardoBox.userData.jumping) {
+        bernardoBox.userData.step += 0.04;
+        bernardoBox.rotation.y += 0.02;
+        bernardoBox.rotation.x += 0.02;
     }
+
+    if (bernardoTorus.userData.jumping) {
+        bernardoTorus.userData.step += 0.04;
+        bernardoTorus.rotation.y += 0.05;
+        bernardoTorus.rotation.x += 0.05;
+    }
+
+    if (HugoTorus.userData.jumping) {
+        HugoTorus.userData.step += 0.04;
+
+        HugoTorus.position.x = 10 * (Math.sin(HugoTorus.userData.step));
+        HugoTorus.position.z = 10 * (Math.cos(HugoTorus.userData.step));
+
+        HugoTorus.rotation.z += 0.1;
+        HugoTorus.rotation.y += 0.001;
+
+        
+    }
+
+    if (wheelCenter.userData.jumping){
+        wheelCenter.userData.step += 0,04;
+
+        wheelCenter.position.x = 10 * (Math.sin(wheelCenter.userData.step));
+        wheelCenter.position.z = 10 * (Math.cos(wheelCenter.userData.step));
+    }
+
     render();
     
     requestAnimationFrame(animate);
