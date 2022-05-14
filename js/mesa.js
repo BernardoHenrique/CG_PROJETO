@@ -8,7 +8,7 @@ var ball;
 
 var bernardoBox, bernardoTorus, bernardoOcta, bernardoCircle1, bernardoCircle2, bernardoBar1, bernardoBar2;
 
-var HugoTorus, wheelCenter, weightHugoL, weightHugoR, weightHugoCenter, wightHugoCircle;
+var HugoTorus, wheelCenter, weightHugoL, weightHugoR, weightHugoCenter, wightHugoCircle,ball,triangle1,triangle2;
 
 /*function addTableLeg(obj, x, y, z) {
     'use strict';
@@ -42,7 +42,57 @@ function createBall(x, y, z) {
     
     scene.add(ball);
 }*/
+function createGoncaloBall(x, y, z) {
+    'use strict';
+    
+    ball = new THREE.Object3D();
+    ball.userData = { jumping: true, step: 0 };
+    
+    material = new THREE.MeshBasicMaterial({ color: 0xff5000, wireframe: false });
+    geometry = new THREE.TorusGeometry(15,3,4,4);
+    mesh = new THREE.Mesh(geometry, material);
 
+    ball.add(mesh);
+    ball.position.set(x, y, z);
+    ball.rotateZ(Math.PI/4);
+    
+    scene.add(ball);
+}
+
+
+function createGoncaloTriangle1(x, y, z) {
+    'use strict';
+    
+    triangle1 = new THREE.Object3D();
+    triangle1.userData = { jumping: true, step: 0 };
+    
+    material = new THREE.MeshBasicMaterial({ color: 0xff000, wireframe: false });
+    geometry = new THREE.TorusGeometry(13,2,3,3);
+    mesh = new THREE.Mesh(geometry, material);
+    
+    triangle1.add(mesh);
+    triangle1.position.set(x, y, z);
+    triangle1.rotateY(Math.PI/2);
+    
+    scene.add(triangle1);
+}
+
+function createGoncaloTriangle2(x, y, z) {
+    'use strict';
+    
+    triangle2 = new THREE.Object3D();
+    triangle2.userData = { jumping: true, step: 0 };
+    
+    material = new THREE.MeshBasicMaterial({ color: 0xff000, wireframe: false });
+    geometry = new THREE.TorusGeometry(13,2,3,3);
+    mesh = new THREE.Mesh(geometry, material);
+    
+    triangle2.add(mesh);
+    triangle2.position.set(x, y, z);
+    triangle2.rotateY(Math.PI/2);
+    
+    scene.add(triangle2);
+}
 function createBernardoBox(x, y, z) {
     'use strict';
     
@@ -309,6 +359,10 @@ function createScene() {
     createBernardoCircle2(20, 0, 0);
     createBernardoBar1(35, 0, 0);
     createBernardoBar2(-35, 0, 0);
+    createGoncaloBall(0, 0, 0);
+    createGoncaloTriangle1(-3.25,9,0);
+    createGoncaloTriangle2(3.25,-9,0);
+
 }
 
 function createCamera() {
@@ -483,6 +537,15 @@ function animate() {
         weightHugoR.rotation.y += 0.04;
         weightHugoR.rotation.x += 0.2;
     }
+
+    if (triangle1.userData.jumping) {
+        triangle1.rotation.z += 0.05
+        triangle2.rotation.z += 0.05
+        triangle1.rotation.y -= 0.05
+        triangle2.rotation.y -= 0.05
+        ball.rotation.y -= 0.05
+    }
+
 
     render();
     
