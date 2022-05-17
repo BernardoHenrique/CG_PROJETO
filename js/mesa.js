@@ -10,38 +10,6 @@ var HugoTorus, HugoTorus2, HugoTorus3, wheelCenter, weightHugoL, weightHugoR, we
 
 var ball, triangle1, triangle2;
 
-/*function addTableLeg(obj, x, y, z) {
-    'use strict';
-
-    geometry = new THREE.CubeGeometry(2, 6, 2);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y - 3, z);
-    obj.add(mesh);
-}
-
-function addTableTop(obj, x, y, z) {
-    'use strict';
-    geometry = new THREE.CubeGeometry(60, 2, 20);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
-
-function createBall(x, y, z) {
-    'use strict';
-    
-    ball = new THREE.Object3D();
-    ball.userData = { jumping: true, step: 0 };
-    
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
-    geometry = new THREE.SphereGeometry(4, 10, 10);
-    mesh = new THREE.Mesh(geometry, material);
-    
-    ball.add(mesh);
-    ball.position.set(x, y, z);
-    
-    scene.add(ball);
-}*/
 function createGoncaloBall(x, y, z) {
     'use strict';
     
@@ -98,8 +66,18 @@ function createBernardoBox(x, y, z) {
     
     bernardoBox = new THREE.Object3D();
     bernardoBox.userData = { jumping: true, step: 0 };
+
+    /*var cubeMaterials = [
+        new THREE.MeshBasicMaterial({ color: 0x99ffff, wireframe: false, side: THREE.Frontside }),
+        new THREE.MeshBasicMaterial({ color: 0x3333ff, wireframe: false, side: THREE.Frontside }),
+        new THREE.MeshBasicMaterial({ color: 0x09ff8d, wireframe: false, side: THREE.Frontside }),
+        new THREE.MeshBasicMaterial({ color: 0x67e58d, wireframe: false, side: THREE.Frontside }),
+        new THREE.MeshBasicMaterial({ color: 0xf284ea, wireframe: false, side: THREE.Frontside }),
+        new THREE.MeshBasicMaterial({ color: 0x9e739b, wireframe: false, side: THREE.Frontside }),
+    ];*/
     
-    material = new THREE.MeshBasicMaterial({ color: 0x4b70ab, wireframe: false });
+    material = new THREE.MeshBasicMaterial({ color: 0x9e739b, wireframe: false }),
+    /*material = new THREE.MeshFaceMaterial(cubeMaterials);*/
     geometry = new THREE.CubeGeometry(7.5, 7.5, 7.5, 1, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     
@@ -132,8 +110,8 @@ function createBernardoOctahedron(x, y, z){
     bernardoOcta = new THREE.Object3D();
     bernardoOcta.userData = { jumping: true, step: 0 };
     
-    material = new THREE.MeshNormalMaterial({ color: 0x00aaff, wireframe: false });
     geometry = new THREE.OctahedronGeometry(8.5, 0);
+    material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false }),
     mesh = new THREE.Mesh(geometry, material);
     
     bernardoOcta.add(mesh);
@@ -216,7 +194,7 @@ function createHugoTorus(x, y, z) {
     HugoTorus = new THREE.Object3D();
     HugoTorus.userData = { jumping: true, step: 0};
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0xc0c0c0, wireframe: false });
 
     geometry = new THREE.TorusGeometry(10, 3, 4, 200, Math.PI/3);
     mesh = new THREE.Mesh(geometry, material);
@@ -233,7 +211,7 @@ function createHugoTorus2(x, y, z) {
     HugoTorus2 = new THREE.Object3D();
     HugoTorus2.userData = { jumping: true, step: 0};
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0xA0A0A0, wireframe: false });
 
     geometry = new THREE.TorusGeometry(10, 3, 4, 200, Math.PI/4);
     mesh = new THREE.Mesh(geometry, material);
@@ -250,7 +228,7 @@ function createHugoTorus3(x, y, z) {
     HugoTorus3 = new THREE.Object3D();
     HugoTorus3.userData = { jumping: true, step: 0};
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0x808080, wireframe: false });
 
     geometry = new THREE.TorusGeometry(10, 3, 4, 200, Math.PI/5);
     mesh = new THREE.Mesh(geometry, material);
@@ -268,7 +246,7 @@ function createHugoWheel(x, y, z) {
     wheelCenter = new THREE.Object3D();
     wheelCenter.userData = { jumping: true, step: 0 };
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false });
 
     geometry = new THREE.SphereGeometry(4, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
@@ -279,30 +257,6 @@ function createHugoWheel(x, y, z) {
     scene.add(wheelCenter);
 }
 
-/*function createTable(x, y, z) {
-    'use strict';
-    
-    var table = new THREE.Object3D();
-    
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-   
-    addTableTop(table, 0, 0, 0);
-    addTableLeg(table, -25, -1, -8);
-    addTableLeg(table, -25, -1, 8);
-    addTableLeg(table, 25, -1, 8);
-    addTableLeg(table, 25, -1, -8);
-    
-    scene.add(table);
-    
-    table.position.set(-x, y, z);
-}*/
-
-function createHugoWeight(x, y, z){
-    addWeightLeft(x, y, z - 7.5);
-    addWeightRight(x, y, z + 7.5);
-    addWeightCenter(x, y, z);
-    addWightCircle(x, y, z);
-}
 
 function addWeightLeft(x, y, z){
     'use strict';
@@ -310,7 +264,7 @@ function addWeightLeft(x, y, z){
     weightHugoL = new THREE.Object3D();
     weightHugoL.userData = { jumping: true, step: 0 };
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false });
 
     geometry = new THREE.SphereGeometry(3, 20, 20);
     mesh = new THREE.Mesh(geometry, material);
@@ -319,59 +273,6 @@ function addWeightLeft(x, y, z){
     weightHugoL.position.set(x, y, z);
     
     scene.add(weightHugoL);
-}
-
-function addWeightRight(x, y, z){
-    'use strict';
-    
-    weightHugoR = new THREE.Object3D();
-    weightHugoR.userData = { jumping: true, step: 0 };
-
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-
-    geometry = new THREE.SphereGeometry(3, 20, 20);
-    mesh = new THREE.Mesh(geometry, material);
-
-    weightHugoR.add(mesh);
-    weightHugoR.position.set(x, y, z);
-    
-    scene.add(weightHugoR);
-}
-
-function addWeightCenter(x, y, z){
-    'use strict';
-    
-    weightHugoCenter = new THREE.Object3D();
-    weightHugoCenter.userData = { jumping: true, step: 0 };
-
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-
-    geometry = new THREE.CylinderGeometry( 1, 1, 10, 32);
-    mesh = new THREE.Mesh(geometry, material);
-
-    weightHugoCenter.add(mesh);
-    weightHugoCenter.position.set(x, y, z);
-    weightHugoCenter.rotateX(Math.PI/2);
-    
-    scene.add(weightHugoCenter);
-}
-
-function addWightCircle(x, y, z) {
-    'use strict';
-    
-    wightHugoCircle = new THREE.Object3D();
-    wightHugoCircle.userData = { jumping: true, step: 0};
-
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false });
-
-    geometry = new THREE.TorusGeometry( 10, 2, 16, 20 );
-    mesh = new THREE.Mesh(geometry, material);
-
-    wightHugoCircle.add(mesh);
-    wightHugoCircle.position.set(x, y, z);
-    wightHugoCircle.rotateX(Math.PI/2);
-
-    scene.add(wightHugoCircle);
 }
 
 function createScene() {
@@ -391,11 +292,10 @@ function createScene() {
     createHugoTorus2(60, -20, -100);
     createHugoTorus3(60, -20, -100);
     createHugoWheel(60, -20, -100);
-    createHugoWeight(0, -30, -50);
-    createBernardoCircle1(-20, 0, 0);
-    createBernardoCircle2(20, 0, 0);
-    createBernardoBar1(35, 0, 0);
-    createBernardoBar2(-35, 0, 0);
+    createBernardoCircle1(-22, 0, 0);
+    createBernardoCircle2(22, 0, 0);
+    createBernardoBar1(32, 0, 0);
+    createBernardoBar2(-32, 0, 0);
     createGoncaloBall(-80, 25, 0);
     createGoncaloTriangle1(-83.25, 34,0);
     createGoncaloTriangle2(-76.75, 16,0);
@@ -408,9 +308,9 @@ function createCamera() {
                                          window.innerWidth / window.innerHeight,
                                          1,
                                          1000);
-    camera.position.x = 0;
-    camera.position.y = 0;
-    camera.position.z = 100;
+    camera.position.x = 70;
+    camera.position.y = 70;
+    camera.position.z = 70;
     camera.lookAt(scene.position);
 }
 
@@ -430,23 +330,36 @@ function onKeyDown(e) {
     'use strict';
     
     switch (e.keyCode) {
-    case 65: //A
-    case 97: //a
-        scene.traverse(function (node) {
-            if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
-            }
-        });
-        break;
-    case 83:  //S
-    case 115: //s
-        bernardoBox.userData.jumping = !bernardoBox.userData.jumping;
-        break;
     case 69:  //E
     case 101: //e
         scene.traverse(function (node) {
             if (node instanceof THREE.AxisHelper) {
                 node.visible = !node.visible;
+            }
+        });
+        break;
+    case 49:
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.position.z = 110;
+        camera.lookAt(scene.position);
+        break;
+    case 50:
+        camera.position.x = 0;
+        camera.position.y = 130;
+        camera.position.z = 0;
+        camera.lookAt(scene.position);
+        break;
+    case 51:
+        camera.position.x = 120;
+        camera.position.y = 0;
+        camera.position.z = 0;
+        camera.lookAt(scene.position);
+        break;
+    case 52: //a
+        scene.traverse(function (node) {
+            if (node instanceof THREE.Mesh) {
+                node.material.wireframe = !node.material.wireframe;
             }
         });
         break;
@@ -520,9 +433,7 @@ function animate() {
         bernardoTorus.rotation.x += 0.05;
     }
 
-    
-
-    if (HugoTorus.userData.jumping) {
+    /*if (HugoTorus.userData.jumping) {
         HugoTorus.userData.step += 0.02;
 
         HugoTorus.position.x = 65 * (Math.sin(HugoTorus.userData.step));
@@ -531,9 +442,9 @@ function animate() {
         HugoTorus.rotation.z -= 0.1;
         HugoTorus.rotation.y += 0.04;
 
-        /*if (HugoTorus.position.x < 0){
+        if (HugoTorus.position.x < 0){
             HugoTorus.color = 0xfcff4f;
-        }*/
+        }
 
 
     }
@@ -570,7 +481,7 @@ function animate() {
 
         wheelCenter.rotation.z -= 0.1;
         wheelCenter.rotation.y += 0.04;
-    }
+    }*/
 
     if (bernardoOcta.userData.jumping) {
         bernardoOcta.userData.step += 0.04;
@@ -578,37 +489,37 @@ function animate() {
         bernardoOcta.rotation.x += 0.02;
     }
 
-    if(wightHugoCircle.userData.jumping){
+    if(HugoTorus.userData.jumping){
 
-        wightHugoCircle.userData.step += 0.04;
-        weightHugoCenter.userData.step += 0.04;
-        weightHugoL.userData.step += 0.04;
-        weightHugoR.userData.step += 0.04;
+        HugoTorus.userData.step += 0.04;
+        HugoTorus2.userData.step += 0.04;
+        HugoTorus3.userData.step += 0.04;
+        wheelCenter.userData.step += 0.04;
 
-        wightHugoCircle.position.y = (30 * (Math.sin(wheelCenter.userData.step)));
-        wightHugoCircle.position.z = (30 * (Math.cos(wheelCenter.userData.step)));
-        wightHugoCircle.position.x = (30 * (Math.sin(wheelCenter.userData.step)));
-        wightHugoCircle.rotation.z -= 0.1;
-        wightHugoCircle.rotation.y += 0.04;
-        wightHugoCircle.rotation.x += 0.2;
+        HugoTorus.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
+        HugoTorus.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
+        HugoTorus.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
+        HugoTorus.rotation.z -= 0.1;
+        HugoTorus.rotation.y += 0.04;
+        HugoTorus.rotation.x += 0.2;
 
-        weightHugoCenter.position.y = (30 * (Math.sin(wheelCenter.userData.step)));
-        weightHugoCenter.position.z = (30 * (Math.cos(wheelCenter.userData.step)));
-        weightHugoCenter.position.x = (30 * (Math.sin(wheelCenter.userData.step)));
+        wheelCenter.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
+        wheelCenter.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
+        wheelCenter.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
 
-        weightHugoL.position.y = (30 * (Math.sin(wheelCenter.userData.step)));
-        weightHugoL.position.z = (30 * (Math.cos(wheelCenter.userData.step)));
-        weightHugoL.position.x = (30 * (Math.sin(wheelCenter.userData.step)));
-        weightHugoL.rotation.z -= 0.1;
-        weightHugoL.rotation.y += 0.04;
-        weightHugoL.rotation.x += 0.2;
+        HugoTorus2.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
+        HugoTorus2.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
+        HugoTorus2.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
+        HugoTorus2.rotation.z -= 0.1;
+        HugoTorus2.rotation.y += 0.04;
+        HugoTorus2.rotation.x += 0.2;
 
-        weightHugoR.position.y = (30 * (Math.sin(wheelCenter.userData.step)));
-        weightHugoR.position.z = (30 * (Math.cos(wheelCenter.userData.step)));
-        weightHugoR.position.x = (30 * (Math.sin(wheelCenter.userData.step)));
-        weightHugoR.rotation.z -= 0.1;
-        weightHugoR.rotation.y += 0.04;
-        weightHugoR.rotation.x += 0.2;
+        HugoTorus3.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
+        HugoTorus3.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
+        HugoTorus3.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
+        HugoTorus3.rotation.z -= 0.1;
+        HugoTorus3.rotation.y += 0.04;
+        HugoTorus3.rotation.x += 0.2;
     }
 
     if (triangle1.userData.jumping) {
