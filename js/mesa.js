@@ -8,7 +8,51 @@ var bernardoBox, bernardoTorus, bernardoOcta, bernardoCircle1, bernardoCircle2, 
 
 var HugoTorus, HugoTorus2, HugoTorus3, wheelCenter, weightHugoL, weightHugoR, weightHugoCenter, wightHugoCircle;
 
+var tableArt, torusArt, ballArt, Art, obj2, obj3;
+
 var ball, triangle1, triangle2;
+
+function createGrandParent(x, y, z){
+    'use strict';
+
+    tableArt = new THREE.Object3D();
+    tableArt.userData = { jumping: false, step: 0 };
+
+    material = new THREE.MeshBasicMaterial({ color: 0x4c4cce, wireframe: true});
+    geometry = new THREE.BoxGeometry(30, 6, 20, 1, 1, 1);
+    mesh = new THREE.Mesh(geometry, material);
+    
+    tableArt.add(mesh);
+    tableArt.position.set(x, y, x);
+
+    createFather(tableArt, x, y, z);
+    
+    scene.add(tableArt);
+}
+
+function createFather(obj, x, y, z){
+    'use strict';
+    
+    material = new THREE.MeshBasicMaterial({ color: 0x1e1e51, wireframe: true});
+    geometry = new THREE.CylinderGeometry(3, 1, 20, 3, 2, 3);
+    obj2 = new THREE.Mesh(geometry, material);
+    obj2.position.set(0, 13, 0);
+
+    createChild(obj2, x, y, z);
+    
+    obj.add(obj2);
+}
+
+function createChild(obj, x, y, z){
+    'use strict';
+
+    material = new THREE.MeshBasicMaterial({ color: 0x53536c, wireframe: true});
+    geometry = new THREE.SphereGeometry(6, 10, 10);
+    obj3 = new THREE.Mesh(geometry, material);
+    obj3.position.set(0, 15, 0);
+    
+    obj.add(obj3);
+}
 
 function createGoncaloBall(x, y, z) {
     'use strict';
@@ -35,7 +79,7 @@ function createGoncaloTriangle1(x, y, z) {
     triangle1.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0xA6F501, wireframe: false });
-    geometry = new THREE.TorusGeometry(13,2,3,3);
+    geometry = new THREE.TorusGeometry(12,1.5,3,3);
     mesh = new THREE.Mesh(geometry, material);
     
     triangle1.add(mesh);
@@ -52,7 +96,7 @@ function createGoncaloTriangle2(x, y, z) {
     triangle2.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0xc98928, wireframe: false });
-    geometry = new THREE.TorusGeometry(13,2,3,3);
+    geometry = new THREE.TorusGeometry(12,1.5,3,3);
     mesh = new THREE.Mesh(geometry, material);
     
     triangle2.add(mesh);
@@ -283,8 +327,6 @@ function createScene() {
 
     //scene.add(new THREE.AxisHelper(10));
     
-    //createTable(0, 8, 0);
-    //createBall(0, 0, 15);
     createBernardoBox(60, 20, 30);
     createBernardoTorus(60, 20, 30);
     createBernardoOctahedron(0, 0, 0);
@@ -299,7 +341,7 @@ function createScene() {
     createGoncaloBall(-80, 25, 0);
     createGoncaloTriangle1(-83.25, 34,0);
     createGoncaloTriangle2(-76.75, 16,0);
-
+    createGrandParent(40, -20, 30);
 }
 
 function createCamera() {
@@ -308,9 +350,9 @@ function createCamera() {
                                          window.innerWidth / window.innerHeight,
                                          1,
                                          1000);
-    camera.position.x = 70;
-    camera.position.y = 70;
-    camera.position.z = 70;
+    camera.position.x = 80 ;
+    camera.position.y = 80 ;
+    camera.position.z = 80;
     camera.lookAt(scene.position);
 }
 
@@ -340,7 +382,7 @@ function onKeyDown(e) {
         break;
     case 49:
         camera.position.x = 0;
-        camera.position.y = 0;
+        camera.position.y = -5;
         camera.position.z = 110;
         camera.lookAt(scene.position);
         break;
@@ -363,6 +405,30 @@ function onKeyDown(e) {
             }
         });
         break;
+    case 88: //z
+        tableArt.userData.jumping = true;
+        break;
+    case 90: //x
+        tableArt.userData.jumping = false;
+        break;
+    case 37: //left
+        tableArt.position.x -= 1;
+        break;
+    case 38: //up
+        tableArt.position.y += 1;
+        break;
+    case 39: //right
+        tableArt.position.x += 1;
+        break;
+    case 40: //down
+        tableArt.position.y -= 1;
+        break;
+    case 67:
+    case 68:
+        tableArt.position.x = 40;
+        tableArt.position.y = -20;
+        tableArt.position.z = 30;
+        tableArt.rotation.z = 0;
     }
 }
 
@@ -528,6 +594,12 @@ function animate() {
         triangle1.rotation.y -= 0.05
         triangle2.rotation.y -= 0.05
         ball.rotation.y -= 0.05
+    }
+
+    if (tableArt.userData.jumping){
+        tableArt.userData.step += 0.04;
+
+        tableArt.rotation.z += 0.1;
     }
 
 
