@@ -32,26 +32,36 @@ function createGrandParent(x, y, z){
 
 function createFather(obj, x, y, z){
     'use strict';
+
+    torusArt = new THREE.Object3D();
+    torusArt.userData = { jumping: false, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0x1e1e51, wireframe: true});
     geometry = new THREE.CylinderGeometry(3, 1, 20, 3, 2, 3);
     obj2 = new THREE.Mesh(geometry, material);
     obj2.position.set(0, 13, 0);
 
-    createChild(obj2, x, y, z);
+    torusArt.add(obj2);
+
+    createChild(torusArt, x, y, z);
     
-    obj.add(obj2);
+    obj.add(torusArt);
 }
 
 function createChild(obj, x, y, z){
     'use strict';
 
+    ballArt = new THREE.Object3D();
+    ballArt.userData = { jumping: false, step: 0 };
+
     material = new THREE.MeshBasicMaterial({ color: 0x53536c, wireframe: true});
     geometry = new THREE.SphereGeometry(6, 10, 10);
     obj3 = new THREE.Mesh(geometry, material);
-    obj3.position.set(0, 15, 0);
+    obj3.position.set(0, 28, 0);
+
+    ballArt.add(obj3);
     
-    obj.add(obj3);
+    obj.add(ballArt);
 }
 
 function createGoncaloBall(x, y, z) {
@@ -380,19 +390,19 @@ function onKeyDown(e) {
             }
         });
         break;
-    case 49:
+    case 49: //1
         camera.position.x = 0;
         camera.position.y = -5;
         camera.position.z = 110;
         camera.lookAt(scene.position);
         break;
-    case 50:
+    case 50: //2
         camera.position.x = 0;
         camera.position.y = 130;
         camera.position.z = 0;
         camera.lookAt(scene.position);
         break;
-    case 51:
+    case 51: //3
         camera.position.x = 120;
         camera.position.y = 0;
         camera.position.z = 0;
@@ -405,11 +415,11 @@ function onKeyDown(e) {
             }
         });
         break;
-    case 88: //z
-        tableArt.userData.jumping = true;
-        break;
-    case 90: //x
+    case 88: //x
         tableArt.userData.jumping = false;
+        break;
+    case 90: //z
+        tableArt.userData.jumping = true;
         break;
     case 37: //left
         tableArt.position.x -= 1;
@@ -423,12 +433,25 @@ function onKeyDown(e) {
     case 40: //down
         tableArt.position.y -= 1;
         break;
-    case 67:
-    case 68:
+    case 67: //c
+    case 68: //d
         tableArt.position.x = 40;
         tableArt.position.y = -20;
         tableArt.position.z = 30;
         tableArt.rotation.z = 0;
+        break;
+    case 65: //a
+        torusArt.userData.jumping = true;
+        break;
+    case 83: //s
+        torusArt.userData.jumping = false;
+        break;
+    case 81: //q
+        ballArt.userData.jumping = true;
+        break;
+    case 87: //w
+        ballArt.userData.jumping = false;
+        break;
     }
 }
 
@@ -473,22 +496,18 @@ function animate() {
     }
 
     if (bernardoCircle1.userData.jumping){
-        bernardoCircle1.userData.step += 0.04;
         bernardoCircle1.rotation.z += 0.1;
     }
 
     if (bernardoCircle2.userData.jumping){
-        bernardoCircle2.userData.step += 0.04;
         bernardoCircle2.rotation.z += 0.1;
     }
 
     if (bernardoOcta.userData.jumping){
-        bernardoOcta.userData.step += 0.04;
         bernardoOcta.rotation.y += 0.02;
     }
 
     if (bernardoBox.userData.jumping) {
-        bernardoBox.userData.step += 0.04;
         bernardoBox.rotation.y += 0.02;
         bernardoBox.rotation.x += 0.02;
     }
@@ -499,58 +518,7 @@ function animate() {
         bernardoTorus.rotation.x += 0.05;
     }
 
-    /*if (HugoTorus.userData.jumping) {
-        HugoTorus.userData.step += 0.02;
-
-        HugoTorus.position.x = 65 * (Math.sin(HugoTorus.userData.step));
-        HugoTorus.position.z = 65 * (Math.cos(HugoTorus.userData.step));
-
-        HugoTorus.rotation.z -= 0.1;
-        HugoTorus.rotation.y += 0.04;
-
-        if (HugoTorus.position.x < 0){
-            HugoTorus.color = 0xfcff4f;
-        }
-
-
-    }
-
-    if (HugoTorus2.userData.jumping) {
-        HugoTorus2.userData.step += 0.02;
-
-        HugoTorus2.position.x = 65 * (Math.sin(HugoTorus2.userData.step));
-        HugoTorus2.position.z = 65 * (Math.cos(HugoTorus2.userData.step));
-
-        HugoTorus2.rotation.z -= 0.1;
-        HugoTorus2.rotation.y += 0.04;
-
-
-    }
-
-    if (HugoTorus3.userData.jumping) {
-        HugoTorus3.userData.step += 0.02;
-
-        HugoTorus3.position.x = 65 * (Math.sin(HugoTorus3.userData.step));
-        HugoTorus3.position.z = 65 * (Math.cos(HugoTorus3.userData.step));
-
-        HugoTorus3.rotation.z -= 0.1;
-        HugoTorus3.rotation.y += 0.04;
-
-
-    }
-
-    if (wheelCenter.userData.jumping){
-        wheelCenter.userData.step += 0.02;
-
-        wheelCenter.position.x = 65 * (Math.sin(wheelCenter.userData.step));
-        wheelCenter.position.z = 65 * (Math.cos(wheelCenter.userData.step));
-
-        wheelCenter.rotation.z -= 0.1;
-        wheelCenter.rotation.y += 0.04;
-    }*/
-
     if (bernardoOcta.userData.jumping) {
-        bernardoOcta.userData.step += 0.04;
         bernardoOcta.rotation.z += 0.02;
         bernardoOcta.rotation.x += 0.02;
     }
@@ -600,6 +568,18 @@ function animate() {
         tableArt.userData.step += 0.04;
 
         tableArt.rotation.z += 0.1;
+    }
+
+    if (torusArt.userData.jumping){
+        torusArt.userData.step += 0.04;
+        torusArt.position.x = (10 * (Math.sin(torusArt.userData.step)));
+
+        torusArt.rotation.y += 0.1;
+    }
+
+    if (ballArt.userData.jumping){
+
+        ballArt.rotation.y -= 0.05;
     }
 
 
