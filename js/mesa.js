@@ -4,81 +4,90 @@ var camera, scene, renderer;
 
 var geometry, material, mesh;
 
-var bernardoBox, bernardoTorus, bernardoOcta, bernardoCircle1, bernardoCircle2, bernardoBar1, bernardoBar2;
+var cube, cubeOrbit, Octahedron, rightCircle, leftCircle, rightBar, leftBar;
 
-var HugoTorus, HugoTorus2, HugoTorus3, wheelCenter, weightHugoL, weightHugoR, weightHugoCenter, wightHugoCircle;
+var torus1, torus2, torus3, centerSphere;
 
-var tableArt, torusArt, ballArt, Art, obj2, obj3;
+var tableArticulated, coneArticulated, sphereArticulated, obj2, obj3;
 
-var ball, triangle1, triangle2;
+var square, triangle1, triangle2;
+
+const controller = {
+    'ArrowLeft': {pressed: false, func: moveLeft},
+    'ArrowUp': {pressed: false, func: moveUp},
+    'ArrowRight': {pressed: false, func: moveRight},
+    'ArrowDown': {pressed: false, func: moveDown},
+    'c': {pressed: false, func: moveOutside},
+    'd': {pressed: false, func: moveInside},
+}
 
 function createGrandParent(x, y, z){
     'use strict';
 
-    tableArt = new THREE.Object3D();
-    tableArt.userData = { jumping: false, step: 0 };
+    tableArticulated = new THREE.Object3D();
+    tableArticulated.userData = { jumping: false, step: 0 };
 
     material = new THREE.MeshBasicMaterial({ color: 0x4c4cce, wireframe: false});
     geometry = new THREE.BoxGeometry(30, 6, 20, 1, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     
-    tableArt.add(mesh);
-    tableArt.position.set(x, y, x);
+    tableArticulated.add(mesh);
+    tableArticulated.position.set(x, y, x);
 
-    createFather(tableArt, x, y, z);
+    createFather(tableArticulated, x, y, z);
     
-    scene.add(tableArt);
+    scene.add(tableArticulated);
 }
 
 function createFather(obj, x, y, z){
     'use strict';
 
-    torusArt = new THREE.Object3D();
-    torusArt.userData = { jumping: false, step: 0 };
+    coneArticulated = new THREE.Object3D();
+    coneArticulated.userData = { jumping: false, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0x1e1e51, wireframe: false});
     geometry = new THREE.CylinderGeometry(3, 1, 20, 3, 2, 3);
     obj2 = new THREE.Mesh(geometry, material);
     obj2.position.set(0, 13, 0);
 
-    torusArt.add(obj2);
+    coneArticulated.add(obj2);
 
-    createChild(torusArt, x, y, z);
+    createChild(coneArticulated, x, y, z);
     
-    obj.add(torusArt);
+    obj.add(coneArticulated);
 }
 
 function createChild(obj, x, y, z){
     'use strict';
 
-    ballArt = new THREE.Object3D();
-    ballArt.userData = { jumping: false, step: 0 };
+    sphereArticulated = new THREE.Object3D();
+    sphereArticulated.userData = { jumping: false, step: 0 };
 
     material = new THREE.MeshBasicMaterial({ color: 0x53536c, wireframe: false});
     geometry = new THREE.SphereGeometry(6, 10, 10);
     obj3 = new THREE.Mesh(geometry, material);
     obj3.position.set(0, 28, 0);
 
-    ballArt.add(obj3);
+    sphereArticulated.add(obj3);
     
-    obj.add(ballArt);
+    obj.add(sphereArticulated);
 }
 
-function createGoncaloBall(x, y, z) {
+function createGoncalosquare(x, y, z) {
     'use strict';
     
-    ball = new THREE.Object3D();
-    ball.userData = { jumping: true, step: 0 };
+    square = new THREE.Object3D();
+    square.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0xcf3a38, wireframe: false });
     geometry = new THREE.TorusGeometry(15,3,4,4);
     mesh = new THREE.Mesh(geometry, material);
 
-    ball.add(mesh);
-    ball.position.set(x, y, z);
-    ball.rotateZ(Math.PI/4);
+    square.add(mesh);
+    square.position.set(x, y, z);
+    square.rotateZ(Math.PI/4);
     
-    scene.add(ball);
+    scene.add(square);
 }
 
 
@@ -115,11 +124,11 @@ function createGoncaloTriangle2(x, y, z) {
     
     scene.add(triangle2);
 }
-function createBernardoBox(x, y, z) {
+function createcube(x, y, z) {
     'use strict';
     
-    bernardoBox = new THREE.Object3D();
-    bernardoBox.userData = { jumping: true, step: 0 };
+    cube = new THREE.Object3D();
+    cube.userData = { jumping: true, step: 0 };
 
     var cubeMaterials = [
         new THREE.MeshBasicMaterial({ color: 0x99ffff, wireframe: false, side: THREE.Frontside }),
@@ -130,204 +139,186 @@ function createBernardoBox(x, y, z) {
         new THREE.MeshBasicMaterial({ color: 0x9e739b, wireframe: false, side: THREE.Frontside }),
     ];
     
-    /*material = new THREE.MeshBasicMaterial({ color: 0x9e739b, wireframe: false });*/
     material = new THREE.MeshFaceMaterial(cubeMaterials);
     geometry = new THREE.CubeGeometry(7.5, 7.5, 7.5, 1, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     
-    bernardoBox.add(mesh);
-    bernardoBox.position.set(x, y, z);
+    cube.add(mesh);
+    cube.position.set(x, y, z);
     
-    scene.add(bernardoBox);
+    scene.add(cube);
 }
 
 
-function createBernardoTorus(x, y, z) {
+function createcubeOrbit(x, y, z) {
     'use strict';
     
-    bernardoTorus = new THREE.Object3D();
-    bernardoTorus.userData = { jumping: true, step: 0 };
+    cubeOrbit = new THREE.Object3D();
+    cubeOrbit.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0x324f3a, wireframe: false });
     geometry = new THREE.TorusGeometry(9.5, 2, 16, 1000, 360);
     mesh = new THREE.Mesh(geometry, material);
     
-    bernardoTorus.add(mesh);
-    bernardoTorus.position.set(x, y, z);
+    cubeOrbit.add(mesh);
+    cubeOrbit.position.set(x, y, z);
     
-    scene.add(bernardoTorus);
+    scene.add(cubeOrbit);
 }
 
-function createBernardoOctahedron(x, y, z){
+function createOctahedronhedron(x, y, z){
     'use strict';
     
-    bernardoOcta = new THREE.Object3D();
-    bernardoOcta.userData = { jumping: true, step: 0 };
+    Octahedron = new THREE.Object3D();
+    Octahedron.userData = { jumping: true, step: 0 };
     
     geometry = new THREE.OctahedronGeometry(8.5, 0);
     material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false }),
     mesh = new THREE.Mesh(geometry, material);
     
-    bernardoOcta.add(mesh);
-    bernardoOcta.position.set(x, y, z);
+    Octahedron.add(mesh);
+    Octahedron.position.set(x, y, z);
     
-    scene.add(bernardoOcta);
+    scene.add(Octahedron);
 }
 
-function createBernardoCircle1(x, y, z){
-    bernardoCircle1 = new THREE.Object3D();
-    bernardoCircle1.userData = { jumping: true, step: 0 };
+function createrightCircle(x, y, z){
+    rightCircle = new THREE.Object3D();
+    rightCircle.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0xFF0023, wireframe: false });
     geometry = new THREE.TorusGeometry(20, 1.25, 16, 1000, 360);
     mesh = new THREE.Mesh(geometry, material);
     
-    bernardoCircle1.add(mesh);
-    bernardoCircle1.position.set(x, y, z);
+    rightCircle.add(mesh);
+    rightCircle.position.set(x, y, z);
 
-    bernardoCircle1.rotateX(Math.PI/2);
+    rightCircle.rotateX(Math.PI/2);
     
-    scene.add(bernardoCircle1);
+    scene.add(rightCircle);
 }
 
-function createBernardoCircle2(x, y, z){
-    bernardoCircle2 = new THREE.Object3D();
-    bernardoCircle2.userData = { jumping: true, step: 0 };
+function createleftCircle(x, y, z){
+    leftCircle = new THREE.Object3D();
+    leftCircle.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0x00aaff, wireframe: false });
     geometry = new THREE.TorusGeometry(20, 1.25, 16, 1000, 360);
     mesh = new THREE.Mesh(geometry, material);
     
-    bernardoCircle2.add(mesh);
-    bernardoCircle2.position.set(x, y, z);
+    leftCircle.add(mesh);
+    leftCircle.position.set(x, y, z);
     
-    bernardoCircle2.rotateX(Math.PI/2);
+    leftCircle.rotateX(Math.PI/2);
 
-    scene.add(bernardoCircle2);
+    scene.add(leftCircle);
 }
 
-function createBernardoBar1(x, y, z){
+function createrightBar(x, y, z){
     'use strict';
     
-    bernardoBar1 = new THREE.Object3D();
-    bernardoBar1.userData = { jumping: true, step: 0 };
+    rightBar = new THREE.Object3D();
+    rightBar.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0x32fa6e, wireframe: false });
     geometry = new THREE.CubeGeometry(3, 55, 3, 1, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     
-    bernardoBar1.add(mesh);
-    bernardoBar1.position.set(x, y, z);
+    rightBar.add(mesh);
+    rightBar.position.set(x, y, z);
 
-    bernardoBar1.rotateZ(Math.PI - 9.7);
+    rightBar.rotateZ(Math.PI - 9.7);
     
-    scene.add(bernardoBar1);
+    scene.add(rightBar);
 }
 
-function createBernardoBar2(x, y, z){
+function createleftBar(x, y, z){
     'use strict';
     
-    bernardoBar2 = new THREE.Object3D();
-    bernardoBar2.userData = { jumping: true, step: 0 };
+    leftBar = new THREE.Object3D();
+    leftBar.userData = { jumping: true, step: 0 };
     
     material = new THREE.MeshBasicMaterial({ color: 0xfcff4f, wireframe: false });
     geometry = new THREE.CubeGeometry(3, 55, 3, 1, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     
-    bernardoBar2.add(mesh);
-    bernardoBar2.position.set(x, y, z);
+    leftBar.add(mesh);
+    leftBar.position.set(x, y, z);
     
-    bernardoBar2.rotateZ(Math.PI + 9.7);
+    leftBar.rotateZ(Math.PI + 9.7);
 
-    scene.add(bernardoBar2);
+    scene.add(leftBar);
 }
 
-function createHugoTorus(x, y, z) {
+function createtorus1(x, y, z) {
     'use strict';
     
-    HugoTorus = new THREE.Object3D();
-    HugoTorus.userData = { jumping: true, step: 0};
+    torus1 = new THREE.Object3D();
+    torus1.userData = { jumping: true, step: 0};
 
     material = new THREE.MeshBasicMaterial({ color: 0xc0c0c0, wireframe: false });
 
     geometry = new THREE.TorusGeometry(10, 3, 4, 200, Math.PI/3);
     mesh = new THREE.Mesh(geometry, material);
 
-    HugoTorus.add(mesh);
-    HugoTorus.position.set(x, y, z);
+    torus1.add(mesh);
+    torus1.position.set(x, y, z);
 
-    scene.add(HugoTorus);
+    scene.add(torus1);
 }
 
-function createHugoTorus2(x, y, z) {
+function createtorus2(x, y, z) {
     'use strict';
     
-    HugoTorus2 = new THREE.Object3D();
-    HugoTorus2.userData = { jumping: true, step: 0};
+    torus2 = new THREE.Object3D();
+    torus2.userData = { jumping: true, step: 0};
 
     material = new THREE.MeshBasicMaterial({ color: 0xA0A0A0, wireframe: false });
 
     geometry = new THREE.TorusGeometry(10, 3, 4, 200, Math.PI/4);
     mesh = new THREE.Mesh(geometry, material);
 
-    HugoTorus2.add(mesh);
-    HugoTorus2.position.set(x, y, z);
-    HugoTorus2.rotateZ((Math.PI/3)*2)
-    scene.add(HugoTorus2);
+    torus2.add(mesh);
+    torus2.position.set(x, y, z);
+    torus2.rotateZ((Math.PI/3)*2)
+    scene.add(torus2);
 }
 
-function createHugoTorus3(x, y, z) {
+function createtorus3(x, y, z) {
     'use strict';
     
-    HugoTorus3 = new THREE.Object3D();
-    HugoTorus3.userData = { jumping: true, step: 0};
+    torus3 = new THREE.Object3D();
+    torus3.userData = { jumping: true, step: 0};
 
     material = new THREE.MeshBasicMaterial({ color: 0x808080, wireframe: false });
 
     geometry = new THREE.TorusGeometry(10, 3, 4, 200, Math.PI/5);
     mesh = new THREE.Mesh(geometry, material);
 
-    HugoTorus3.add(mesh);
-    HugoTorus3.position.set(x, y, z);
-    HugoTorus3.rotateZ((Math.PI/3)*4);
+    torus3.add(mesh);
+    torus3.position.set(x, y, z);
+    torus3.rotateZ((Math.PI/3)*4);
 
-    scene.add(HugoTorus3);
+    scene.add(torus3);
 }
 
-function createHugoWheel(x, y, z) {
+function createcenterSphere(x, y, z) {
     'use strict';
     
-    wheelCenter = new THREE.Object3D();
-    wheelCenter.userData = { jumping: true, step: 0 };
+    centerSphere = new THREE.Object3D();
+    centerSphere.userData = { jumping: true, step: 0 };
 
     material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false });
 
     geometry = new THREE.SphereGeometry(4, 10, 10);
     mesh = new THREE.Mesh(geometry, material);
 
-    wheelCenter.add(mesh);
-    wheelCenter.position.set(x, y, z);
+    centerSphere.add(mesh);
+    centerSphere.position.set(x, y, z);
     
-    scene.add(wheelCenter);
+    scene.add(centerSphere);
 }
 
-
-function addWeightLeft(x, y, z){
-    'use strict';
-    
-    weightHugoL = new THREE.Object3D();
-    weightHugoL.userData = { jumping: true, step: 0 };
-
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false });
-
-    geometry = new THREE.SphereGeometry(3, 20, 20);
-    mesh = new THREE.Mesh(geometry, material);
-
-    weightHugoL.add(mesh);
-    weightHugoL.position.set(x, y, z);
-    
-    scene.add(weightHugoL);
-}
 
 function createScene() {
     'use strict';
@@ -337,18 +328,18 @@ function createScene() {
 
     //scene.add(new THREE.AxisHelper(10));
     
-    createBernardoBox(60, 20, 30);
-    createBernardoTorus(60, 20, 30);
-    createBernardoOctahedron(0, 0, 0);
-    createHugoTorus(60, -20, -100);
-    createHugoTorus2(60, -20, -100);
-    createHugoTorus3(60, -20, -100);
-    createHugoWheel(60, -20, -100);
-    createBernardoCircle1(-22, 0, 0);
-    createBernardoCircle2(22, 0, 0);
-    createBernardoBar1(32, 0, 0);
-    createBernardoBar2(-32, 0, 0);
-    createGoncaloBall(-80, 25, 0);
+    createcube(60, 20, 30);
+    createcubeOrbit(60, 20, 30);
+    createOctahedronhedron(0, 0, 0);
+    createtorus1(60, -20, -100);
+    createtorus2(60, -20, -100);
+    createtorus3(60, -20, -100);
+    createcenterSphere(60, -20, -100);
+    createrightCircle(-22, 0, 0);
+    createleftCircle(22, 0, 0);
+    createrightBar(32, 0, 0);
+    createleftBar(-32, 0, 0);
+    createGoncalosquare(-80, 25, 0);
     createGoncaloTriangle1(-83.25, 34,0);
     createGoncaloTriangle2(-76.75, 16,0);
     createGrandParent(40, -20, 30);
@@ -416,40 +407,22 @@ function onKeyDown(e) {
         });
         break;
     case 88: //x
-        tableArt.rotation.z += 0.1;
+        sphereArticulated.userData.jumping = false;
         break;
     case 90: //z
-        tableArt.rotation.z -= 0.1;
-        break;
-    case 37: //left
-        tableArt.position.x -= 1;
-        break;
-    case 38: //up
-        tableArt.position.y += 1;
-        break;
-    case 39: //right
-        tableArt.position.x += 1;
-        break;
-    case 40: //down
-        tableArt.position.y -= 1;
-        break;
-    case 67: //c
-        tableArt.position.z += 1;
-        break;
-    case 68: //d
-        tableArt.position.z -= 1;
+        sphereArticulated.userData.jumping = true;
         break;
     case 65: //a
-        torusArt.userData.jumping = true;
+        coneArticulated.userData.jumping = true;
         break;
     case 83: //s
-        torusArt.userData.jumping = false;
+        coneArticulated.userData.jumping = false;
         break;
     case 81: //q
-        ballArt.userData.jumping = true;
+        tableArticulated.rotation.z -= 0.1;
         break;
     case 87: //w
-        ballArt.userData.jumping = false;
+        tableArticulated.rotation.z += 0.1;
         break;
     }
 }
@@ -472,87 +445,96 @@ function init() {
     
     render();
     
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", (e) => {
+        controller[e.key] = true;
+        executeMoves();
+    })
+
+    window.addEventListener("keyup", (e) => {
+        controller[e.key].pressed = false;
+        executeMoves();
+    })
+
     window.addEventListener("resize", onResize);
 }
 
 function animate() {
 
-    if (bernardoOcta.userData.jumping) {
-        bernardoOcta.userData.step += 0.04;
-        bernardoOcta.position.x = 15 * (Math.sin(bernardoOcta.userData.step));
-        bernardoOcta.position.y = 15 * (Math.cos(bernardoOcta.userData.step));
+    if (Octahedron.userData.jumping) {
+        Octahedron.userData.step += 0.04;
+        Octahedron.position.x = 15 * (Math.sin(Octahedron.userData.step));
+        Octahedron.position.y = 15 * (Math.cos(Octahedron.userData.step));
     }
 
-    if (bernardoBar1.userData.jumping) {
-        bernardoBar1.userData.step += 0.04;
-        bernardoBar1.position.y = 15 * (Math.cos(bernardoBar1.userData.step));
+    if (rightBar.userData.jumping) {
+        rightBar.userData.step += 0.04;
+        rightBar.position.y = 15 * (Math.cos(rightBar.userData.step));
     }
     
-    if (bernardoBar2.userData.jumping) {
-        bernardoBar2.userData.step += 0.04;
-        bernardoBar2.position.y = 15 * (Math.cos(bernardoBar2.userData.step));
+    if (leftBar.userData.jumping) {
+        leftBar.userData.step += 0.04;
+        leftBar.position.y = 15 * (Math.cos(leftBar.userData.step));
     }
 
-    if (bernardoCircle1.userData.jumping){
-        bernardoCircle1.rotation.z += 0.1;
+    if (rightCircle.userData.jumping){
+        rightCircle.rotation.z += 0.1;
     }
 
-    if (bernardoCircle2.userData.jumping){
-        bernardoCircle2.rotation.z += 0.1;
+    if (leftCircle.userData.jumping){
+        leftCircle.rotation.z += 0.1;
     }
 
-    if (bernardoOcta.userData.jumping){
-        bernardoOcta.rotation.y += 0.02;
+    if (Octahedron.userData.jumping){
+        Octahedron.rotation.y += 0.02;
     }
 
-    if (bernardoBox.userData.jumping) {
-        bernardoBox.rotation.y += 0.02;
-        bernardoBox.rotation.x += 0.02;
+    if (cube.userData.jumping) {
+        cube.rotation.y += 0.02;
+        cube.rotation.x += 0.02;
     }
 
-    if (bernardoTorus.userData.jumping) {
-        bernardoTorus.userData.step += 0.04;
-        bernardoTorus.rotation.y += 0.05;
-        bernardoTorus.rotation.x += 0.05;
+    if (cubeOrbit.userData.jumping) {
+        cubeOrbit.userData.step += 0.04;
+        cubeOrbit.rotation.y += 0.05;
+        cubeOrbit.rotation.x += 0.05;
     }
 
-    if (bernardoOcta.userData.jumping) {
-        bernardoOcta.rotation.z += 0.02;
-        bernardoOcta.rotation.x += 0.02;
+    if (Octahedron.userData.jumping) {
+        Octahedron.rotation.z += 0.02;
+        Octahedron.rotation.x += 0.02;
     }
 
-    if(HugoTorus.userData.jumping){
+    if(torus1.userData.jumping){
 
-        HugoTorus.userData.step += 0.04;
-        HugoTorus2.userData.step += 0.04;
-        HugoTorus3.userData.step += 0.04;
-        wheelCenter.userData.step += 0.04;
+        torus1.userData.step += 0.04;
+        torus2.userData.step += 0.04;
+        torus3.userData.step += 0.04;
+        centerSphere.userData.step += 0.04;
 
-        HugoTorus.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
-        HugoTorus.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
-        HugoTorus.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
-        HugoTorus.rotation.z -= 0.1;
-        HugoTorus.rotation.y += 0.04;
-        HugoTorus.rotation.x += 0.2;
+        torus1.position.y = (50 * (Math.sin(centerSphere.userData.step)));
+        torus1.position.z = (50 * (Math.cos(centerSphere.userData.step)));
+        torus1.position.x = (50 * (Math.sin(centerSphere.userData.step)));
+        torus1.rotation.z -= 0.1;
+        torus1.rotation.y += 0.04;
+        torus1.rotation.x += 0.2;
 
-        wheelCenter.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
-        wheelCenter.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
-        wheelCenter.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
+        centerSphere.position.y = (50 * (Math.sin(centerSphere.userData.step)));
+        centerSphere.position.z = (50 * (Math.cos(centerSphere.userData.step)));
+        centerSphere.position.x = (50 * (Math.sin(centerSphere.userData.step)));
 
-        HugoTorus2.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
-        HugoTorus2.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
-        HugoTorus2.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
-        HugoTorus2.rotation.z -= 0.1;
-        HugoTorus2.rotation.y += 0.04;
-        HugoTorus2.rotation.x += 0.2;
+        torus2.position.y = (50 * (Math.sin(centerSphere.userData.step)));
+        torus2.position.z = (50 * (Math.cos(centerSphere.userData.step)));
+        torus2.position.x = (50 * (Math.sin(centerSphere.userData.step)));
+        torus2.rotation.z -= 0.1;
+        torus2.rotation.y += 0.04;
+        torus2.rotation.x += 0.2;
 
-        HugoTorus3.position.y = (50 * (Math.sin(wheelCenter.userData.step)));
-        HugoTorus3.position.z = (50 * (Math.cos(wheelCenter.userData.step)));
-        HugoTorus3.position.x = (50 * (Math.sin(wheelCenter.userData.step)));
-        HugoTorus3.rotation.z -= 0.1;
-        HugoTorus3.rotation.y += 0.04;
-        HugoTorus3.rotation.x += 0.2;
+        torus3.position.y = (50 * (Math.sin(centerSphere.userData.step)));
+        torus3.position.z = (50 * (Math.cos(centerSphere.userData.step)));
+        torus3.position.x = (50 * (Math.sin(centerSphere.userData.step)));
+        torus3.rotation.z -= 0.1;
+        torus3.rotation.y += 0.04;
+        torus3.rotation.x += 0.2;
     }
 
     if (triangle1.userData.jumping) {
@@ -560,24 +542,24 @@ function animate() {
         triangle2.rotation.z += 0.05
         triangle1.rotation.y -= 0.05
         triangle2.rotation.y -= 0.05
-        ball.rotation.y -= 0.05
+        square.rotation.y -= 0.05
     }
 
-    if (tableArt.userData.jumping){
+    if (tableArticulated.userData.jumping){
 
-        tableArt.rotation.z += 0.1;
+        tableArticulated.rotation.z += 0.1;
     }
 
-    if (torusArt.userData.jumping){
-        torusArt.userData.step += 0.04;
-        torusArt.position.x = (10 * (Math.sin(torusArt.userData.step)));
+    if (coneArticulated.userData.jumping){
+        coneArticulated.userData.step += 0.04;
+        coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
 
-        torusArt.rotation.y += 0.1;
+        coneArticulated.rotation.y += 0.1;
     }
 
-    if (ballArt.userData.jumping){
+    if (sphereArticulated.userData.jumping){
 
-        ballArt.rotation.y -= 0.05;
+        sphereArticulated.rotation.y -= 0.05;
     }
 
 
@@ -586,3 +568,27 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+const executeMoves = () => {
+    Object.keys(controller).forEach(key=> {
+      controller[key].pressed && controller[key].func()
+    })
+}
+
+function moveLeft(){
+    tableArticulated.position.x -= 1;
+}
+function moveUp(){
+    tableArticulated.position.y += 1;
+}
+function moveRight(){
+    tableArticulated.position.x += 1;
+}
+function moveDown(){
+    tableArticulated.position.y -= 1;
+}
+function moveInside(){
+    tableArticulated.position.z -= 1;
+}
+function moveOutside(){
+    tableArticulated.position.z += 1;
+}
