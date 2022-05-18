@@ -416,10 +416,10 @@ function onKeyDown(e) {
         });
         break;
     case 88: //x
-        tableArt.userData.jumping = false;
+        tableArt.rotation.z += 0.1;
         break;
     case 90: //z
-        tableArt.userData.jumping = true;
+        tableArt.rotation.z -= 0.1;
         break;
     case 37: //left
         tableArt.position.x -= 1;
@@ -564,7 +564,6 @@ function animate() {
     }
 
     if (tableArt.userData.jumping){
-        tableArt.userData.step += 0.04;
 
         tableArt.rotation.z += 0.1;
     }
