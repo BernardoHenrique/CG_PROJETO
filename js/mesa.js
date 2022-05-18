@@ -401,19 +401,25 @@ function onKeyDown(e) {
         break;
     case 88: //X
     case 120: //x
-        sphereArticulated.userData.jumping = false;
+        sphereArticulated.rotation.y -= 0.05;
         break;
     case 90: //Z
     case 122: //z
-        sphereArticulated.userData.jumping = true;
+        sphereArticulated.rotation.y += 0.05;
         break;
     case 65: //A
     case 97: //a
-        coneArticulated.userData.jumping = true;
+        coneArticulated.userData.step += 0.04;
+        coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
+
+        coneArticulated.rotation.y += 0.1;
         break;
     case 83: //S
     case 115: //s
-        coneArticulated.userData.jumping = false;
+        coneArticulated.userData.step -= 0.04;
+        coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
+
+        coneArticulated.rotation.y -= 0.1;
         break;
     case 81: //Q
     case 113: //q
@@ -539,23 +545,6 @@ function animate() {
         triangle1.rotation.y -= 0.05
         triangle2.rotation.y -= 0.05
         square.rotation.y -= 0.05
-    }
-
-    if (tableArticulated.userData.jumping){
-
-        tableArticulated.rotation.z += 0.1;
-    }
-
-    if (coneArticulated.userData.jumping){
-        coneArticulated.userData.step += 0.04;
-        coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
-
-        coneArticulated.rotation.y += 0.1;
-    }
-
-    if (sphereArticulated.userData.jumping){
-
-        sphereArticulated.rotation.y -= 0.05;
     }
 
 
