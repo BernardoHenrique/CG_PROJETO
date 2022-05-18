@@ -12,14 +12,14 @@ var tableArticulated, coneArticulated, sphereArticulated, obj2, obj3;
 
 var square, triangle1, triangle2;
 
-const controller = {
+/*const controller = {
     'ArrowLeft': {pressed: false, func: moveLeft},
     'ArrowUp': {pressed: false, func: moveUp},
     'ArrowRight': {pressed: false, func: moveRight},
     'ArrowDown': {pressed: false, func: moveDown},
     'c': {pressed: false, func: moveOutside},
     'd': {pressed: false, func: moveInside},
-}
+}*/
 
 function createGrandParent(x, y, z){
     'use strict';
@@ -73,7 +73,7 @@ function createChild(obj, x, y, z){
     obj.add(sphereArticulated);
 }
 
-function createGoncalosquare(x, y, z) {
+function createSquare(x, y, z) {
     'use strict';
     
     square = new THREE.Object3D();
@@ -91,7 +91,7 @@ function createGoncalosquare(x, y, z) {
 }
 
 
-function createGoncaloTriangle1(x, y, z) {
+function createTriangle1(x, y, z) {
     'use strict';
     
     triangle1 = new THREE.Object3D();
@@ -108,7 +108,7 @@ function createGoncaloTriangle1(x, y, z) {
     scene.add(triangle1);
 }
 
-function createGoncaloTriangle2(x, y, z) {
+function createTriangle2(x, y, z) {
     'use strict';
     
     triangle2 = new THREE.Object3D();
@@ -124,7 +124,7 @@ function createGoncaloTriangle2(x, y, z) {
     
     scene.add(triangle2);
 }
-function createcube(x, y, z) {
+function createCube(x, y, z) {
     'use strict';
     
     cube = new THREE.Object3D();
@@ -150,7 +150,7 @@ function createcube(x, y, z) {
 }
 
 
-function createcubeOrbit(x, y, z) {
+function createCubeOrbit(x, y, z) {
     'use strict';
     
     cubeOrbit = new THREE.Object3D();
@@ -166,7 +166,7 @@ function createcubeOrbit(x, y, z) {
     scene.add(cubeOrbit);
 }
 
-function createOctahedronhedron(x, y, z){
+function createOctahedron(x, y, z){
     'use strict';
     
     Octahedron = new THREE.Object3D();
@@ -182,7 +182,7 @@ function createOctahedronhedron(x, y, z){
     scene.add(Octahedron);
 }
 
-function createrightCircle(x, y, z){
+function createRightCircle(x, y, z){
     rightCircle = new THREE.Object3D();
     rightCircle.userData = { jumping: true, step: 0 };
     
@@ -198,7 +198,7 @@ function createrightCircle(x, y, z){
     scene.add(rightCircle);
 }
 
-function createleftCircle(x, y, z){
+function createLeftCircle(x, y, z){
     leftCircle = new THREE.Object3D();
     leftCircle.userData = { jumping: true, step: 0 };
     
@@ -214,7 +214,7 @@ function createleftCircle(x, y, z){
     scene.add(leftCircle);
 }
 
-function createrightBar(x, y, z){
+function createRightBar(x, y, z){
     'use strict';
     
     rightBar = new THREE.Object3D();
@@ -232,7 +232,7 @@ function createrightBar(x, y, z){
     scene.add(rightBar);
 }
 
-function createleftBar(x, y, z){
+function createLeftBar(x, y, z){
     'use strict';
     
     leftBar = new THREE.Object3D();
@@ -250,7 +250,7 @@ function createleftBar(x, y, z){
     scene.add(leftBar);
 }
 
-function createtorus1(x, y, z) {
+function createTorus1(x, y, z) {
     'use strict';
     
     torus1 = new THREE.Object3D();
@@ -267,7 +267,7 @@ function createtorus1(x, y, z) {
     scene.add(torus1);
 }
 
-function createtorus2(x, y, z) {
+function createTorus2(x, y, z) {
     'use strict';
     
     torus2 = new THREE.Object3D();
@@ -284,7 +284,7 @@ function createtorus2(x, y, z) {
     scene.add(torus2);
 }
 
-function createtorus3(x, y, z) {
+function createTorus3(x, y, z) {
     'use strict';
     
     torus3 = new THREE.Object3D();
@@ -302,7 +302,7 @@ function createtorus3(x, y, z) {
     scene.add(torus3);
 }
 
-function createcenterSphere(x, y, z) {
+function createCenterSphere(x, y, z) {
     'use strict';
     
     centerSphere = new THREE.Object3D();
@@ -325,23 +325,24 @@ function createScene() {
     
     scene = new THREE.Scene();
     
+    createCube(60, 20, 30);
+    createCubeOrbit(60, 20, 30);
 
-    //scene.add(new THREE.AxisHelper(10));
-    
-    createcube(60, 20, 30);
-    createcubeOrbit(60, 20, 30);
-    createOctahedronhedron(0, 0, 0);
-    createtorus1(60, -20, -100);
-    createtorus2(60, -20, -100);
-    createtorus3(60, -20, -100);
-    createcenterSphere(60, -20, -100);
-    createrightCircle(-22, 0, 0);
-    createleftCircle(22, 0, 0);
-    createrightBar(32, 0, 0);
-    createleftBar(-32, 0, 0);
-    createGoncalosquare(-80, 25, 0);
-    createGoncaloTriangle1(-83.25, 34,0);
-    createGoncaloTriangle2(-76.75, 16,0);
+    createTorus1(60, -20, -100);
+    createTorus2(60, -20, -100);
+    createTorus3(60, -20, -100);
+    createCenterSphere(60, -20, -100);
+
+    createOctahedron(0, 0, 0);
+    createRightCircle(-22, 0, 0);
+    createLeftCircle(22, 0, 0);
+    createRightBar(32, 0, 0);
+    createLeftBar(-32, 0, 0);
+
+    createSquare(-80, 25, 0);
+    createTriangle1(-83.25, 34,0);
+    createTriangle2(-76.75, 16,0);
+
     createGrandParent(40, -20, 30);
 }
 
@@ -373,14 +374,6 @@ function onKeyDown(e) {
     'use strict';
     
     switch (e.keyCode) {
-    case 69:  //E
-    case 101: //e
-        scene.traverse(function (node) {
-            if (node instanceof THREE.AxisHelper) {
-                node.visible = !node.visible;
-            }
-        });
-        break;
     case 49: //1
         camera.position.x = 0;
         camera.position.y = -5;
@@ -399,29 +392,35 @@ function onKeyDown(e) {
         camera.position.z = 0;
         camera.lookAt(scene.position);
         break;
-    case 52: //a
+    case 52: //4
         scene.traverse(function (node) {
             if (node instanceof THREE.Mesh) {
                 node.material.wireframe = !node.material.wireframe;
             }
         });
         break;
-    case 88: //x
+    case 88: //X
+    case 120: //x
         sphereArticulated.userData.jumping = false;
         break;
-    case 90: //z
+    case 90: //Z
+    case 122: //z
         sphereArticulated.userData.jumping = true;
         break;
-    case 65: //a
+    case 65: //A
+    case 97: //a
         coneArticulated.userData.jumping = true;
         break;
-    case 83: //s
+    case 83: //S
+    case 115: //s
         coneArticulated.userData.jumping = false;
         break;
-    case 81: //q
+    case 81: //Q
+    case 113: //q
         tableArticulated.rotation.z -= 0.1;
         break;
-    case 87: //w
+    case 87: //W
+    case 119: //w
         tableArticulated.rotation.z += 0.1;
         break;
     }
@@ -445,10 +444,7 @@ function init() {
     
     render();
     
-    window.addEventListener("keydown", (e) => {
-        controller[e.key] = true;
-        executeMoves();
-    })
+    window.addEventListener("keydown", onKeyDown);
 
     window.addEventListener("keyup", (e) => {
         controller[e.key].pressed = false;
@@ -567,7 +563,7 @@ function animate() {
     
     requestAnimationFrame(animate);
 }
-
+/*
 const executeMoves = () => {
     Object.keys(controller).forEach(key=> {
       controller[key].pressed && controller[key].func()
@@ -591,4 +587,4 @@ function moveInside(){
 }
 function moveOutside(){
     tableArticulated.position.z += 1;
-}
+}*/
