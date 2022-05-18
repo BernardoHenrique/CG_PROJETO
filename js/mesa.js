@@ -18,7 +18,7 @@ function createGrandParent(x, y, z){
     tableArt = new THREE.Object3D();
     tableArt.userData = { jumping: false, step: 0 };
 
-    material = new THREE.MeshBasicMaterial({ color: 0x4c4cce, wireframe: true});
+    material = new THREE.MeshBasicMaterial({ color: 0x4c4cce, wireframe: false});
     geometry = new THREE.BoxGeometry(30, 6, 20, 1, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     
@@ -36,7 +36,7 @@ function createFather(obj, x, y, z){
     torusArt = new THREE.Object3D();
     torusArt.userData = { jumping: false, step: 0 };
     
-    material = new THREE.MeshBasicMaterial({ color: 0x1e1e51, wireframe: true});
+    material = new THREE.MeshBasicMaterial({ color: 0x1e1e51, wireframe: false});
     geometry = new THREE.CylinderGeometry(3, 1, 20, 3, 2, 3);
     obj2 = new THREE.Mesh(geometry, material);
     obj2.position.set(0, 13, 0);
@@ -54,7 +54,7 @@ function createChild(obj, x, y, z){
     ballArt = new THREE.Object3D();
     ballArt.userData = { jumping: false, step: 0 };
 
-    material = new THREE.MeshBasicMaterial({ color: 0x53536c, wireframe: true});
+    material = new THREE.MeshBasicMaterial({ color: 0x53536c, wireframe: false});
     geometry = new THREE.SphereGeometry(6, 10, 10);
     obj3 = new THREE.Mesh(geometry, material);
     obj3.position.set(0, 28, 0);
@@ -121,17 +121,17 @@ function createBernardoBox(x, y, z) {
     bernardoBox = new THREE.Object3D();
     bernardoBox.userData = { jumping: true, step: 0 };
 
-    /*var cubeMaterials = [
+    var cubeMaterials = [
         new THREE.MeshBasicMaterial({ color: 0x99ffff, wireframe: false, side: THREE.Frontside }),
         new THREE.MeshBasicMaterial({ color: 0x3333ff, wireframe: false, side: THREE.Frontside }),
         new THREE.MeshBasicMaterial({ color: 0x09ff8d, wireframe: false, side: THREE.Frontside }),
         new THREE.MeshBasicMaterial({ color: 0x67e58d, wireframe: false, side: THREE.Frontside }),
         new THREE.MeshBasicMaterial({ color: 0xf284ea, wireframe: false, side: THREE.Frontside }),
         new THREE.MeshBasicMaterial({ color: 0x9e739b, wireframe: false, side: THREE.Frontside }),
-    ];*/
+    ];
     
-    material = new THREE.MeshBasicMaterial({ color: 0x9e739b, wireframe: false }),
-    /*material = new THREE.MeshFaceMaterial(cubeMaterials);*/
+    /*material = new THREE.MeshBasicMaterial({ color: 0x9e739b, wireframe: false });*/
+    material = new THREE.MeshFaceMaterial(cubeMaterials);
     geometry = new THREE.CubeGeometry(7.5, 7.5, 7.5, 1, 1, 1);
     mesh = new THREE.Mesh(geometry, material);
     
@@ -434,11 +434,10 @@ function onKeyDown(e) {
         tableArt.position.y -= 1;
         break;
     case 67: //c
+        tableArt.position.z += 1;
+        break;
     case 68: //d
-        tableArt.position.x = 40;
-        tableArt.position.y = -20;
-        tableArt.position.z = 30;
-        tableArt.rotation.z = 0;
+        tableArt.position.z -= 1;
         break;
     case 65: //a
         torusArt.userData.jumping = true;
