@@ -12,14 +12,31 @@ var tableArticulated, coneArticulated, sphereArticulated, obj2, obj3;
 
 var square, triangle1, triangle2;
 
-/*const controller = {
+var controller = {
     'ArrowLeft': {pressed: false, func: moveLeft},
     'ArrowUp': {pressed: false, func: moveUp},
     'ArrowRight': {pressed: false, func: moveRight},
     'ArrowDown': {pressed: false, func: moveDown},
     'c': {pressed: false, func: moveOutside},
     'd': {pressed: false, func: moveInside},
-}*/
+    'x': {pressed: false, func: x},
+    'X': {pressed: false, func: x},
+    'z': {pressed: false, func: z},
+    'Z': {pressed: false, func: z},
+    'a': {pressed: false, func: a},
+    'A': {pressed: false, func: a},
+    's': {pressed: false, func: s},
+    'S': {pressed: false, func: s},
+    'q': {pressed: false, func: q},
+    'Q': {pressed: false, func: q},
+    'w': {pressed: false, func: w},
+    'W': {pressed: false, func: w},
+    '1': {pressed: false, func: one},
+    '2': {pressed: false, func: two},
+    '3': {pressed: false, func: three},
+    '4': {pressed: false, func: four},
+
+}
 
 function createGrandParent(x, y, z){
     'use strict';
@@ -370,68 +387,6 @@ function onResize() {
 
 }
 
-function onKeyDown(e) {
-    'use strict';
-    
-    switch (e.keyCode) {
-    case 49: //1
-        camera.position.x = 0;
-        camera.position.y = -5;
-        camera.position.z = 110;
-        camera.lookAt(scene.position);
-        break;
-    case 50: //2
-        camera.position.x = 0;
-        camera.position.y = 130;
-        camera.position.z = 0;
-        camera.lookAt(scene.position);
-        break;
-    case 51: //3
-        camera.position.x = 120;
-        camera.position.y = 0;
-        camera.position.z = 0;
-        camera.lookAt(scene.position);
-        break;
-    case 52: //4
-        scene.traverse(function (node) {
-            if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
-            }
-        });
-        break;
-    case 88: //X
-    case 120: //x
-        sphereArticulated.rotation.y -= 0.05;
-        break;
-    case 90: //Z
-    case 122: //z
-        sphereArticulated.rotation.y += 0.05;
-        break;
-    case 65: //A
-    case 97: //a
-        coneArticulated.userData.step += 0.04;
-        coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
-
-        coneArticulated.rotation.y += 0.1;
-        break;
-    case 83: //S
-    case 115: //s
-        coneArticulated.userData.step -= 0.04;
-        coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
-
-        coneArticulated.rotation.y -= 0.1;
-        break;
-    case 81: //Q
-    case 113: //q
-        tableArticulated.rotation.z -= 0.1;
-        break;
-    case 87: //W
-    case 119: //w
-        tableArticulated.rotation.z += 0.1;
-        break;
-    }
-}
-
 function render() {
     'use strict';
     renderer.render(scene, camera);
@@ -450,11 +405,12 @@ function init() {
     
     render();
     
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", (e) => {
+        controller[e.key].pressed = true;
+    })
 
     window.addEventListener("keyup", (e) => {
         controller[e.key].pressed = false;
-        executeMoves();
     })
 
     window.addEventListener("resize", onResize);
@@ -547,16 +503,15 @@ function animate() {
         square.rotation.y -= 0.05
     }
 
+    for(e in controller){
+        if (controller[e].pressed){
+            controller[e].func();
+        }
+    }
 
     render();
     
     requestAnimationFrame(animate);
-}
-/*
-const executeMoves = () => {
-    Object.keys(controller).forEach(key=> {
-      controller[key].pressed && controller[key].func()
-    })
 }
 
 function moveLeft(){
@@ -576,4 +531,60 @@ function moveInside(){
 }
 function moveOutside(){
     tableArticulated.position.z += 1;
-}*/
+}
+
+function w(){
+    tableArticulated.rotation.z += 0.1;
+}
+function q(){
+    tableArticulated.rotation.z -= 0.1;
+}
+function s(){
+    coneArticulated.userData.step -= 0.04;
+    coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
+
+    coneArticulated.rotation.y -= 0.1;
+}
+
+function a(){
+    coneArticulated.userData.step += 0.04;
+    coneArticulated.position.x = (10 * (Math.sin(coneArticulated.userData.step)));
+    
+    coneArticulated.rotation.y += 0.1; 
+}
+
+function z(){
+    sphereArticulated.rotation.y += 0.05;
+}
+
+function x(){
+    sphereArticulated.rotation.y -= 0.05;
+}
+
+function four(){
+    scene.traverse(function (node) {
+        if (node instanceof THREE.Mesh) {
+            node.material.wireframe = !node.material.wireframe;
+        }
+    });
+}
+
+function three(){
+    camera.position.x = 120;
+    camera.position.y = 0;
+    camera.position.z = 0;
+    camera.lookAt(scene.position);
+}
+
+function two(){
+    camera.position.x = 0;
+    camera.position.y = 130;
+    camera.position.z = 0;
+    camera.lookAt(scene.position);
+}
+function one(){
+    camera.position.x = 0;
+    camera.position.y = -5;
+    camera.position.z = 110;
+    camera.lookAt(scene.position);
+}
