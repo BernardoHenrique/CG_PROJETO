@@ -34,7 +34,6 @@ var controller = {
     '1': {pressed: false, func: one},
     '2': {pressed: false, func: two},
     '3': {pressed: false, func: three},
-    '4': {pressed: false, func: four},
 
 }
 
@@ -387,6 +386,20 @@ function onResize() {
 
 }
 
+function onKeyDown(e) {
+    'use strict';
+    
+    switch (e.keyCode) {
+        case 52: //a
+            scene.traverse(function (node) {
+                if (node instanceof THREE.Mesh) {
+                    node.material.wireframe = !node.material.wireframe;
+                }
+            });
+            break;
+        }
+}
+
 function render() {
     'use strict';
     renderer.render(scene, camera);
@@ -407,6 +420,7 @@ function init() {
     
     window.addEventListener("keydown", (e) => {
         controller[e.key].pressed = true;
+        window.addEventListener("keydown", onKeyDown);
     })
 
     window.addEventListener("keyup", (e) => {
@@ -561,14 +575,6 @@ function x(){
     sphereArticulated.rotation.y -= 0.05;
 }
 
-function four(){
-    scene.traverse(function (node) {
-        if (node instanceof THREE.Mesh) {
-            node.material.wireframe = !node.material.wireframe;
-        }
-    });
-}
-
 function three(){
     camera.position.x = 120;
     camera.position.y = 0;
@@ -588,3 +594,9 @@ function one(){
     camera.position.z = 110;
     camera.lookAt(scene.position);
 }
+
+scene.traverse(function (node) {
+    if (node instanceof THREE.Mesh) {
+        node.material.wireframe = !node.material.wireframe;
+    }
+});
