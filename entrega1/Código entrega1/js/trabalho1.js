@@ -390,7 +390,7 @@ function onKeyDown(e) {
     'use strict';
     
     switch (e.keyCode) {
-        case 52: //a
+        case 52: //4
             scene.traverse(function (node) {
                 if (node instanceof THREE.Mesh) {
                     node.material.wireframe = !node.material.wireframe;
