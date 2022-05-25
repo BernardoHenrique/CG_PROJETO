@@ -50,7 +50,10 @@ function createGrandParent(x, y, z){
     tableArticulated.add(mesh);
     tableArticulated.position.set(x, y, x);
 
+
     createFather(tableArticulated, x, y, z);
+
+    tableArticulated.scale.set(2,2,2);
     
     scene.add(tableArticulated);
 }
