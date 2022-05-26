@@ -397,7 +397,7 @@ function createGrandParent(x, y, z){
     R = 1.2 * 70;
 
     tableArticulated = new THREE.Object3D();
-    tableArticulated.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    tableArticulated.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 , x : 0, y : 0, z : 0};
 
     material = new THREE.MeshBasicMaterial({ color: 0xffff19, wireframe: false});
     geometry = new THREE.CylinderGeometry(1, 1, 4.5, 64, 1);
@@ -411,7 +411,7 @@ function createGrandParent(x, y, z){
     tableArticulated.position.set(R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2),
     R * Math.sin(tableArticulated.userData.ang1) * Math.sin(tableArticulated.userData.ang2), R * Math.cos(tableArticulated.userData.ang1));
 
-    createFather(tableArticulated, x, y, z);
+    createFather(tableArticulated, tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
     tableArticulated.rotateX(Math.sin(tableArticulated.userData.ang1));
     tableArticulated.rotateX(Math.cos(tableArticulated.userData.ang2));
@@ -428,7 +428,7 @@ function createFather(obj, x, y, z){
     material = new THREE.MeshBasicMaterial({ color: 0xffff90, wireframe: false});
     geometry = new THREE.CylinderGeometry(0, 1, 2.49, 64, 1);
     obj2 = new THREE.Mesh(geometry, material);
-    obj2.position.set(0, 3.6, 0);
+    obj2.position.set(0, 3.495, 0);
 
     coneArticulated.add(obj2);
 
@@ -444,15 +444,15 @@ function createChild(obj, x, y, z){
     capsules.userData = { jumping: false, step: 0 };
 
     material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: false});
-    geometry = new THREE.SphereGeometry(1, 8, 32, 52);
+    geometry = new THREE.CapsuleGeometry(1, 1, 32, 52);
     obj3 = new THREE.Mesh(geometry, material);
-    obj3.position.set(-3, -3, 0);
+    obj3.position.set(-1, -0.75, 0);
     obj4 = new THREE.Mesh(geometry, material);
-    obj4.position.set(3, -3, 0);
+    obj4.position.set(1, -0.75, 0);
     obj5 = new THREE.Mesh(geometry, material);
-    obj5.position.set(0, -3, -3);
+    obj5.position.set(0, -0.75, -1);
     obj6 = new THREE.Mesh(geometry, material);
-    obj6.position.set(0, -3, 3);
+    obj6.position.set(0, -0.75, 1);
 
     capsules.add(obj3);
     capsules.add(obj4);
@@ -578,40 +578,38 @@ function animate() {
 
 function moveLeft(){
 
-    tableArticulated.userData.step -= 0.04;
+    tableArticulated.userData.step += 0.04;
 
-    x = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    z = R * Math.cos(tableArticulated.userData.ang1);
+    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1 + tableArticulated.userData.step);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step);
 
-    tableArticulated.position.set(x, y, z);
+    tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 function moveUp(){
     tableArticulated.userData.step += 0.04;
 
-    x = R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2);
-    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    z = R * Math.cos(tableArticulated.userData.ang1 + tableArticulated.userData.step);
+    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
 
-    tableArticulated.position.set(x, y, z);
+    tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 function moveRight(){
-    tableArticulated.userData.step += 0.04;
+    
+    tableArticulated.userData.step -= 0.04;
 
-    x = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    z = R * Math.cos(tableArticulated.userData.ang1);
+    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1 + tableArticulated.userData.step);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step);
 
-    tableArticulated.position.set(x, y, z);
+
+    tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 function moveDown(){
     tableArticulated.userData.step -= 0.04;
 
-    x = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    z = R * Math.cos(tableArticulated.userData.ang1);
+    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
 
-    tableArticulated.position.set(x, y, z);
+    tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 
 function three(){
@@ -627,9 +625,9 @@ function two(){
         window.innerWidth / window.innerHeight,
         1,
         1000);
-    camera.position.x = 200;
+    camera.position.x = 0;
     camera.position.y = 200;
-    camera.position.z = 200;
+    camera.position.z = 0;
     camera.lookAt(scene.position);
 }
 
