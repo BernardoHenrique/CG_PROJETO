@@ -1,8 +1,4 @@
 /*global THREE, requestAnimationFrame, console*/
-/*
-import * as THREE from 'three';
-import earth from '../js/Terra.png';
-*/
 var torus1, torus2, torus3, World;
 
 var renderer, scene, material, geometry, mesh, camera, mesh2, mesh3, mesh4, mesh5, mesh6;
@@ -14,6 +10,8 @@ var capsules;
 var trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8, trash9, trash10, trash11, trash12, trash13, trash14;
 
 var trash15, trash16, trash17, trash18, trash19, trash20;
+
+var R;
 
 var controller = {
     'ArrowLeft': {pressed: false, func: moveLeft},
@@ -28,65 +26,67 @@ var controller = {
 
 function addTrash(x, y, z){
 
+    R = 1.2 * 70;
+
     trash1 = new THREE.Object3D();
-    trash1.userData = { jumping: false, step: 0 };
+    trash1.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash2 = new THREE.Object3D();
-    trash2.userData = { jumping: false, step: 0 };
+    trash2.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash3 = new THREE.Object3D();
-    trash3.userData = { jumping: false, step: 0 };
+    trash3.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash4 = new THREE.Object3D();
-    trash4.userData = { jumping: false, step: 0 };
+    trash4.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash5 = new THREE.Object3D();
-    trash5.userData = { jumping: false, step: 0 };
+    trash5.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash6 = new THREE.Object3D();
-    trash6.userData = { jumping: false, step: 0 };
+    trash6.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash7 = new THREE.Object3D();
-    trash7.userData = { jumping: false, step: 0 };
+    trash7.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash8 = new THREE.Object3D();
-    trash8.userData = { jumping: false, step: 0 };
+    trash8.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash9 = new THREE.Object3D();
-    trash9.userData = { jumping: false, step: 0 };
+    trash9.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash10 = new THREE.Object3D();
-    trash10.userData = { jumping: false, step: 0 };
+    trash10.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash11 = new THREE.Object3D();
-    trash11.userData = { jumping: false, step: 0 };
+    trash11.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash12 = new THREE.Object3D();
-    trash12.userData = { jumping: false, step: 0 };
+    trash12.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash13 = new THREE.Object3D();
-    trash13.userData = { jumping: false, step: 0 };
+    trash13.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash14 = new THREE.Object3D();
-    trash14.userData = { jumping: false, step: 0 };
+    trash14.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash15 = new THREE.Object3D();
-    trash15.userData = { jumping: false, step: 0 };
+    trash15.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash16 = new THREE.Object3D();
-    trash16.userData = { jumping: false, step: 0 };
+    trash16.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash17 = new THREE.Object3D();
-    trash17.userData = { jumping: false, step: 0 };
+    trash17.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash18 = new THREE.Object3D();
-    trash18.userData = { jumping: false, step: 0 };
+    trash18.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash19 = new THREE.Object3D();
-    trash19.userData = { jumping: false, step: 0 };
+    trash19.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     trash20 = new THREE.Object3D();
-    trash20.userData = { jumping: false, step: 0 };
+    trash20.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
@@ -111,24 +111,66 @@ function addTrash(x, y, z){
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 1, 2);
     mesh6 = new THREE.Mesh(geometry, material);
+
+    trash1.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash1.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash1.userData.ang1) * Math.cos(trash1.userData.ang2);
+    y = R * Math.sin(trash1.userData.ang1) * Math.sin(trash1.userData.ang2);
+    z = R * Math.cos(trash1.userData.ang1);
 
     trash1.add(mesh);
-    trash1.position.set(x, 1.2 * 70, z);
+    trash1.position.set(x, y, z);
+
+    trash2.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash2.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash2.userData.ang1) * Math.cos(trash2.userData.ang2);
+    y = R * Math.sin(trash2.userData.ang1) * Math.sin(trash2.userData.ang2);
+    z = R * Math.cos(trash2.userData.ang1);
 
     trash2.add(mesh2);
-    trash2.position.set(x, -1.2 * 70, z);
+    trash2.position.set(x, y, z);
+
+    trash3.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash3.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash3.userData.ang1) * Math.cos(trash3.userData.ang2);
+    y = R * Math.sin(trash3.userData.ang1) * Math.sin(trash3.userData.ang2);
+    z = R * Math.cos(trash3.userData.ang1);
 
     trash3.add(mesh3);
-    trash3.position.set(-1.2 * 70, y, z);
+    trash3.position.set(x, y, z);
+
+    trash4.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash4.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash4.userData.ang1) * Math.cos(trash4.userData.ang2);
+    y = R * Math.sin(trash4.userData.ang1) * Math.sin(trash4.userData.ang2);
+    z = R * Math.cos(trash4.userData.ang1);
 
     trash4.add(mesh4);
-    trash4.position.set(- 1.2 * 70, 1.2 * 70, z);
+    trash4.position.set(x, y, z);
+
+    trash5.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash5.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash5.userData.ang1) * Math.cos(trash5.userData.ang2);
+    y = R * Math.sin(trash5.userData.ang1) * Math.sin(trash5.userData.ang2);
+    z = R * Math.cos(trash5.userData.ang1);
 
     trash5.add(mesh5);
-    trash5.position.set(1.2 * 70, -1.2 * 70, z);
+    trash5.position.set(x, y, z);
+
+    trash6.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash6.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash6.userData.ang1) * Math.cos(trash6.userData.ang2);
+    y = R * Math.sin(trash6.userData.ang1) * Math.sin(trash6.userData.ang2);
+    z = R * Math.cos(trash6.userData.ang1);
 
     trash6.add(mesh6);
-    trash6.position.set(-1.2 * 70, -1.2 * 70, z);
+    trash6.position.set(x, y, z);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
@@ -153,24 +195,66 @@ function addTrash(x, y, z){
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 1, 2);
     mesh6 = new THREE.Mesh(geometry, material);
+
+    trash7.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash7.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash7.userData.ang1) * Math.cos(trash7.userData.ang2);
+    y = R * Math.sin(trash7.userData.ang1) * Math.sin(trash7.userData.ang2);
+    z = R * Math.cos(trash7.userData.ang1);
 
     trash7.add(mesh);
-    trash7.position.set(1.2 * 70, y, z);
+    trash7.position.set(x, y, z);
+
+    trash8.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash8.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash8.userData.ang1) * Math.cos(trash8.userData.ang2);
+    y = R * Math.sin(trash8.userData.ang1) * Math.sin(trash8.userData.ang2);
+    z = R * Math.cos(trash8.userData.ang1);
 
     trash8.add(mesh2);
-    trash8.position.set(x, 1.2 * 70, z);
+    trash8.position.set(x, y, z);
+
+    trash9.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash9.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash9.userData.ang1) * Math.cos(trash9.userData.ang2);
+    y = R * Math.sin(trash9.userData.ang1) * Math.sin(trash9.userData.ang2);
+    z = R * Math.cos(trash9.userData.ang1);
 
     trash9.add(mesh3);
-    trash9.position.set(x, 1.2 * 70, z);
+    trash9.position.set(x, y, z);
+
+    trash10.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash10.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash10.userData.ang1) * Math.cos(trash10.userData.ang2);
+    y = R * Math.sin(trash10.userData.ang1) * Math.sin(trash10.userData.ang2);
+    z = R * Math.cos(trash10.userData.ang1);
 
     trash10.add(mesh4);
-    trash10.position.set(x, 1.2 * 70, z);
+    trash10.position.set(x, y, z);
+
+    trash11.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash11.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash11.userData.ang1) * Math.cos(trash11.userData.ang2);
+    y = R * Math.sin(trash11.userData.ang1) * Math.sin(trash11.userData.ang2);
+    z = R * Math.cos(trash11.userData.ang1);
 
     trash11.add(mesh5);
-    trash11.position.set(x, 1.2 * 70, z);
+    trash11.position.set(x, y, z);
+
+    trash12.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash12.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash12.userData.ang1) * Math.cos(trash12.userData.ang2);
+    y = R * Math.sin(trash12.userData.ang1) * Math.sin(trash12.userData.ang2);
+    z = R * Math.cos(trash12.userData.ang1);
 
     trash12.add(mesh6);
-    trash12.position.set(x, 1.2 * 70, z);
+    trash12.position.set(x, y, z);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
@@ -196,23 +280,65 @@ function addTrash(x, y, z){
     geometry = new THREE.SphereGeometry(3, 1, 2);
     mesh6 = new THREE.Mesh(geometry, material);
 
+    trash13.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash13.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash13.userData.ang1) * Math.cos(trash13.userData.ang2);
+    y = R * Math.sin(trash13.userData.ang1) * Math.sin(trash13.userData.ang2);
+    z = R * Math.cos(trash13.userData.ang1);
+
     trash13.add(mesh);
-    trash13.position.set(x, 1.2 * 70, z);
+    trash13.position.set(x, y, z);
+
+    trash14.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash14.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash14.userData.ang1) * Math.cos(trash14.userData.ang2);
+    y = R * Math.sin(trash14.userData.ang1) * Math.sin(trash14.userData.ang2);
+    z = R * Math.cos(trash14.userData.ang1);
     
     trash14.add(mesh2);
-    trash14.position.set(x, 1.2 * 70, z);
+    trash14.position.set(x, y, z);
+
+    trash15.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash15.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash15.userData.ang1) * Math.cos(trash15.userData.ang2);
+    y = R * Math.sin(trash15.userData.ang1) * Math.sin(trash15.userData.ang2);
+    z = R * Math.cos(trash15.userData.ang1);
     
     trash15.add(mesh3);
-    trash15.position.set(x, 1.2 * 70, z);
+    trash15.position.set(x, y, z);
+
+    trash16.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash16.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash16.userData.ang1) * Math.cos(trash16.userData.ang2);
+    y = R * Math.sin(trash16.userData.ang1) * Math.sin(trash16.userData.ang2);
+    z = R * Math.cos(trash16.userData.ang1);
     
     trash16.add(mesh4);
-    trash16.position.set(x, 1.2 * 70, z);
+    trash16.position.set(x, y, z);
+
+    trash17.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash17.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash17.userData.ang1) * Math.cos(trash17.userData.ang2);
+    y = R * Math.sin(trash17.userData.ang1) * Math.sin(trash17.userData.ang2);
+    z = R * Math.cos(trash17.userData.ang1);
     
     trash17.add(mesh5);
-    trash17.position.set(x, 1.2 * 70, z);
+    trash17.position.set(x, y, z);
+
+    trash18.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash18.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash18.userData.ang1) * Math.cos(trash18.userData.ang2);
+    y = R * Math.sin(trash18.userData.ang1) * Math.sin(trash18.userData.ang2);
+    z = R * Math.cos(trash18.userData.ang1);
     
     trash18.add(mesh6);
-    trash18.position.set(x, 1.2 * 70, z);
+    trash18.position.set(x, y, z);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
@@ -221,12 +347,26 @@ function addTrash(x, y, z){
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.ConeGeometry(2, 3, 64);
     mesh2 = new THREE.Mesh(geometry, material);
+
+    trash19.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash19.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash19.userData.ang1) * Math.cos(trash19.userData.ang2);
+    y = R * Math.sin(trash19.userData.ang1) * Math.sin(trash19.userData.ang2);
+    z = R * Math.cos(trash19.userData.ang1);
     
     trash19.add(mesh);
-    trash19.position.set(x, 1.2 * 70, z);
+    trash19.position.set(x, y, z);
+
+    trash20.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    trash20.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    x = R * Math.sin(trash20.userData.ang1) * Math.cos(trash20.userData.ang2);
+    y = R * Math.sin(trash20.userData.ang1) * Math.sin(trash20.userData.ang2);
+    z = R * Math.cos(trash20.userData.ang1);
     
     trash20.add(mesh2);
-    trash20.position.set(x, 1.2 * 70, z);
+    trash20.position.set(x, y, z);
 
     scene.add(trash1);
     scene.add(trash2);
@@ -254,17 +394,27 @@ function addTrash(x, y, z){
 function createGrandParent(x, y, z){
     'use strict';
 
+    R = 1.2 * 70;
+
     tableArticulated = new THREE.Object3D();
-    tableArticulated.userData = { jumping: false, step: 0 };
+    tableArticulated.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
 
     material = new THREE.MeshBasicMaterial({ color: 0xffff19, wireframe: false});
     geometry = new THREE.CylinderGeometry(1, 1, 4.5, 64, 1);
     mesh = new THREE.Mesh(geometry, material);
     
     tableArticulated.add(mesh);
-    tableArticulated.position.set(1.2 * 70, y, x);
+
+    tableArticulated.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
+    tableArticulated.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+
+    tableArticulated.position.set(R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2),
+    R * Math.sin(tableArticulated.userData.ang1) * Math.sin(tableArticulated.userData.ang2), R * Math.cos(tableArticulated.userData.ang1));
 
     createFather(tableArticulated, x, y, z);
+
+    tableArticulated.rotateX(Math.sin(tableArticulated.userData.ang1));
+    tableArticulated.rotateX(Math.cos(tableArticulated.userData.ang2));
     
     scene.add(tableArticulated);
 }
@@ -427,16 +577,41 @@ function animate() {
 }
 
 function moveLeft(){
-    tableArticulated.position.x -= 1;
+
+    tableArticulated.userData.step -= 0.04;
+
+    x = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    z = R * Math.cos(tableArticulated.userData.ang1);
+
+    tableArticulated.position.set(x, y, z);
 }
 function moveUp(){
-    tableArticulated.position.y += 1;
+    tableArticulated.userData.step += 0.04;
+
+    x = R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2);
+    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    z = R * Math.cos(tableArticulated.userData.ang1 + tableArticulated.userData.step);
+
+    tableArticulated.position.set(x, y, z);
 }
 function moveRight(){
-    tableArticulated.position.x += 1;
+    tableArticulated.userData.step += 0.04;
+
+    x = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    z = R * Math.cos(tableArticulated.userData.ang1);
+
+    tableArticulated.position.set(x, y, z);
 }
 function moveDown(){
-    tableArticulated.position.y -= 1;
+    tableArticulated.userData.step -= 0.04;
+
+    x = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    y = R * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    z = R * Math.cos(tableArticulated.userData.ang1);
+
+    tableArticulated.position.set(x, y, z);
 }
 
 function three(){
