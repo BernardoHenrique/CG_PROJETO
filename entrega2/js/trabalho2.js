@@ -553,17 +553,36 @@ function init() {
     render();
     
     window.addEventListener("keydown", (e) => {
+        if (e.key == "1" || e.key == "2"){
+            controller["3"].pressed = false;
+        }
         controller[e.key].pressed = true;
     })
 
     window.addEventListener("keyup", (e) => {
-        controller[e.key].pressed = false;
+        if (e.key != "3"){
+            controller[e.key].pressed = false;
+        }  
     })
 
     window.addEventListener("resize", onResize);
 }
 
 function animate() {
+    
+    if (controller["3"].pressed){
+        camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+        camera.position.x = tableArticulated.userData.x;
+        camera.position.y = tableArticulated.userData.y + 5;
+        if (tableArticulated.userData.z >= 0){
+            camera.position.z = tableArticulated.userData.z + 5;
+        }
+        else{
+            camera.position.z = tableArticulated.userData.z - 5;
+        }
+        
+        camera.lookAt(tableArticulated.position);
+    }
 
     for(e in controller){
         if (controller[e].pressed){
