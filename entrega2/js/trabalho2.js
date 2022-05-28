@@ -29,64 +29,64 @@ function addTrash(x, y, z){
     R = 1.2 * 70;
 
     trash1 = new THREE.Object3D();
-    trash1.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash1.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0 };
 
     trash2 = new THREE.Object3D();
-    trash2.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash2.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0 };
 
     trash3 = new THREE.Object3D();
-    trash3.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash3.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash4 = new THREE.Object3D();
-    trash4.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash4.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash5 = new THREE.Object3D();
-    trash5.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash5.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash6 = new THREE.Object3D();
-    trash6.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash6.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash7 = new THREE.Object3D();
-    trash7.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash7.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash8 = new THREE.Object3D();
-    trash8.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash8.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash9 = new THREE.Object3D();
-    trash9.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash9.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash10 = new THREE.Object3D();
-    trash10.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash10.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash11 = new THREE.Object3D();
-    trash11.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash11.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash12 = new THREE.Object3D();
-    trash12.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash12.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash13 = new THREE.Object3D();
-    trash13.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash13.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash14 = new THREE.Object3D();
-    trash14.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash14.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash15 = new THREE.Object3D();
-    trash15.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash15.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash16 = new THREE.Object3D();
-    trash16.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash16.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash17 = new THREE.Object3D();
-    trash17.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash17.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash18 = new THREE.Object3D();
-    trash18.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash18.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash19 = new THREE.Object3D();
-    trash19.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash19.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     trash20 = new THREE.Object3D();
-    trash20.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 };
+    trash20.userData = { jumping: false, step: 0, ang1: 0, ang2: 0, radius: 0  };
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
@@ -114,6 +114,7 @@ function addTrash(x, y, z){
 
     trash1.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     trash1.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+    trash1.userData.radius = Math.sqrt(4.5)
 
     x = R * Math.sin(trash1.userData.ang1) * Math.cos(trash1.userData.ang2);
     y = R * Math.sin(trash1.userData.ang1) * Math.sin(trash1.userData.ang2);
@@ -198,7 +199,8 @@ function addTrash(x, y, z){
 
     trash7.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     trash7.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
-
+    trash7.userData.radius = Math.sqrt(4.5)
+    
     x = R * Math.sin(trash7.userData.ang1) * Math.cos(trash7.userData.ang2);
     y = R * Math.sin(trash7.userData.ang1) * Math.sin(trash7.userData.ang2);
     z = R * Math.cos(trash7.userData.ang1);
@@ -282,6 +284,7 @@ function addTrash(x, y, z){
 
     trash13.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     trash13.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+    trash13.userData.radius = Math.sqrt(4.5)
 
     x = R * Math.sin(trash13.userData.ang1) * Math.cos(trash13.userData.ang2);
     y = R * Math.sin(trash13.userData.ang1) * Math.sin(trash13.userData.ang2);
@@ -332,7 +335,8 @@ function addTrash(x, y, z){
 
     trash18.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     trash18.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
-
+    trash18.userData.radius = 1.5
+    
     x = R * Math.sin(trash18.userData.ang1) * Math.cos(trash18.userData.ang2);
     y = R * Math.sin(trash18.userData.ang1) * Math.sin(trash18.userData.ang2);
     z = R * Math.cos(trash18.userData.ang1);
@@ -350,6 +354,7 @@ function addTrash(x, y, z){
 
     trash19.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     trash19.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
+    trash19.userData.radius = Math.sqrt(4.5)
 
     x = R * Math.sin(trash19.userData.ang1) * Math.cos(trash19.userData.ang2);
     y = R * Math.sin(trash19.userData.ang1) * Math.sin(trash19.userData.ang2);
@@ -597,36 +602,43 @@ function animate() {
 
 function moveLeft(){
 
-    tableArticulated.userData.step += 0.04;
+    tableArticulated.userData.step = 0.04;
 
-    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1 + tableArticulated.userData.step);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step);
+    tableArticulated.userData.ang1 =  tableArticulated.userData.ang1 + tableArticulated.userData.step;
+
+    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1);
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 function moveUp(){
-    tableArticulated.userData.step += 0.04;
+    tableArticulated.userData.step = 0.04;
 
-    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    tableArticulated.userData.ang2 =  tableArticulated.userData.ang2 + tableArticulated.userData.step;
+
+    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2);
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 function moveRight(){
     
-    tableArticulated.userData.step -= 0.04;
+    tableArticulated.userData.step = -0.04;
 
-    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1 + tableArticulated.userData.step);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1 + tableArticulated.userData.step);
+    tableArticulated.userData.ang1 =  tableArticulated.userData.ang1 + tableArticulated.userData.step;
 
+    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1);
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 function moveDown(){
-    tableArticulated.userData.step -= 0.04;
+    tableArticulated.userData.step = -0.04;
 
-    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2 + tableArticulated.userData.step);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2 + tableArticulated.userData.step);
+    tableArticulated.userData.ang2 =  tableArticulated.userData.ang2 + tableArticulated.userData.step;
+
+    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2);
+    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2);
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
