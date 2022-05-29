@@ -24,12 +24,6 @@ var controller = {
 
 }
 
-var trashList = {
-    trash1, trash2, trash3, trash4, trash5, trash6, trash7,
-    trash8, trash9, trash10, trash11, trash12, trash13,
-    trash14, trash15, trash16, trash17, trash18, trash19, trash20
-}
-
 function addTrash(x, y, z){
 
     R = 1.2 * 70;
@@ -122,9 +116,9 @@ function addTrash(x, y, z){
     trash1.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash1.userData.radius = Math.sqrt(5.5);
 
-    trash1.userData.x = R * Math.sin(trash1.userData.ang1) * Math.cos(trash1.userData.ang2);
-    trash1.userData.y = R * Math.sin(trash1.userData.ang1) * Math.sin(trash1.userData.ang2);
-    trash1.userData.z = R * Math.cos(trash1.userData.ang1);
+    trash1.userData.z = R * Math.sin(trash1.userData.ang1) * Math.cos(trash1.userData.ang2);
+    trash1.userData.x = R * Math.sin(trash1.userData.ang1) * Math.sin(trash1.userData.ang2);
+    trash1.userData.y = R * Math.cos(trash1.userData.ang1);
 
     trash1.add(mesh);
     trash1.position.set(trash1.userData.x, trash1.userData.y, trash1.userData.z);
@@ -133,9 +127,9 @@ function addTrash(x, y, z){
     trash2.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash2.userData.radius = Math.sqrt(3.25);
 
-    trash2.userData.x = R * Math.sin(trash2.userData.ang1) * Math.cos(trash2.userData.ang2);
-    trash2.userData.y = R * Math.sin(trash2.userData.ang1) * Math.sin(trash2.userData.ang2);
-    trash2.userData.z = R * Math.cos(trash2.userData.ang1);
+    trash2.userData.z = R * Math.sin(trash2.userData.ang1) * Math.cos(trash2.userData.ang2);
+    trash2.userData.x = R * Math.sin(trash2.userData.ang1) * Math.sin(trash2.userData.ang2);
+    trash2.userData.y = R * Math.cos(trash2.userData.ang1);
 
     trash2.add(mesh2);
     trash2.position.set(trash2.userData.x, trash2.userData.y, trash2.userData.z);
@@ -144,9 +138,9 @@ function addTrash(x, y, z){
     trash3.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash3.userData.radius = Math.sqrt(2.75);
 
-    trash3.userData.x = R * Math.sin(trash3.userData.ang1) * Math.cos(trash3.userData.ang2);
-    trash3.userData.y = R * Math.sin(trash3.userData.ang1) * Math.sin(trash3.userData.ang2);
-    trash3.userData.z = R * Math.cos(trash3.userData.ang1);
+    trash3.userData.z = R * Math.sin(trash3.userData.ang1) * Math.cos(trash3.userData.ang2);
+    trash3.userData.x = R * Math.sin(trash3.userData.ang1) * Math.sin(trash3.userData.ang2);
+    trash3.userData.y = R * Math.cos(trash3.userData.ang1);
 
     trash3.add(mesh3);
     trash3.position.set(trash3.userData.x, trash3.userData.y, trash3.userData.z);
@@ -155,9 +149,9 @@ function addTrash(x, y, z){
     trash4.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash4.userData.radius = 3;
 
-    trash4.userData.x = R * Math.sin(trash4.userData.ang1) * Math.cos(trash4.userData.ang2);
-    trash4.userData.y = R * Math.sin(trash4.userData.ang1) * Math.sin(trash4.userData.ang2);
-    trash4.userData.z = R * Math.cos(trash4.userData.ang1);
+    trash4.userData.z = R * Math.sin(trash4.userData.ang1) * Math.cos(trash4.userData.ang2);
+    trash4.userData.x = R * Math.sin(trash4.userData.ang1) * Math.sin(trash4.userData.ang2);
+    trash4.userData.y = R * Math.cos(trash4.userData.ang1);
 
     trash4.add(mesh4);
     trash4.position.set(trash4.userData.x, trash4.userData.y, trash4.userData.z);
@@ -166,9 +160,9 @@ function addTrash(x, y, z){
     trash5.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash5.userData.radius = 3;
 
-    trash5.userData.x = R * Math.sin(trash5.userData.ang1) * Math.cos(trash5.userData.ang2);
-    trash5.userData.y = R * Math.sin(trash5.userData.ang1) * Math.sin(trash5.userData.ang2);
-    trash5.userData.z = R * Math.cos(trash5.userData.ang1);
+    trash5.userData.z = R * Math.sin(trash5.userData.ang1) * Math.cos(trash5.userData.ang2);
+    trash5.userData.x = R * Math.sin(trash5.userData.ang1) * Math.sin(trash5.userData.ang2);
+    trash5.userData.y = R * Math.cos(trash5.userData.ang1);
 
     trash5.add(mesh5);
     trash5.position.set(trash5.userData.x, trash5.userData.y, trash5.userData.z);
@@ -177,9 +171,9 @@ function addTrash(x, y, z){
     trash6.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash6.userData.radius = 3;
 
-    trash6.userData.x = R * Math.sin(trash6.userData.ang1) * Math.cos(trash6.userData.ang2);
-    trash6.userData.y = R * Math.sin(trash6.userData.ang1) * Math.sin(trash6.userData.ang2);
-    trash6.userData.z = R * Math.cos(trash6.userData.ang1);
+    trash6.userData.z = R * Math.sin(trash6.userData.ang1) * Math.cos(trash6.userData.ang2);
+    trash6.userData.x = R * Math.sin(trash6.userData.ang1) * Math.sin(trash6.userData.ang2);
+    trash6.userData.y = R * Math.cos(trash6.userData.ang1);
 
     trash6.add(mesh6);
     trash6.position.set(trash6.userData.x, trash6.userData.y, trash6.userData.z);
@@ -212,9 +206,9 @@ function addTrash(x, y, z){
     trash7.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash7.userData.radius = Math.sqrt(5.5)
     
-    trash7.userData.x = R * Math.sin(trash7.userData.ang1) * Math.cos(trash7.userData.ang2);
-    trash7.userData.y = R * Math.sin(trash7.userData.ang1) * Math.sin(trash7.userData.ang2);
-    trash7.userData.z = R * Math.cos(trash7.userData.ang1);
+    trash7.userData.z = R * Math.sin(trash7.userData.ang1) * Math.cos(trash7.userData.ang2);
+    trash7.userData.x = R * Math.sin(trash7.userData.ang1) * Math.sin(trash7.userData.ang2);
+    trash7.userData.y = R * Math.cos(trash7.userData.ang1);
 
     trash7.add(mesh);
     trash7.position.set(trash7.userData.x, trash7.userData.y, trash7.userData.z);
@@ -223,9 +217,9 @@ function addTrash(x, y, z){
     trash8.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash8.userData.radius = Math.sqrt(3.25);
 
-    trash8.userData.x = R * Math.sin(trash8.userData.ang1) * Math.cos(trash8.userData.ang2);
-    trash8.userData.y = R * Math.sin(trash8.userData.ang1) * Math.sin(trash8.userData.ang2);
-    trash8.userData.z = R * Math.cos(trash8.userData.ang1);
+    trash8.userData.z = R * Math.sin(trash8.userData.ang1) * Math.cos(trash8.userData.ang2);
+    trash8.userData.x = R * Math.sin(trash8.userData.ang1) * Math.sin(trash8.userData.ang2);
+    trash8.userData.y = R * Math.cos(trash8.userData.ang1);
 
     trash8.add(mesh2);
     trash8.position.set(trash8.userData.x, trash8.userData.y, trash8.userData.z);
@@ -234,9 +228,9 @@ function addTrash(x, y, z){
     trash9.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash9.userData.radius = Math.sqrt(2.75);
 
-    trash9.userData.x = R * Math.sin(trash9.userData.ang1) * Math.cos(trash9.userData.ang2);
-    trash9.userData.y = R * Math.sin(trash9.userData.ang1) * Math.sin(trash9.userData.ang2);
-    trash9.userData.z = R * Math.cos(trash9.userData.ang1);
+    trash9.userData.z = R * Math.sin(trash9.userData.ang1) * Math.cos(trash9.userData.ang2);
+    trash9.userData.x = R * Math.sin(trash9.userData.ang1) * Math.sin(trash9.userData.ang2);
+    trash9.userData.y = R * Math.cos(trash9.userData.ang1);
 
     trash9.add(mesh3);
     trash9.position.set(trash9.userData.x, trash9.userData.y, trash9.userData.z);
@@ -245,9 +239,9 @@ function addTrash(x, y, z){
     trash10.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash10.userData.radius = 3;
 
-    trash10.userData.x = R * Math.sin(trash10.userData.ang1) * Math.cos(trash10.userData.ang2);
-    trash10.userData.y = R * Math.sin(trash10.userData.ang1) * Math.sin(trash10.userData.ang2);
-    trash10.userData.z = R * Math.cos(trash10.userData.ang1);
+    trash10.userData.z = R * Math.sin(trash10.userData.ang1) * Math.cos(trash10.userData.ang2);
+    trash10.userData.x = R * Math.sin(trash10.userData.ang1) * Math.sin(trash10.userData.ang2);
+    trash10.userData.y = R * Math.cos(trash10.userData.ang1);
 
     trash10.add(mesh4);
     trash10.position.set(trash10.userData.x, trash10.userData.y, trash10.userData.z);
@@ -256,9 +250,9 @@ function addTrash(x, y, z){
     trash11.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash11.userData.radius = 3;
 
-    trash11.userData.x = R * Math.sin(trash11.userData.ang1) * Math.cos(trash11.userData.ang2);
-    trash11.userData.y = R * Math.sin(trash11.userData.ang1) * Math.sin(trash11.userData.ang2);
-    trash11.userData.z = R * Math.cos(trash11.userData.ang1);
+    trash11.userData.z = R * Math.sin(trash11.userData.ang1) * Math.cos(trash11.userData.ang2);
+    trash11.userData.x = R * Math.sin(trash11.userData.ang1) * Math.sin(trash11.userData.ang2);
+    trash11.userData.y = R * Math.cos(trash11.userData.ang1);
 
     trash11.add(mesh5);
     trash11.position.set(trash11.userData.x, trash11.userData.y, trash11.userData.z);
@@ -267,9 +261,9 @@ function addTrash(x, y, z){
     trash12.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash12.userData.radius = 3;
 
-    trash12.userData.x = R * Math.sin(trash12.userData.ang1) * Math.cos(trash12.userData.ang2);
-    trash11.userData.y = R * Math.sin(trash12.userData.ang1) * Math.sin(trash12.userData.ang2);
-    trash11.userData.z = R * Math.cos(trash12.userData.ang1);
+    trash12.userData.z = R * Math.sin(trash12.userData.ang1) * Math.cos(trash12.userData.ang2);
+    trash11.userData.x = R * Math.sin(trash12.userData.ang1) * Math.sin(trash12.userData.ang2);
+    trash11.userData.y = R * Math.cos(trash12.userData.ang1);
 
     trash12.add(mesh6);
     trash12.position.set(trash12.userData.x, trash12.userData.y, trash12.userData.z);
@@ -302,9 +296,9 @@ function addTrash(x, y, z){
     trash13.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash13.userData.radius = Math.sqrt(5.5);
 
-    trash13.userData.x = R * Math.sin(trash13.userData.ang1) * Math.cos(trash13.userData.ang2);
-    trash13.userData.y = R * Math.sin(trash13.userData.ang1) * Math.sin(trash13.userData.ang2);
-    trash13.userData.z = R * Math.cos(trash13.userData.ang1);
+    trash13.userData.z = R * Math.sin(trash13.userData.ang1) * Math.cos(trash13.userData.ang2);
+    trash13.userData.x = R * Math.sin(trash13.userData.ang1) * Math.sin(trash13.userData.ang2);
+    trash13.userData.y = R * Math.cos(trash13.userData.ang1);
 
     trash13.add(mesh);
     trash13.position.set(trash13.userData.x, trash13.userData.y, trash13.userData.z);
@@ -313,9 +307,9 @@ function addTrash(x, y, z){
     trash14.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash14.userData.radius = Math.sqrt(3.25);
 
-    trash14.userData.x = R * Math.sin(trash14.userData.ang1) * Math.cos(trash14.userData.ang2);
-    trash14.userData.y = R * Math.sin(trash14.userData.ang1) * Math.sin(trash14.userData.ang2);
-    trash14.userData.z = R * Math.cos(trash14.userData.ang1);
+    trash14.userData.z = R * Math.sin(trash14.userData.ang1) * Math.cos(trash14.userData.ang2);
+    trash14.userData.x = R * Math.sin(trash14.userData.ang1) * Math.sin(trash14.userData.ang2);
+    trash14.userData.y = R * Math.cos(trash14.userData.ang1);
     
     trash14.add(mesh2);
     trash14.position.set(trash14.userData.x, trash14.userData.y, trash14.userData.z);
@@ -324,9 +318,9 @@ function addTrash(x, y, z){
     trash15.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash15.userData.radius = Math.sqrt(2.75);
 
-    trash15.userData.x = R * Math.sin(trash15.userData.ang1) * Math.cos(trash15.userData.ang2);
-    trash15.userData.y = R * Math.sin(trash15.userData.ang1) * Math.sin(trash15.userData.ang2);
-    trash15.userData.z = R * Math.cos(trash15.userData.ang1);
+    trash15.userData.z = R * Math.sin(trash15.userData.ang1) * Math.cos(trash15.userData.ang2);
+    trash15.userData.x = R * Math.sin(trash15.userData.ang1) * Math.sin(trash15.userData.ang2);
+    trash15.userData.y = R * Math.cos(trash15.userData.ang1);
     
     trash15.add(mesh3);
     trash15.position.set(trash15.userData.x, trash15.userData.y, trash15.userData.z);
@@ -335,9 +329,9 @@ function addTrash(x, y, z){
     trash16.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash16.userData.radius = 3;
 
-    trash16.userData.x = R * Math.sin(trash16.userData.ang1) * Math.cos(trash16.userData.ang2);
-    trash16.userData.y = R * Math.sin(trash16.userData.ang1) * Math.sin(trash16.userData.ang2);
-    trash16.userData.z = R * Math.cos(trash16.userData.ang1);
+    trash16.userData.z = R * Math.sin(trash16.userData.ang1) * Math.cos(trash16.userData.ang2);
+    trash16.userData.x = R * Math.sin(trash16.userData.ang1) * Math.sin(trash16.userData.ang2);
+    trash16.userData.y = R * Math.cos(trash16.userData.ang1);
     
     trash16.add(mesh4);
     trash16.position.set(trash16.userData.x, trash16.userData.y, trash16.userData.z);
@@ -346,9 +340,9 @@ function addTrash(x, y, z){
     trash17.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash17.userData.radius = 3;
 
-    trash17.userData.x = R * Math.sin(trash17.userData.ang1) * Math.cos(trash17.userData.ang2);
-    trash17.userData.y = R * Math.sin(trash17.userData.ang1) * Math.sin(trash17.userData.ang2);
-    trash17.userData.z = R * Math.cos(trash17.userData.ang1);
+    trash17.userData.z = R * Math.sin(trash17.userData.ang1) * Math.cos(trash17.userData.ang2);
+    trash17.userData.x = R * Math.sin(trash17.userData.ang1) * Math.sin(trash17.userData.ang2);
+    trash17.userData.y = R * Math.cos(trash17.userData.ang1);
     
     trash17.add(mesh5);
     trash17.position.set(trash17.userData.x, trash17.userData.y, trash17.userData.z);
@@ -357,9 +351,9 @@ function addTrash(x, y, z){
     trash18.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash18.userData.radius = 3;
     
-    trash18.userData.x = R * Math.sin(trash18.userData.ang1) * Math.cos(trash18.userData.ang2);
-    trash18.userData.y = R * Math.sin(trash18.userData.ang1) * Math.sin(trash18.userData.ang2);
-    trash18.userData.z = R * Math.cos(trash18.userData.ang1);
+    trash18.userData.z = R * Math.sin(trash18.userData.ang1) * Math.cos(trash18.userData.ang2);
+    trash18.userData.x = R * Math.sin(trash18.userData.ang1) * Math.sin(trash18.userData.ang2);
+    trash18.userData.y = R * Math.cos(trash18.userData.ang1);
     
     trash18.add(mesh6);
     trash18.position.set(trash18.userData.x, trash18.userData.y, trash18.userData.z);
@@ -376,9 +370,9 @@ function addTrash(x, y, z){
     trash19.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash19.userData.radius = Math.sqrt(5.5)
 
-    trash19.userData.x = R * Math.sin(trash19.userData.ang1) * Math.cos(trash19.userData.ang2);
-    trash19.userData.y = R * Math.sin(trash19.userData.ang1) * Math.sin(trash19.userData.ang2);
-    trash19.userData.z = R * Math.cos(trash19.userData.ang1);
+    trash19.userData.z = R * Math.sin(trash19.userData.ang1) * Math.cos(trash19.userData.ang2);
+    trash19.userData.x = R * Math.sin(trash19.userData.ang1) * Math.sin(trash19.userData.ang2);
+    trash19.userData.y = R * Math.cos(trash19.userData.ang1);
     
     trash19.add(mesh);
     trash19.position.set(trash19.userData.x, trash19.userData.y, trash19.userData.z);
@@ -387,9 +381,9 @@ function addTrash(x, y, z){
     trash20.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     trash20.userData.radius = Math.sqrt(3.25);
 
-    trash20.userData.x = R * Math.sin(trash20.userData.ang1) * Math.cos(trash20.userData.ang2);
-    trash20.userData.y = R * Math.sin(trash20.userData.ang1) * Math.sin(trash20.userData.ang2);
-    trash20.userData.z = R * Math.cos(trash20.userData.ang1);
+    trash20.userData.z = R * Math.sin(trash20.userData.ang1) * Math.cos(trash20.userData.ang2);
+    trash20.userData.x = R * Math.sin(trash20.userData.ang1) * Math.sin(trash20.userData.ang2);
+    trash20.userData.y = R * Math.cos(trash20.userData.ang1);
     
     trash20.add(mesh2);
     trash20.position.set(trash20.userData.x, trash20.userData.y, trash20.userData.z);
@@ -423,7 +417,7 @@ function createGrandParent(x, y, z){
     R = 1.2 * 70;
 
     tableArticulated = new THREE.Object3D();
-    tableArticulated.userData = { jumping: false, step: 0, ang1: 0, ang2: 0 , x : 0, y : 0, z : 0, radius : 0};
+    tableArticulated.userData = { jumping: false, stepLR: 0, stepUD: 0, ang1: 0, ang2: 0 , x : 0, y : 0, z : 0, radius : 0};
 
     material = new THREE.MeshBasicMaterial({ color: 0xffff19, wireframe: false});
     geometry = new THREE.CylinderGeometry(1, 1, 4.5, 64, 1);
@@ -435,8 +429,8 @@ function createGrandParent(x, y, z){
     tableArticulated.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     tableArticulated.userData.radius = 3.495;
 
-    tableArticulated.position.set(R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2),
-    R * Math.sin(tableArticulated.userData.ang1) * Math.sin(tableArticulated.userData.ang2), R * Math.cos(tableArticulated.userData.ang1));
+    tableArticulated.position.set(R * Math.sin(tableArticulated.userData.ang1) * Math.sin(tableArticulated.userData.ang2),
+    R * Math.cos(tableArticulated.userData.ang1), R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2));
 
     createFather(tableArticulated, tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
@@ -596,6 +590,28 @@ function init() {
 }
 
 function animate() {
+
+    var trashList = [];
+    trashList.push(trash1);
+    trashList.push(trash2);
+    trashList.push(trash3);
+    trashList.push(trash4);
+    trashList.push(trash5);
+    trashList.push(trash6);
+    trashList.push(trash7);
+    trashList.push(trash8);
+    trashList.push(trash9);
+    trashList.push(trash10);
+    trashList.push(trash11);
+    trashList.push(trash12);
+    trashList.push(trash13);
+    trashList.push(trash14);
+    trashList.push(trash15);
+    trashList.push(trash16);
+    trashList.push(trash17);
+    trashList.push(trash18);
+    trashList.push(trash19);
+    trashList.push(trash20);
     
     if (controller["3"].pressed){
         camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
@@ -618,10 +634,14 @@ function animate() {
     }
 
     for (trash in trashList){
-        distance = Math.sqrt((trash.userData.x - tableArticulated.userData.x)**2 + (trash.userData.y - tableArticulated.userData.y)**2 + (trash.userData.z - tableArticulated.userData.z)**2);
+        distance = Math.sqrt((trashList[trash].userData.x - tableArticulated.userData.x)**2 +
+        (trashList[trash].userData.y - tableArticulated.userData.y)**2 + (trashList[trash].userData.z - tableArticulated.userData.z)**2);
         
-        if ( distance < (trash.userData.radius + tableArticulated.userData.radius)){
-            scene.remove(trash)
+        if ( distance < (trashList[trash].userData.radius + tableArticulated.userData.radius)){
+            if((trashList[trash].userData.x > 0 && tableArticulated.userData.x > 0 || trashList[trash].userData.x < 0 && tableArticulated.userData.x < 0) && 
+            (trashList[trash].userData.y > 0 && tableArticulated.userData.y > 0 || trashList[trash].userData.y < 0 && tableArticulated.userData.y < 0)){
+                scene.remove(trashList[trash])
+            }
         }
     }
 
@@ -632,43 +652,47 @@ function animate() {
 
 function moveLeft(){
 
-    tableArticulated.userData.step = 0.04;
+    tableArticulated.userData.stepLR = 0.04;
 
-    tableArticulated.userData.ang1 =  tableArticulated.userData.ang1 + tableArticulated.userData.step;
+    tableArticulated.userData.ang1 = tableArticulated.userData.ang1 + tableArticulated.userData.stepLR
 
-    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1);
+    tableArticulated.userData.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1));
+    tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
+
 function moveUp(){
-    tableArticulated.userData.step = 0.04;
+    tableArticulated.userData.stepUD = 0.04;
 
-    tableArticulated.userData.ang2 =  tableArticulated.userData.ang2 + tableArticulated.userData.step;
+    tableArticulated.userData.ang2 = tableArticulated.userData.ang2 + tableArticulated.userData.stepUD;
 
-    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2);
+    tableArticulated.userData.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1));
+    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang2));
+    tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
+
 function moveRight(){
     
-    tableArticulated.userData.step = -0.04;
+    tableArticulated.userData.stepLR = -0.04;
 
-    tableArticulated.userData.ang1 =  tableArticulated.userData.ang1 + tableArticulated.userData.step;
+    tableArticulated.userData.ang1 = tableArticulated.userData.ang1 + tableArticulated.userData.stepLR
 
-    tableArticulated.userData.x = (R * Math.cos(tableArticulated.userData.ang2)) * Math.cos(tableArticulated.userData.ang1);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang2)) * Math.sin(tableArticulated.userData.ang1);
+    tableArticulated.userData.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1));
+    tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
 function moveDown(){
-    tableArticulated.userData.step = -0.04;
+    tableArticulated.userData.stepUD = -0.04;
 
-    tableArticulated.userData.ang2 =  tableArticulated.userData.ang2 + tableArticulated.userData.step;
+    tableArticulated.userData.ang2 = tableArticulated.userData.ang2 + tableArticulated.userData.stepUD;
 
-    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang1)) * Math.sin(tableArticulated.userData.ang2);
-    tableArticulated.userData.z = (R * Math.cos(tableArticulated.userData.ang1)) * Math.cos(tableArticulated.userData.ang2);
+    tableArticulated.userData.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1));
+    tableArticulated.userData.y = (R * Math.cos(tableArticulated.userData.ang2));
+    tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 }
