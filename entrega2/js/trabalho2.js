@@ -92,23 +92,23 @@ function addTrash(x, y, z){
     geometry = new THREE.BoxGeometry(3, 3, 3);
     mesh = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false});
     geometry = new THREE.ConeGeometry(2, 3, 64);
     mesh2 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: false});
     geometry = new THREE.BoxGeometry(1, 3, 1);
     mesh3 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xefff00, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 10, 10);
     mesh4 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xff66ff, wireframe: false});
     geometry = new THREE.SphereGeometry(3 ,3 , 30, 30);
     mesh5 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xccffff, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 1, 2);
     mesh6 = new THREE.Mesh(geometry, material);
 
@@ -178,27 +178,27 @@ function addTrash(x, y, z){
     trash6.add(mesh6);
     trash6.position.set(trash6.userData.x, trash6.userData.y, trash6.userData.z);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xccf99f, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
     mesh = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xffcc99, wireframe: false});
     geometry = new THREE.ConeGeometry(2, 3, 64);
     mesh2 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xc0c0c0, wireframe: false});
     geometry = new THREE.BoxGeometry(1, 3, 1);
     mesh3 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x00cc66, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 10, 10);
     mesh4 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x4c9900, wireframe: false});
     geometry = new THREE.SphereGeometry(2.5, 2.5 , 30, 30);
     mesh5 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xff007f, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 1, 2);
     mesh6 = new THREE.Mesh(geometry, material);
 
@@ -268,27 +268,27 @@ function addTrash(x, y, z){
     trash12.add(mesh6);
     trash12.position.set(trash12.userData.x, trash12.userData.y, trash12.userData.z);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
     mesh = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x33ff33, wireframe: false});
     geometry = new THREE.ConeGeometry(2, 3, 64);
     mesh2 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x000099, wireframe: false});
     geometry = new THREE.BoxGeometry(1, 3, 1);
     mesh3 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xb2ff66, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 10, 10);
     mesh4 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xcc00cc, wireframe: false});
     geometry = new THREE.SphereGeometry(3 ,3 , 30, 30);
     mesh5 = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x990099, wireframe: false});
     geometry = new THREE.SphereGeometry(3, 1, 2);
     mesh6 = new THREE.Mesh(geometry, material);
 
@@ -358,11 +358,11 @@ function addTrash(x, y, z){
     trash18.add(mesh6);
     trash18.position.set(trash18.userData.x, trash18.userData.y, trash18.userData.z);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0xff8000, wireframe: false});
     geometry = new THREE.BoxGeometry(3, 3, 3);
     mesh = new THREE.Mesh(geometry, material);
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x00cc00, wireframe: false});
     geometry = new THREE.ConeGeometry(2, 3, 64);
     mesh2 = new THREE.Mesh(geometry, material);
 
@@ -483,24 +483,6 @@ function createChild(obj, x, y, z){
     capsules.add(obj6);
     
     obj.add(capsules);
-}
-
-
-function createWorld(x, y, z) {
-    'use strict';
-    
-    World = new THREE.Object3D();
-    World.userData = { jumping: true, step: 0 };
-
-    material = new THREE.MeshBasicMaterial({ color: 0xff19ff, wireframe: false });
-
-    geometry = new THREE.SphereGeometry(70, 10, 10);
-    mesh = new THREE.Mesh(geometry, material);
-
-    World.add(mesh);
-    World.position.set(x, y, z);
-    
-    scene.add(World);
 }
 
 function createWorld(x, y, z) {
@@ -730,7 +712,7 @@ function moveDown(){
 }
 
 function three(){
-    camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
     camera.position.x = -10;
     camera.position.y = -10;
     camera.position.z = -10;
@@ -742,9 +724,9 @@ function two(){
         window.innerWidth / window.innerHeight,
         1,
         1000);
-    camera.position.x = 0;
+    camera.position.x = 200;
     camera.position.y = 200;
-    camera.position.z = 0;
+    camera.position.z = 200;
     camera.lookAt(scene.position);
 }
 
