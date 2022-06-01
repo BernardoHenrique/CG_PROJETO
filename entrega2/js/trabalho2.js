@@ -418,19 +418,37 @@ function createGrandParent(x, y, z){
 
     tableArticulated = new THREE.Object3D();
     tableArticulated.userData = { jumping: false, stepLR: 0, stepUD: 0, ang1: 0, ang2: 0 , x : 0, y : 0, z : 0, radius : 0};
+    
+    let smap = new THREE.TextureLoader().load('planet/earth.jpg');
+    let bmap= new THREE.TextureLoader().load('planet/normalMap.jpg');
+    let specmap = new THREE.TextureLoader().load('planet/specularTexture.jpg');
 
-    material = new THREE.MeshBasicMaterial({ color: 0xffff19, wireframe: false});
+
+    material = new THREE.MeshPhongMaterial({
+        shininess  :  20,
+        bumpMap    :  bmap,
+        map        :  smap,
+        specularMap: specmap,
+        specular : new THREE.Color('grey'),
+        bumpScale  :  0.3,
+    });
+
     geometry = new THREE.CylinderGeometry(1, 1, 4.5, 64, 1);
     mesh = new THREE.Mesh(geometry, material);
     
     tableArticulated.add(mesh);
 
+    
+
     tableArticulated.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     tableArticulated.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
     tableArticulated.userData.radius = 3.495;
 
-    tableArticulated.position.set(R * Math.sin(tableArticulated.userData.ang1) * Math.sin(tableArticulated.userData.ang2),
-    R * Math.cos(tableArticulated.userData.ang1), R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2));
+    tableArticulated.userData.x = R * Math.sin(tableArticulated.userData.ang1) * Math.sin(tableArticulated.userData.ang2);
+    tableArticulated.userData.y = R * Math.cos(tableArticulated.userData.ang1);
+    tableArticulated.userData.z = R * Math.sin(tableArticulated.userData.ang1) * Math.cos(tableArticulated.userData.ang2);
+
+    tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
     createFather(tableArticulated, tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
@@ -660,7 +678,11 @@ function moveLeft(){
     tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
-}
+
+    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 + 0.04)),
+        tableArticulated.userData.y,
+            (R * Math.sin(tableArticulated.userData.ang2 + 0.04) * Math.cos(tableArticulated.userData.ang1)))
+*/}
 
 function moveUp(){
     tableArticulated.userData.stepUD = 0.04;
@@ -672,7 +694,11 @@ function moveUp(){
     tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
-}
+
+    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2 + 0.04) * Math.sin(tableArticulated.userData.ang1)),
+        (R * Math.cos(tableArticulated.userData.ang2 + 0.04))),
+            (R * Math.sin(tableArticulated.userData.ang2 + 0.04) * Math.cos(tableArticulated.userData.ang1))
+*/}
 
 function moveRight(){
     
@@ -684,7 +710,11 @@ function moveRight(){
     tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
-}
+
+    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 - 0.04)),
+         tableArticulated.userData.y, 
+            (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 - 0.04)));
+*/}
 function moveDown(){
     tableArticulated.userData.stepUD = -0.04;
 
@@ -695,7 +725,11 @@ function moveDown(){
     tableArticulated.userData.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1));
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
-}
+
+    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2 - 0.04) * Math.sin(tableArticulated.userData.ang1)), 
+    (R * Math.cos(tableArticulated.userData.ang2 - 0.04)), 
+        (R * Math.sin(tableArticulated.userData.ang2 - 0.04) * Math.cos(tableArticulated.userData.ang1)));
+*/}
 
 function three(){
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
