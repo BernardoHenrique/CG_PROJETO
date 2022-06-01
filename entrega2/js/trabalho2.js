@@ -644,9 +644,9 @@ function moveLeft(){
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
     if (controller["3"].pressed){
-        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 - 0.1));
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 - 1));
         camera.position.y = tableArticulated.userData.y + 5;
-        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 - 0.1));
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 - 1));
         camera.lookAt(tableArticulated.position);
     }
 }
@@ -663,9 +663,9 @@ function moveUp(){
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
     if (controller["3"].pressed){
-        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 - 0.1) * Math.sin(tableArticulated.userData.ang1));
-        camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 - 0.1)) + 5;
-        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 - 0.1) * Math.cos(tableArticulated.userData.ang1));
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.sin(tableArticulated.userData.ang1));
+        camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 - 1)) + 5;
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.cos(tableArticulated.userData.ang1));
         camera.lookAt(tableArticulated.position);
     }
 }
@@ -682,9 +682,9 @@ function moveRight(){
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
     
     if (controller["3"].pressed){
-        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 + 0.1));
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 + 1));
         camera.position.y = tableArticulated.userData.y + 5;
-        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 + 0.1));
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 + 1));
         camera.lookAt(tableArticulated.position);
     }
 }
@@ -704,15 +704,15 @@ function moveDown(){
         (R * Math.sin(tableArticulated.userData.ang2 - 0.04) * Math.cos(tableArticulated.userData.ang1)));
 
     if (controller["3"].pressed){
-        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 + 0.1) * Math.sin(tableArticulated.userData.ang1)) + 5;
-        camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 + 0.1));
-        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 + 0.1) * Math.cos(tableArticulated.userData.ang1)) + 5;
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 + 1) * Math.sin(tableArticulated.userData.ang1)) + 5;
+        camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 + 1));
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 + 1) * Math.cos(tableArticulated.userData.ang1)) + 5;
         camera.lookAt(tableArticulated.position);
     }
 }
 
 function three(){
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 500 );
     camera.position.x = -10;
     camera.position.y = -10;
     camera.position.z = -10;
