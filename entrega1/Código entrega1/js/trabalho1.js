@@ -416,7 +416,7 @@ function init() {
     createScene();
     createCamera();
     
-    render();
+    //render();
     
     window.addEventListener("keydown", (e) => {
         controller[e.key].pressed = true;

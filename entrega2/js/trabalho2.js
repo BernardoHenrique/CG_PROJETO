@@ -1,5 +1,5 @@
 /*global THREE, requestAnimationFrame, console*/
-var torus1, torus2, torus3, World;
+var World;
 
 var renderer, scene, material, geometry, mesh, camera, mesh2, mesh3, mesh4, mesh5, mesh6;
 
@@ -105,7 +105,7 @@ function addTrash(x, y, z){
     mesh4 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
-    geometry = new THREE.TorusGeometry(3 ,3 , 30, 30);
+    geometry = new THREE.SphereGeometry(3 ,3 , 30, 30);
     mesh5 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
@@ -195,7 +195,7 @@ function addTrash(x, y, z){
     mesh4 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
-    geometry = new THREE.TorusGeometry(3 ,3 , 30, 30);
+    geometry = new THREE.SphereGeometry(2.5, 2.5 , 30, 30);
     mesh5 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
@@ -248,7 +248,7 @@ function addTrash(x, y, z){
 
     trash11.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     trash11.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
-    trash11.userData.radius = 3;
+    trash11.userData.radius = 2.5;
 
     trash11.userData.z = R * Math.sin(trash11.userData.ang1) * Math.cos(trash11.userData.ang2);
     trash11.userData.x = R * Math.sin(trash11.userData.ang1) * Math.sin(trash11.userData.ang2);
@@ -285,7 +285,7 @@ function addTrash(x, y, z){
     mesh4 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
-    geometry = new THREE.TorusGeometry(3 ,3 , 30, 30);
+    geometry = new THREE.SphereGeometry(3 ,3 , 30, 30);
     mesh5 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
@@ -589,8 +589,6 @@ function init() {
     createScene();
     createCamera();
     
-    render();
-    
     window.addEventListener("keydown", (e) => {
         if (e.key == "1" || e.key == "2"){
             controller["3"].pressed = false;
@@ -645,12 +643,6 @@ function animate() {
         camera.lookAt(tableArticulated.position);
     }
 
-    for (e in controller){
-        if (controller[e].pressed){
-            controller[e].func();
-        }
-    }
-
     for (trash in trashList){
         distance = Math.sqrt((trashList[trash].userData.x - tableArticulated.userData.x)**2 +
         (trashList[trash].userData.y - tableArticulated.userData.y)**2 + (trashList[trash].userData.z - tableArticulated.userData.z)**2);
@@ -660,6 +652,12 @@ function animate() {
             (trashList[trash].userData.y > 0 && tableArticulated.userData.y > 0 || trashList[trash].userData.y < 0 && tableArticulated.userData.y < 0)){
                 scene.remove(trashList[trash])
             }
+        }
+    }
+
+    for (e in controller){
+        if (controller[e].pressed){
+            controller[e].func();
         }
     }
 
@@ -679,10 +677,17 @@ function moveLeft(){
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
-    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 + 0.04)),
+    tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 + 0.04)),
         tableArticulated.userData.y,
             (R * Math.sin(tableArticulated.userData.ang2 + 0.04) * Math.cos(tableArticulated.userData.ang1)))
-*/}
+
+    if (controller["3"].pressed){
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 - 0.1));
+        camera.position.y = tableArticulated.userData.y + 5;
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 - 0.1));
+        camera.lookAt(tableArticulated.position);
+    }
+}
 
 function moveUp(){
     tableArticulated.userData.stepUD = 0.04;
@@ -695,10 +700,17 @@ function moveUp(){
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
-    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2 + 0.04) * Math.sin(tableArticulated.userData.ang1)),
+    tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2 + 0.04) * Math.sin(tableArticulated.userData.ang1)),
         (R * Math.cos(tableArticulated.userData.ang2 + 0.04))),
             (R * Math.sin(tableArticulated.userData.ang2 + 0.04) * Math.cos(tableArticulated.userData.ang1))
-*/}
+
+    if (controller["3"].pressed){
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 - 0.1) * Math.sin(tableArticulated.userData.ang1));
+        camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 - 0.1)) + 5;
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 - 0.1) * Math.cos(tableArticulated.userData.ang1));
+        camera.lookAt(tableArticulated.position);
+    }
+}
 
 function moveRight(){
     
@@ -711,10 +723,17 @@ function moveRight(){
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
-    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 - 0.04)),
+    tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 - 0.04)),
          tableArticulated.userData.y, 
             (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 - 0.04)));
-*/}
+    
+    if (controller["3"].pressed){
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2) * Math.sin(tableArticulated.userData.ang1 + 0.1));
+        camera.position.y = tableArticulated.userData.y + 5;
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2) * Math.cos(tableArticulated.userData.ang1 + 0.1));
+        camera.lookAt(tableArticulated.position);
+    }
+}
 function moveDown(){
     tableArticulated.userData.stepUD = -0.04;
 
@@ -726,13 +745,20 @@ function moveDown(){
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
-    /*tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2 - 0.04) * Math.sin(tableArticulated.userData.ang1)), 
+    tableArticulated.lookAt((R * Math.sin(tableArticulated.userData.ang2 - 0.04) * Math.sin(tableArticulated.userData.ang1)), 
     (R * Math.cos(tableArticulated.userData.ang2 - 0.04)), 
         (R * Math.sin(tableArticulated.userData.ang2 - 0.04) * Math.cos(tableArticulated.userData.ang1)));
-*/}
+
+    if (controller["3"].pressed){
+        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 + 0.1) * Math.sin(tableArticulated.userData.ang1)) + 5;
+        camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 + 0.1));
+        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 + 0.1) * Math.cos(tableArticulated.userData.ang1)) + 5;
+        camera.lookAt(tableArticulated.position);
+    }
+}
 
 function three(){
-    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 1, 1000 );
     camera.position.x = -10;
     camera.position.y = -10;
     camera.position.z = -10;
