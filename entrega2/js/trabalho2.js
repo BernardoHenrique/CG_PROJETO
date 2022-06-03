@@ -195,7 +195,7 @@ function addTrash(x, y, z){
     mesh4 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x4c9900, wireframe: false});
-    geometry = new THREE.SphereGeometry(2.5, 2.5 , 30, 30);
+    geometry = new THREE.BoxGeometry(3, 3, 3);
     mesh5 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0xff007f, wireframe: false});
@@ -248,7 +248,7 @@ function addTrash(x, y, z){
 
     trash11.userData.ang1 = Math.random() * (2*Math.PI - 0) + 0;
     trash11.userData.ang2 = Math.random() * (2*Math.PI - 0) + 0;
-    trash11.userData.radius = 2.5;
+    trash11.userData.radius = Math.sqrt(5.5);
 
     trash11.userData.z = R * Math.sin(trash11.userData.ang1) * Math.cos(trash11.userData.ang2);
     trash11.userData.x = R * Math.sin(trash11.userData.ang1) * Math.sin(trash11.userData.ang2);
@@ -262,8 +262,8 @@ function addTrash(x, y, z){
     trash12.userData.radius = 3;
 
     trash12.userData.z = R * Math.sin(trash12.userData.ang1) * Math.cos(trash12.userData.ang2);
-    trash11.userData.x = R * Math.sin(trash12.userData.ang1) * Math.sin(trash12.userData.ang2);
-    trash11.userData.y = R * Math.cos(trash12.userData.ang1);
+    trash12.userData.x = R * Math.sin(trash12.userData.ang1) * Math.sin(trash12.userData.ang2);
+    trash12.userData.y = R * Math.cos(trash12.userData.ang1);
 
     trash12.add(mesh6);
     trash12.position.set(trash12.userData.x, trash12.userData.y, trash12.userData.z);
@@ -285,7 +285,7 @@ function addTrash(x, y, z){
     mesh4 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0xcc00cc, wireframe: false});
-    geometry = new THREE.SphereGeometry(3 ,3 , 30, 30);
+    geometry = new THREE.SphereGeometry(3 ,1, 2);
     mesh5 = new THREE.Mesh(geometry, material);
 
     material = new THREE.MeshBasicMaterial({ color: 0x990099, wireframe: false});
@@ -523,7 +523,7 @@ function createCamera() {
         1000);
     camera.position.x = 100 ;
     camera.position.y = 100 ;
-    camera.position.z = 400;
+    camera.position.z = 150;
     camera.lookAt(scene.position);
 }
 
@@ -662,11 +662,21 @@ function moveUp(){
 
     tableArticulated.position.set(tableArticulated.userData.x, tableArticulated.userData.y, tableArticulated.userData.z);
 
-    if (controller["3"].pressed){
-        camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.sin(tableArticulated.userData.ang1));
-        camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 - 1)) + 5;
-        camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.cos(tableArticulated.userData.ang1));
-        camera.lookAt(tableArticulated.position);
+    if(controller["ArrowUp"].pressed && controller["ArrowRight"].pressed){
+        if (controller["3"].pressed){
+            camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.sin(tableArticulated.userData.ang1));
+            camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 - 1)) + 5;
+            camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.cos(tableArticulated.userData.ang1));
+            camera.lookAt(tableArticulated.position);
+        }
+    }
+    else{
+        if (controller["3"].pressed){
+            camera.position.x = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.sin(tableArticulated.userData.ang1));
+            camera.position.y = (R * Math.cos(tableArticulated.userData.ang2 - 1)) + 5;
+            camera.position.z = (R * Math.sin(tableArticulated.userData.ang2 - 1) * Math.cos(tableArticulated.userData.ang1));
+            camera.lookAt(tableArticulated.position);
+        }
     }
 }
 
@@ -713,14 +723,6 @@ function three(){
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
     camera.position.y = -10;
     camera.position.z = -10;
-    /*camera.lookAt(scene.position);
-    tableArticulated.add(camera);*/
-
-    /*
-    camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 500 );
-    camera.position.x = -10;
-    camera.position.y = -10;
-    camera.position.z = -10;*/
     camera.lookAt(tableArticulated.position);
 }
 
@@ -729,17 +731,18 @@ function two(){
         window.innerWidth / window.innerHeight,
         1,
         1000);
-    camera.position.x = 200;
-    camera.position.y = 200;
-    camera.position.z = 200;
+    camera.position.x = 100;
+    camera.position.y = 100;
+    camera.position.z = 100;
     camera.lookAt(scene.position);
 }
 
 function one(){
-    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight
-     / - 2, 1, 1000 );
+    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1, 200);
     camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 200;
+    camera.position.z = 150;
+    camera.zoom = 4;
+    camera.updateProjectionMatrix();
     camera.lookAt(scene.position);
 }
