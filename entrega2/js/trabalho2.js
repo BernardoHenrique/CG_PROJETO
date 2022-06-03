@@ -713,16 +713,15 @@ function three(){
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
     camera.position.y = -10;
     camera.position.z = -10;
-    camera.lookAt(scene.position);
-    tableArticulated.add(camera);
+    /*camera.lookAt(scene.position);
+    tableArticulated.add(camera);*/
 
     /*
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 500 );
     camera.position.x = -10;
     camera.position.y = -10;
-    camera.position.z = -10;
+    camera.position.z = -10;*/
     camera.lookAt(tableArticulated.position);
-    */
 }
 
 function two(){
