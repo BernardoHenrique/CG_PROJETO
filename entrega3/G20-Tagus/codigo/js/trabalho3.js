@@ -4,7 +4,7 @@ var renderer, scene, material, geometry, mesh, camera;
 
 var lamp1, lamp2, lamp3, sphere;
 
-var spotLight1, spotLight2, spotLight3;
+var spotLight1, spotLight2, spotLight3, directionalLight;
 
 var controller = {
     '1': {pressed: false, func: one},
@@ -35,22 +35,35 @@ var controller = {
 
 }
 
+function createDirectionalLight(){
+    directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(45, 100, 0);
+    directionalLight.userData = {active: true};
+
+    scene.add( directionalLight );
+}
+
 function createSpotLights(){
     'use strict';
 
-    spotLight1 = new THREE.SpotLight(0xffffff);
-    spotLight1.position.set(70, 70, 70);
+    spotLight1 = new THREE.SpotLight( 0xff666f );
+    spotLight1.position.set( 70, 70, 70 );
+    spotLight1.userData = {active: true};
 
-    spotLight1.castShadow = true;
+    scene.add( spotLight1 );
 
-    spotLight1.shadow.mapSize.width = 1024;
-    spotLight1.shadow.mapSize.height = 1024;
+    spotLight2 = new THREE.SpotLight( 0xf5463f );
+    spotLight2.position.set( -70, -70, -70 );
+    spotLight2.userData = {active: true};
+    
+    scene.add( spotLight2 );
 
-    spotLight1.shadow.camera.near = 500;
-    spotLight1.shadow.camera.far = 4000;
-    spotLight1.shadow.camera.fov = 30;
 
-    scene.add(spotLight1);
+    spotLight3 = new THREE.SpotLight( 0xf5683f );
+    spotLight3.position.set( 30, 30, 30 );
+    spotLight3.userData = {active: true};
+    
+    scene.add( spotLight3 );
 }
 
 function createLamps(x, y, z){
@@ -110,6 +123,7 @@ function createScene() {
     
     createLamps(10, 10, 10);
     createSpotLights();
+    createDirectionalLight();
 }
 
 function createCamera() {
@@ -118,9 +132,9 @@ function createCamera() {
         window.innerWidth / window.innerHeight,
         1,
         1000);
-    camera.position.x = 100 ;
+    camera.position.x = 45 ;
     camera.position.y = 45 ;
-    camera.position.z = 200;
+    camera.position.z = 300;
     camera.lookAt(scene.position);
 }
 
@@ -195,7 +209,15 @@ function two(){
 }
 
 function one(){
-
+    'use strict';
+    camera = new THREE.PerspectiveCamera(70,
+        window.innerWidth / window.innerHeight,
+        1,
+        1000);
+    camera.position.x = 300 ;
+    camera.position.y = 300 ;
+    camera.position.z = 300;
+    camera.lookAt(scene.position);
 }
 
 function q(){
