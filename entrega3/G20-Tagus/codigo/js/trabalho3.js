@@ -32,14 +32,6 @@ var controller = {
     'a': {pressed: false, func: a},
     'S': {pressed: false, func: s},
     's': {pressed: false, func: s},
-    'Z': {pressed: false, func: z},
-    'z': {pressed: false, func: z},
-    'X': {pressed: false, func: x},
-    'x': {pressed: false, func: x},
-    'C': {pressed: false, func: c},
-    'c': {pressed: false, func: c},
-    'D': {pressed: false, func: d},
-    'd': {pressed: false, func: d},
 
 }
 
@@ -260,7 +252,8 @@ function init() {
     createCamera();
     
     window.addEventListener("keydown", (e) => {
-        controller[e.key].pressed = true;
+        controller[e.key].pressed = true;  
+        window.addEventListener("keydown", onKeyDown);
     })
 
     window.addEventListener("keyup", (e) => {
@@ -272,20 +265,12 @@ function init() {
 
 function animate() {
     'use strict';
-    
-    /*if (controller["3"].pressed){
-        camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
-        camera.position.x = tableArticulated.userData.x;
-        camera.position.y = tableArticulated.userData.y + 5;
-        if (tableArticulated.userData.z >= 0){
-            camera.position.z = tableArticulated.userData.z + 5;
+
+    for (e in controller){
+        if (controller[e].pressed){
+            controller[e].func();
         }
-        else{
-            camera.position.z = tableArticulated.userData.z - 5;
-        }
-        
-        camera.lookAt(tableArticulated.position);
-    }*/
+    }
 
     render();
     
@@ -297,16 +282,24 @@ function animate() {
 function three(){
     'use strict';
 
+    camera = new THREE.PerspectiveCamera(70,
+        window.innerWidth / window.innerHeight,
+        1,
+        1000);
+    camera.position.x = -100 ;
+    camera.position.y = 20 ;
+    camera.position.z = 30;
+    camera.lookAt(scene.position);
 }
 
 function two(){
     'use strict';
     
-    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1, 200);
+    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000);
     camera.position.x = 0;
     camera.position.y = -100;
-    camera.position.z = -40;
-    camera.zoom = 4;
+    camera.position.z = 200;
+    camera.zoom = 1;
     camera.updateProjectionMatrix();
     camera.lookAt(palanque.position);
 }
@@ -314,19 +307,6 @@ function two(){
 function one(){
     'use strict';
     createCamera();
-}
-
-function d(){
-    'use strict';
-    console.log("aaaaaaaaaa");
-    if (directionalLight.visible == false){
-        console.log("aaaaaaaaaa");
-        directionalLight.visible = true;
-    }
-    else{
-        console.log("aaaaaaaaaa");
-        directionalLight.visible = false;
-    }
 }
 
 function q(){
@@ -369,32 +349,21 @@ function s(){
 
 }
 
-function z(){
+function onKeyDown(e) {
     'use strict';
-    if (spotLight1.visible == false){
-        spotLight1.visible = true;
-    }
-    else{
-        spotLight1.visible = false;
-    }
-}
-
-function x(){
-    'use strict';
-    if (spotLight2.visible == false){
-        spotLight2.visible = true;
-    }
-    else{
-        spotLight2.visible = false;
-    }
-}
-
-function c(){
-    'use strict';
-    if (spotLight3.visible == false){
-        spotLight3.visible = true;
-    }
-    else{
-        spotLight3.visible = false;
+    
+    switch (e.key) {
+        case "D":
+        case "d":
+            directionalLight.visible = !directionalLight.visible;
+        case "z":
+        case "Z":
+            spotLight1.visible = !spotLight1.visible;
+        case "x":
+        case "X":
+            spotLight2.visible = !spotLight2.visible;
+        case "c":
+        case "C":
+            spotLight3.visible = !spotLight3.visible;
     }
 }
