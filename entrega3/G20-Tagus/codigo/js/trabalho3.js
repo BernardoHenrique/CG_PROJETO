@@ -356,14 +356,18 @@ function onKeyDown(e) {
         case "D":
         case "d":
             directionalLight.visible = !directionalLight.visible;
+            break;
         case "z":
         case "Z":
             spotLight1.visible = !spotLight1.visible;
+            break;
         case "x":
         case "X":
             spotLight2.visible = !spotLight2.visible;
+            break;
         case "c":
         case "C":
             spotLight3.visible = !spotLight3.visible;
+            break;
     }
 }
