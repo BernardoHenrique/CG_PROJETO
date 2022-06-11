@@ -73,7 +73,55 @@ function createOrigami1(){
         -40, -20, -20
     ] );
 
-    createTriangle(vertices, 0x764796);
+    createTriangle(vertices, 0x76ff54);
+
+}
+
+function createOrigami2(){
+
+    vertices = new Float32Array( [
+        -70, -50, -10,
+    
+        -70, 10, -10,
+
+        -100, -20, -20
+    ] );
+
+    createTriangle(vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -70, -50, -10,
+    
+        -70, 10, -10,
+
+        -40, -20, -20
+    ] );
+
+    createTriangle(vertices, 0x76ff54);
+
+}
+
+function createOrigami3(){
+
+    vertices = new Float32Array( [
+        -70, -50, -10,
+    
+        -70, 10, -10,
+
+        -100, -20, -20
+    ] );
+
+    createTriangle(vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -70, -50, -10,
+    
+        -70, 10, -10,
+
+        -40, -20, -20
+    ] );
+
+    createTriangle(vertices, 0x76ff54);
 
 }
 
@@ -248,6 +296,8 @@ function createScene() {
     createSpotLights();
     createDirectionalLight();
     createOrigami1();
+    createOrigami2();
+    createOrigami3();
 
 }
 
