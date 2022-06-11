@@ -10,6 +10,10 @@ var spotLight1, spotLight2, spotLight3, directionalLight;
 
 var palanque, smallPalanque;
 
+var origami1, origami2, origami3;
+
+var triangle, vertices;
+
 var helper;
 
 var controller = {
@@ -48,6 +52,41 @@ var controller = {
     
     } );
 }*/
+
+function createOrigami1(){
+
+    vertices = new Float32Array( [
+        -70, -50, -10,
+    
+        -70, 10, -10,
+
+        -100, -20, -20
+    ] );
+
+    createTriangle(vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -70, -50, -10,
+    
+        -70, 10, -10,
+
+        -40, -20, -20
+    ] );
+
+    createTriangle(vertices, 0x764796);
+
+}
+
+function createTriangle(vertices, color){
+
+    geometry = new THREE.BufferGeometry();
+
+    geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+    material = new THREE.MeshBasicMaterial( { color: color} );
+    mesh = new THREE.Mesh(geometry, material);
+
+    scene.add(mesh);
+}
 
 function createBigPalanque(){
     'use strict';
@@ -126,7 +165,7 @@ function createSpotLights(){
     'use strict';
 
     spotLight1 = new THREE.SpotLight( 0xff666f );
-    spotLight1.position.set(-200, 70, 70);
+    spotLight1.position.set(-70, 100, -10);
 
     scene.add( spotLight1 );
     //helper = new THREE.CameraHelper(spotLight1.shadow.camera);
@@ -208,6 +247,7 @@ function createScene() {
     createLamps(10, 10, 10);
     createSpotLights();
     createDirectionalLight();
+    createOrigami1();
 
 }
 
@@ -252,12 +292,15 @@ function init() {
     createCamera();
     
     window.addEventListener("keydown", (e) => {
-        controller[e.key].pressed = true;  
-        window.addEventListener("keydown", onKeyDown);
+        if(e.key in controller)
+            controller[e.key].pressed = true;
+        else
+            window.addEventListener("keydown", onKeyDown);
     })
 
     window.addEventListener("keyup", (e) => {
-        controller[e.key].pressed = false;
+        if(e.key in controller)
+            controller[e.key].pressed = false;
     })
 
     window.addEventListener("resize", onResize);
