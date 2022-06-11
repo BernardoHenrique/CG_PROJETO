@@ -10,9 +10,15 @@ var spotLight1, spotLight2, spotLight3, directionalLight;
 
 var palanque, smallPalanque;
 
-var origami1, origami2, origami3;
+let origami1, origami2, origami3;
 
 var triangle, vertices;
+
+var typeBPL = 0, typePL = 0;
+
+var pause = 0
+
+var text2 = document.createElement('div');
 
 var helper;
 
@@ -32,10 +38,6 @@ var controller = {
     't': {pressed: false, func: t},
     'Y': {pressed: false, func: y},
     'y': {pressed: false, func: y},
-    'A': {pressed: false, func: a},
-    'a': {pressed: false, func: a},
-    'S': {pressed: false, func: s},
-    's': {pressed: false, func: s},
 
 }
 
@@ -53,87 +55,208 @@ var controller = {
     } );
 }*/
 
-function createOrigami1(){
+function createOrigami1(obj){
+
+    origami1 = new THREE.Object3D();
 
     vertices = new Float32Array( [
-        -70, -50, -10,
+        0, -100, 0,
     
-        -70, 10, -10,
+        0, -40, 0,
 
-        -100, -20, -20
+        -30, -70, 2
     ] );
 
-    createTriangle(vertices, 0x76ff54);
+    createTriangle(origami1, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        -70, -50, -10,
+        0, -100, 0,
     
-        -70, 10, -10,
+        0, -40, 0,
 
-        -40, -20, -20
+        30, -70, 2
     ] );
 
-    createTriangle(vertices, 0x76ff54);
+    createTriangle(origami1, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -30, -70, 2,
+    
+        0, -40, 0,
+
+        0, -100, 0
+    ] );
+
+    createTriangle(origami1, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        30, -70, 2,
+    
+        0, -40, 0,
+
+        0, -100, 0
+    ] );
+
+    createTriangle(origami1, vertices, 0x76ff54);
+
+    obj.add(origami1);
 
 }
 
-function createOrigami2(){
+function createOrigami2(obj){
+
+    origami2 = new THREE.Object3D();
 
     vertices = new Float32Array( [
-        -70, -50, -10,
+        0, -40, 0,
     
-        -70, 10, -10,
+        0, -60, 2,
 
-        -100, -20, -20
+        -15, -52, 0
     ] );
 
-    createTriangle(vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        -70, -50, -10,
+        -15, -52, 0,
     
-        -70, 10, -10,
+        0, -60, 2,
 
-        -40, -20, -20
+        0, -40, 0
     ] );
 
-    createTriangle(vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        0, -40, 0,
+    
+        0, -60, 2,
+
+        15, -52, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        15, -52, 0,
+    
+        0, -60, 2,
+
+        0, -40, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        0, -60, 2,
+    
+        -10, -68, 0,
+
+        -15, -52, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -15, -52, 0,
+    
+        -10, -68, 0,
+
+        0, -60, 2
+    ] );
+
+    createTriangle(origami2, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        0, -60, 2,
+    
+        10, -68, 0,
+
+        15, -52, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        15, -52, 0,
+    
+        10, -68, 0,
+
+        0, -60, 2
+    ] );
+
+    createTriangle(origami2, vertices, 0xFF0000);
+
+
+    vertices = new Float32Array( [
+        0, -100, 0,
+    
+        0, -60, 2,
+
+        10, -68, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        10, -68, 0,
+    
+        0, -60, 2,
+
+        0, -100, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        0, -100, 0,
+    
+        0, -60, 2,
+
+        -10, -68, 0,
+    ] );
+
+    createTriangle(origami2, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -10, -68, 0,
+    
+        0, -60, 2,
+
+        0, -100, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0xFF0000);
+
+    obj.add(origami2);
 
 }
 
 function createOrigami3(){
 
-    vertices = new Float32Array( [
-        -70, -50, -10,
-    
-        -70, 10, -10,
+    origami3 = new THREE.Object3D();
 
-        -100, -20, -20
-    ] );
 
-    createTriangle(vertices, 0x76ff54);
-
-    vertices = new Float32Array( [
-        -70, -50, -10,
-    
-        -70, 10, -10,
-
-        -40, -20, -20
-    ] );
-
-    createTriangle(vertices, 0x76ff54);
+    scene.add(origami3);
 
 }
 
-function createTriangle(vertices, color){
+function createTriangle(obj ,vertices, color){
 
     geometry = new THREE.BufferGeometry();
 
     geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
-    material = new THREE.MeshBasicMaterial( { color: color} );
+    geometry.computeVertexNormals();
+    material = new THREE.MeshPhongMaterial( { color: color} );
+
+    material.flatShading = THREE.FlatShading;
+    material.flatShading = THREE.SmoothShading;
+    material.needsUpdate = true;
+    geometry.computeVertexNormals();
+
     mesh = new THREE.Mesh(geometry, material);
 
-    scene.add(mesh);
+    obj.add(mesh);
 }
 
 function createBigPalanque(){
@@ -143,7 +266,12 @@ function createBigPalanque(){
 
     geometry = new THREE.BoxGeometry(300,10,300);
 
-    material = new THREE.MeshLambertMaterial({color: 0x896b49});
+    material = new THREE.MeshPhongMaterial({color: 0x896b49});
+
+    material.flatShading = THREE.FlatShading;
+    material.flatShading = THREE.SmoothShading;
+    material.needsUpdate = true;
+    geometry.computeVertexNormals();
 
     mesh = new THREE.Mesh(geometry, material); 
     palanque.add(mesh);
@@ -165,6 +293,11 @@ function createSmallPalanque(obj){
 
     material = new THREE.MeshPhongMaterial({color: 0x896b49});
 
+    material.flatShading = THREE.FlatShading;
+    material.flatShading = THREE.SmoothShading;
+    material.needsUpdate = true;
+    geometry.computeVertexNormals();
+
     mesh = new THREE.Mesh(geometry, material);
 
     smallPalanque.position.set(0, 10, -5);
@@ -184,6 +317,11 @@ function createFloor(){
     geometry = new THREE.BoxGeometry(400, 1, 400);
 
     material = new THREE.MeshPhongMaterial({color: 0x3146ff});
+
+    material.flatShading = THREE.FlatShading;
+    material.flatShading = THREE.SmoothShading;
+    material.needsUpdate = true;
+    geometry.computeVertexNormals();
 
     mesh = new THREE.Mesh(geometry, material);
 
@@ -214,14 +352,14 @@ function createSpotLights(){
 
     spotLight1 = new THREE.SpotLight( 0xff666f );
     spotLight1.position.set(-70, 100, -10);
-
+    createOrigami1(spotLight1);
     scene.add( spotLight1 );
     //helper = new THREE.CameraHelper(spotLight1.shadow.camera);
     //scene.add(helper);
 
     spotLight2 = new THREE.SpotLight( 0xf5463f );
-    spotLight2.position.set(-30, 70, -30);
-    
+    spotLight2.position.set(0, 120, 0);
+    createOrigami2(spotLight2);
     scene.add( spotLight2 );
     //helper = new THREE.CameraHelper(spotLight2.shadow.camera);
     //scene.add(helper);
@@ -246,6 +384,11 @@ function createLamps(x, y, z){
 
     material = new THREE.MeshPhongMaterial({color: 0xff34f3});
 
+    material.flatShading = THREE.FlatShading;
+    material.flatShading = THREE.SmoothShading;
+    material.needsUpdate = true;
+    geometry.computeVertexNormals();
+
     mesh = new THREE.Mesh(geometry, material); 
     lamp1.add(mesh);
 
@@ -255,8 +398,8 @@ function createLamps(x, y, z){
     mesh = new THREE.Mesh(geometry, material); 
     lamp3.add(mesh);
 
-    lamp1.position.set(-200, 70, 70);
-    lamp2.position.set(-30, 70, -30);
+    lamp1.position.set(-70, 100, -10);
+    lamp2.position.set(0, 120, 0);
     lamp3.position.set(130, 70, 30);
 
     createSphere(lamp1);
@@ -275,7 +418,12 @@ function createSphere(obj){
 
     geometry = new THREE.SphereGeometry(9, 64, 32);
 
-    material = new THREE.MeshLambertMaterial({color: 0x3146ff});
+    material = new THREE.MeshPhongMaterial({color: 0x3146ff});
+
+    material.flatShading = THREE.FlatShading;
+    material.flatShading = THREE.SmoothShading;
+    material.needsUpdate = true;
+    geometry.computeVertexNormals();
 
     mesh = new THREE.Mesh(geometry, material);
 
@@ -295,8 +443,6 @@ function createScene() {
     createLamps(10, 10, 10);
     createSpotLights();
     createDirectionalLight();
-    createOrigami1();
-    createOrigami2();
     createOrigami3();
 
 }
@@ -374,27 +520,20 @@ function animate() {
 
 function three(){
     'use strict';
-
-    camera = new THREE.PerspectiveCamera(70,
-        window.innerWidth / window.innerHeight,
-        1,
-        1000);
-    camera.position.x = -100 ;
-    camera.position.y = 20 ;
-    camera.position.z = 30;
-    camera.lookAt(scene.position);
+    window.location.reload();
 }
 
 function two(){
     'use strict';
-    
-    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000);
-    camera.position.x = 0;
-    camera.position.y = -100;
-    camera.position.z = 200;
-    camera.zoom = 1;
-    camera.updateProjectionMatrix();
-    camera.lookAt(palanque.position);
+    if(pause == 0){
+        camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000);
+        camera.position.x = 0;
+        camera.position.y = -100;
+        camera.position.z = 200;
+        camera.zoom = 1;
+        camera.updateProjectionMatrix();
+        camera.lookAt(palanque.position);
+    }
 }
 
 function one(){
@@ -404,41 +543,44 @@ function one(){
 
 function q(){
     'use strict';
+    if(pause == 0)
+        origami1.rotateY(0.04);
+        //Object3D.rotateOnAxis( axis, angle )
 
 }
 
 function w(){
     'use strict';
+    if(pause == 0)
+        origami1.rotateY(-0.04);
 
 }
 
 function e(){
     'use strict';
+    if(pause == 0)
+        origami2.rotation.y += 0.04;
 
 }
 
 function r(){
     'use strict';
+    if(pause == 0)
+        origami2.rotation.y -= 0.04;
 
 }
 
 function t(){
     'use strict';
+    if(pause == 0)
+        origami3.rotateY(-Math.PI/2);
 
 }
 
 function y(){
     'use strict';
-
-}
-
-function a(){
-    'use strict';
-
-}
-
-function s(){
-    'use strict';
+    if(pause == 0)
+        origami3.rotateY(Math.PI/2);
 
 }
 
@@ -448,19 +590,92 @@ function onKeyDown(e) {
     switch (e.key) {
         case "D":
         case "d":
-            directionalLight.visible = !directionalLight.visible;
+            if(pause == 0)
+                directionalLight.visible = !directionalLight.visible;
             break;
         case "z":
         case "Z":
-            spotLight1.visible = !spotLight1.visible;
+            if(pause == 0)
+                spotLight1.visible = !spotLight1.visible;
             break;
         case "x":
         case "X":
-            spotLight2.visible = !spotLight2.visible;
+            if(pause == 0)
+                spotLight2.visible = !spotLight2.visible;
             break;
         case "c":
         case "C":
-            spotLight3.visible = !spotLight3.visible;
+            if(pause == 0)
+                spotLight3.visible = !spotLight3.visible;
+            break;
+        case "a":
+        case "A":
+            if(pause == 0){
+                if(typePL == 0){
+                    typePL = 1;
+                    scene.traverse(function (node) {
+                        if (node instanceof THREE.Mesh) {
+                            node.material = new THREE.MeshLambertMaterial();
+                            node.material.flatShading = THREE.FlatShading;
+                            node.material.flastShading = THREE.SmoothShading;
+                            node.geometry.computeVertexNormals();
+                        }
+                    });
+                }
+                else{
+                    typePL = 0;
+                    scene.traverse(function (node) {
+                        if (node instanceof THREE.Mesh) {
+                            node.material = new THREE.MeshPhongMaterial();
+                            node.material.flatShading = THREE.FlatShading;
+                            node.material.flatShading = THREE.SmoothShading;
+                            node.geometry.computeVertexNormals();
+                        }
+                    });
+                }
+            }
+            break;
+        case "s":
+        case "S":
+            if(pause == 0){
+                scene.traverse(function (node) {
+                    if (node instanceof THREE.Mesh) {
+                        if(typeBPL == 0){
+                            node.material = new THREE.MeshBasicMaterial();
+                            typeBPL = 1;
+                        }
+                        else if(typeBPL == 1 && typePL == 0){
+                            node.material = new THREE.MeshPhongMaterial();
+                            typeBPL = 0;
+                        }
+                        else if(typeBPL == 1 && typePL == 1){
+                            node.material = new THREE.MeshLambertMaterial();
+                            typeBPL = 0;
+                        }
+                        
+                    }
+                });
+            }
+            break;
+        case " ":
+            if(pause == 0){
+                pause = 1;
+
+                text2.style.position = 'absolute';
+                text2.style.width = 500;
+                text2.style.height = 3000;
+                text2.style.backgroundColor = "white";
+                text2.innerHTML = "                       Estamos em pausa!                     ";
+                text2.style.top = 100 + 'px';
+                text2.style.left = 400 + 'px';
+                document.body.appendChild(text2);
+
+            }
+            else{
+                document.body.removeChild(text2);
+                pause = 0;
+            }
+
             break;
     }
 }
