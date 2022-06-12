@@ -22,6 +22,8 @@ var text2 = document.createElement('div');
 
 var helper;
 
+var stepOrigami1 = 0, stepOrigami2 = 0, stepOrigami3 = 0;
+
 var controller = {
     '1': {pressed: false, func: one},
     '2': {pressed: false, func: two},
@@ -108,44 +110,84 @@ function createOrigami2(obj){
     origami2 = new THREE.Object3D();
 
     vertices = new Float32Array( [
+        0, -100, 0,
+    
+        -10, -68, 0,
+
+        0, -68, -2
+    ] );
+
+    createTriangle(origami2, vertices, 0x8800FF);
+
+    vertices = new Float32Array( [
+        0, -68, -2,
+    
+        -10, -68, 0,
+
+        0, -100, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0x8800FF);
+
+    vertices = new Float32Array( [
+        0, -100, 0,
+    
+        10, -68, 0,
+
+        0, -68, -2
+    ] );
+
+    createTriangle(origami2, vertices, 0x8800FF);
+
+    vertices = new Float32Array( [
+        0, -68, -2,
+    
+        10, -68, 0,
+
+        0, -100, 0
+    ] );
+
+    createTriangle(origami2, vertices, 0x8800FF);
+
+    vertices = new Float32Array( [
         0, -40, 0,
     
-        0, -60, 2,
+        0, -100, 0,
 
         -15, -52, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
         -15, -52, 0,
     
-        0, -60, 2,
+        0, -100, 0,
 
         0, -40, 0
     ] );
 
-    createTriangle(origami2, vertices, 0xFF0000);
+    createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
         0, -40, 0,
     
-        0, -60, 2,
+        0, -100, 0,
 
         15, -52, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
         15, -52, 0,
     
-        0, -60, 2,
+        0, -100, 0,
 
         0, -40, 0
     ] );
 
-    createTriangle(origami2, vertices, 0xFF0000);
+    createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
         0, -60, 2,
@@ -232,12 +274,171 @@ function createOrigami2(obj){
 
 }
 
-function createOrigami3(){
+function createOrigami3(obj){
 
     origami3 = new THREE.Object3D();
 
+    vertices = new Float32Array( [
+        7, -100, 0,
+    
+        10, -85, 0,
 
-    scene.add(origami3);
+        0, -85, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        0, -85, 0,
+    
+        10, -85, 0,
+
+        7, -100, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        7, -100, 0,
+    
+        0, -100, 0,
+
+        0, -85, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        0, -85, 0,
+    
+        0, -100, 0,
+
+        7, -100, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        0, -100, 0,
+    
+        0, -85, 0,
+
+        -12, -100, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        -12, -100, 0,
+    
+        0, -85, 0,
+
+        0, -100, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        0, -85, 0,
+    
+        -12, -100, 0,
+
+        -12, -85, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x0000FF);
+
+    vertices = new Float32Array( [
+        -12, -85, 0,
+    
+        -12, -100, 0,
+
+        0, -85, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x0000FF);
+
+    vertices = new Float32Array( [
+        -12, -100, 0,
+    
+        -12, -85, 0,
+
+        -20, -85, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -20, -85, 0,
+    
+        -12, -85, 0,
+
+        -12, -100, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        -12, -85, 0,
+    
+        -20, -85, 0,
+
+        -16, -50, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -16, -50, 0,
+    
+        -20, -85, 0,
+
+        -12, -85, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        -12, -85, 0,
+    
+        -12, -45, 0,
+
+        -16, -50, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54);
+
+    vertices = new Float32Array( [
+        -16, -50, 0,
+    
+        -12, -45, 0,
+
+        -12, -85, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        -12, -45, 0,
+    
+        -14, -40, 0,
+
+        -20, -53, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000);
+
+    vertices = new Float32Array( [
+        -20, -53, 0,
+    
+        -14, -40, 0,
+
+        -12, -45, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54);
+
+    obj.add(origami3);
 
 }
 
@@ -351,14 +552,14 @@ function createSpotLights(){
     'use strict';
 
     spotLight1 = new THREE.SpotLight( 0xff666f );
-    spotLight1.position.set(-70, 100, -10);
+    spotLight1.position.set(-70, 70, -10);
     createOrigami1(spotLight1);
     scene.add( spotLight1 );
     //helper = new THREE.CameraHelper(spotLight1.shadow.camera);
     //scene.add(helper);
 
     spotLight2 = new THREE.SpotLight( 0xf5463f );
-    spotLight2.position.set(0, 120, 0);
+    spotLight2.position.set(0, 70, 0);
     createOrigami2(spotLight2);
     scene.add( spotLight2 );
     //helper = new THREE.CameraHelper(spotLight2.shadow.camera);
@@ -366,8 +567,8 @@ function createSpotLights(){
 
 
     spotLight3 = new THREE.SpotLight( 0xf5683f );
-    spotLight3.position.set(130, 70, 30);
-    
+    spotLight3.position.set(100, 70, 30);
+    createOrigami3(spotLight3);
     scene.add( spotLight3 );
     //helper = new THREE.CameraHelper(spotLight3.shadow.camera);
     //scene.add(helper);
@@ -398,9 +599,9 @@ function createLamps(x, y, z){
     mesh = new THREE.Mesh(geometry, material); 
     lamp3.add(mesh);
 
-    lamp1.position.set(-70, 100, -10);
-    lamp2.position.set(0, 120, 0);
-    lamp3.position.set(130, 70, 30);
+    lamp1.position.set(-70, 70, -10);
+    lamp2.position.set(0, 70, 0);
+    lamp3.position.set(100, 70, 30);
 
     createSphere(lamp1);
     createSphere(lamp2);
@@ -443,7 +644,6 @@ function createScene() {
     createLamps(10, 10, 10);
     createSpotLights();
     createDirectionalLight();
-    createOrigami3();
 
 }
 
@@ -520,7 +720,15 @@ function animate() {
 
 function three(){
     'use strict';
-    window.location.reload();
+    createCamera();
+
+    origami1.rotateY(-stepOrigami1);
+    origami2.rotateY(-stepOrigami2);
+    origami3.rotateY(-stepOrigami3);
+
+    stepOrigami1 = 0;
+    stepOrigami2 = 0;
+    stepOrigami3 = 0;
 }
 
 function two(){
@@ -530,7 +738,7 @@ function two(){
         camera.position.x = 0;
         camera.position.y = -100;
         camera.position.z = 200;
-        camera.zoom = 1;
+        camera.zoom = 1.35;
         camera.updateProjectionMatrix();
         camera.lookAt(palanque.position);
     }
@@ -543,44 +751,61 @@ function one(){
 
 function q(){
     'use strict';
-    if(pause == 0)
-        origami1.rotateY(0.04);
-        //Object3D.rotateOnAxis( axis, angle )
+    if(pause == 0){
+       origami1.rotateY(0.04);
+       stepOrigami1 += 0.04; 
+    }
+        
 
 }
 
 function w(){
     'use strict';
-    if(pause == 0)
-        origami1.rotateY(-0.04);
+    if(pause == 0){
+       origami1.rotateY(-0.04); 
+       stepOrigami1 -= 0.04;
+    }
+        
 
 }
 
 function e(){
     'use strict';
-    if(pause == 0)
-        origami2.rotation.y += 0.04;
+    if(pause == 0){
+        origami2.rotateY(0.04);
+        stepOrigami2 += 0.04;
+    }
+        
 
 }
 
 function r(){
     'use strict';
-    if(pause == 0)
-        origami2.rotation.y -= 0.04;
+    if(pause == 0){
+        origami2.rotateY(-0.04);
+        stepOrigami2 -= 0.04;
+    }
+        
 
 }
 
 function t(){
     'use strict';
-    if(pause == 0)
-        origami3.rotateY(-Math.PI/2);
+    if(pause == 0){
+        origami3.rotateY(0.04);
+        stepOrigami3 += 0.04;
+    }
+        
 
 }
 
 function y(){
     'use strict';
-    if(pause == 0)
-        origami3.rotateY(Math.PI/2);
+    if(pause == 0){
+       origami3.rotateY(-0.04); 
+       stepOrigami3 -= 0.04;
+    }
+    
 
 }
 
