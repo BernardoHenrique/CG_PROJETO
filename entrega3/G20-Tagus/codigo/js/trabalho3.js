@@ -567,14 +567,14 @@ function createSpotLights(){
     'use strict';
 
     spotLight1 = new THREE.SpotLight( 0xff666f );
-    spotLight1.position.set(-70, 70, -10);
+    spotLight1.position.set(-70, 80, -10);
     createOrigami1(spotLight1);
     scene.add( spotLight1 );
     spotLight1.target.position.set(-70,0,-10);
     scene.add( spotLight1.target );
 
     spotLight2 = new THREE.SpotLight( 0xf5463f );
-    spotLight2.position.set(0, 70, 0);
+    spotLight2.position.set(0, 80, 0);
     createOrigami2(spotLight2);
     scene.add( spotLight2 );
     spotLight2.target.position.set(0, 0, 0);
@@ -582,7 +582,7 @@ function createSpotLights(){
 
 
     spotLight3 = new THREE.SpotLight( 0xf5683f );
-    spotLight3.position.set(100, 70, 30);
+    spotLight3.position.set(100, 80, 30);
     createOrigami3(spotLight3);
     scene.add( spotLight3 );
     spotLight3.target.position.set(100,0,30);
@@ -599,10 +599,6 @@ function createLamps(x, y, z){
     geometry = new THREE.ConeGeometry(15, 30, 60, 1, false, 0, 7);
 
     material = new THREE.MeshPhongMaterial({color: 0xff34f3});
-
-    lamp1.userData = {color : 0xff34f3};
-    lamp2.userData = {color : 0xff34f3};
-    lamp3.userData = {color : 0xff34f3};
 
     material.flatShading = THREE.FlatShading;
     material.flatShading = THREE.SmoothShading;
@@ -920,6 +916,7 @@ function onKeyDown(e) {
                         if(typeBPL == 0){
                             node.material = new THREE.MeshBasicMaterial({color: node.material.color});
                             typeBPL = 1;
+                            node = new THREE.Mesh(node.geometry, node.material);
                         }
                         else if(typeBPL == 1 && typePL == 0){
                             if (!node.geometry instanceof THREE.BufferGeometry) {
@@ -929,16 +926,18 @@ function onKeyDown(e) {
                                     bumpScale  :  0.7,
                                 });
                                 typeBPL = 0;
-                                node = new THREE.Mesh(node.geometry, material);
+                                node = new THREE.Mesh(node.geometry, node.material);
                             }
                             else{
                                 node.material = new THREE.MeshPhongMaterial({color: node.material.color});
                                 typeBPL = 0;
+                                node = new THREE.Mesh(node.geometry, node.material);
                             }
                         }
                         else if(typeBPL == 1 && typePL == 1){
                             node.material = new THREE.MeshLambertMaterial({color: node.material.color});
                             typeBPL = 0;
+                            node = new THREE.Mesh(node.geometry, node.material);
                         }
                         
                     }
