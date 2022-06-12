@@ -1,12 +1,15 @@
 /*global THREE, requestAnimationFrame, console*/
 
 //import { VRButton } from 'CG_PROJETO/entrega3/G20-Tagus/codigo/VR_CONTENT/VR.js';
+//import image from '../texture/textura.jpeg'
 
 var renderer, scene, material, geometry, mesh, camera;
 
 var lamp1, lamp2, lamp3, sphere, box;
 
 var spotLight1, spotLight2, spotLight3, directionalLight;
+
+let texture;
 
 var palanque, smallPalanque;
 
@@ -557,13 +560,20 @@ function createOrigami3(obj){
 
 function createTriangle(obj ,triangle, vertices, color){
 
+    texture = new THREE.TextureLoader().load('../texture/textura.jpg');
+
     triangle.userData.color = color;
 
     geometry = new THREE.BufferGeometry();
 
     geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
     geometry.computeVertexNormals();
-    material = new THREE.MeshPhongMaterial( { color: color} );
+
+    let material = new THREE.MeshPhongMaterial({
+        shininess  :  20,
+        map        :  texture,
+        bumpScale  :  0.7,
+    });
 
     material.flatShading = THREE.FlatShading;
     material.flatShading = THREE.SmoothShading;
@@ -860,8 +870,12 @@ function three(){
     stepOrigami3 = 0;
 
     scene.traverse(function (node) {
-        if (node instanceof THREE.Object3D) {
-            node.material = new THREE.MeshPhongMaterial({color : node.userData.color});
+        if (node instanceof THREE.Mesh) {
+            node.material = new THREE.MeshPhongMaterial({
+                shininess  :  20,
+                map        :  texture,
+                bumpScale  :  0.7,
+            });
             node.material.flatShading = THREE.FlatShading;
             node.material.flatShading = THREE.SmoothShading;
             //node.geometry.computeVertexNormals();
@@ -977,8 +991,8 @@ function onKeyDown(e) {
                 if(typePL == 0){
                     typePL = 1;
                     scene.traverse(function (node) {
-                        if (node instanceof THREE.Object3D) {
-                            node.material = new THREE.MeshLambertMaterial({color : node.userData.color});
+                        if (node instanceof THREE.Mesh) {
+                            node.material = new THREE.MeshLambertMaterial();
                             node.material.flatShading = THREE.FlatShading;
                             node.material.flastShading = THREE.SmoothShading;
                             //node.geometry.computeVertexNormals();
@@ -988,7 +1002,7 @@ function onKeyDown(e) {
                 else{
                     typePL = 0;
                     scene.traverse(function (node) {
-                        if (node instanceof THREE.Object3D) {
+                        if (node instanceof THREE.Mesh) {
                             node.material = new THREE.MeshPhongMaterial({color : node.userData.color});
                             node.material.flatShading = THREE.FlatShading;
                             node.material.flatShading = THREE.SmoothShading;
@@ -1002,17 +1016,21 @@ function onKeyDown(e) {
         case "S":
             if(pause == 0){
                 scene.traverse(function (node) {
-                    if (node instanceof THREE.Object3D) {
+                    if (node instanceof THREE.Mesh) {
                         if(typeBPL == 0){
-                            node.material = new THREE.MeshBasicMaterial({color : node.userData.color});
+                            node.material = new THREE.MeshLambertMaterial();
                             typeBPL = 1;
                         }
                         else if(typeBPL == 1 && typePL == 0){
-                            node.material = new THREE.MeshPhongMaterial({color : node.userData.color});
+                            node.material = new THREE.MeshPhongMaterial({
+                                shininess  :  20,
+                                map        :  texture,
+                                bumpScale  :  0.7,
+                            });
                             typeBPL = 0;
                         }
                         else if(typeBPL == 1 && typePL == 1){
-                            node.material = new THREE.MeshLambertMaterial({color : node.userData.color});
+                            node.material = new THREE.MeshLambertMaterial();
                             typeBPL = 0;
                         }
                         
