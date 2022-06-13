@@ -60,388 +60,387 @@ var controller = {
     } );
 }*/
 
-function createOrigami1(obj){
+function createOrigami1(){
 
     origami1 = new THREE.Object3D();
 
     vertices = new Float32Array( [
-        0, -100, 0,
+        0, -170, 0,
     
-        0, -40, 0,
+        0, -110, 0,
 
-        -30, -70, 2
+        -30, -140, 2
     ] );
 
     createTriangle(origami1, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        0, -100, 0,
+        0, -170, 0,
     
-        0, -40, 0,
+        0, -110, 0,
 
-        30, -70, 2
+        30, -140, 2
     ] );
 
     createTriangle(origami1, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        -30, -70, 2,
+        -30, -140, 2,
     
-        0, -40, 0,
+        0, -110, 0,
 
-        0, -100, 0
+        0, -170, 0
     ] );
 
     createTriangle(origami1, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        30, -70, 2,
+        30, -140, 2,
     
-        0, -40, 0,
+        0, -110, 0,
 
-        0, -100, 0
+        0, -170, 0
     ] );
 
     createTriangle(origami1, vertices, 0x76ff54);
 
-    obj.add(origami1);
-
+    origami1.position.set(-60, 100, 70);
+    scene.add(origami1);
 }
 
-function createOrigami2(obj){
+function createOrigami2(){
 
     origami2 = new THREE.Object3D();
 
     vertices = new Float32Array( [
-        0, -100, 0,
+        0, -170, 0,
     
-        -10, -68, 0,
+        -10, -138, 0,
 
-        0, -68, -2
+        0, -138, -2
     ] );
 
     createTriangle(origami2, vertices, 0x8800FF);
 
     vertices = new Float32Array( [
-        0, -68, -2,
+        0, -138, -2,
     
-        -10, -68, 0,
+        -10, -138, 0,
 
-        0, -100, 0
+        0, -170, 0
     ] );
 
     createTriangle(origami2, vertices, 0x8800FF);
 
     vertices = new Float32Array( [
-        0, -100, 0,
+        0, -170, 0,
     
-        10, -68, 0,
+        10, -138, 0,
 
-        0, -68, -2
+        0, -138, -2
     ] );
 
     createTriangle(origami2, vertices, 0x8800FF);
 
     vertices = new Float32Array( [
-        0, -68, -2,
+        0, -138, -2,
     
-        10, -68, 0,
+        10, -138, 0,
 
-        0, -100, 0
+        0, -170, 0
     ] );
 
     createTriangle(origami2, vertices, 0x8800FF);
 
     vertices = new Float32Array( [
-        0, -40, 0,
+        0, -110, 0,
     
-        0, -100, 0,
+        0, -170, 0,
 
-        -15, -52, 0
+        -15, -122, 0
     ] );
 
     createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
-        -15, -52, 0,
+        -15, -122, 0,
     
-        0, -100, 0,
+        0, -170, 0,
 
-        0, -40, 0
+        0, -110, 0
     ] );
 
     createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
-        0, -40, 0,
+        0, -110, 0,
     
-        0, -100, 0,
+        0, -170, 0,
 
-        15, -52, 0
+        15, -122, 0
     ] );
 
     createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
-        15, -52, 0,
+        15, -122, 0,
     
-        0, -100, 0,
+        0, -170, 0,
 
-        0, -40, 0
+        0, -110, 0
     ] );
 
     createTriangle(origami2, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
-        0, -60, 2,
+        0, -130, 2,
     
-        -10, -68, 0,
+        -10, -138, 0,
 
-        -15, -52, 0
+        -15, -122, 0
     ] );
 
     createTriangle(origami2, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        -15, -52, 0,
+        -15, -122, 0,
     
-        -10, -68, 0,
+        -10, -138, 0,
 
-        0, -60, 2
+        0, -130, 2
     ] );
 
     createTriangle(origami2, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        0, -60, 2,
+        0, -130, 2,
     
-        10, -68, 0,
+        10, -138, 0,
 
-        15, -52, 0
+        15, -122, 0
     ] );
 
     createTriangle(origami2, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        15, -52, 0,
+        15, -122, 0,
     
-        10, -68, 0,
+        10, -138, 0,
 
-        0, -60, 2
+        0, -130, 2
     ] );
 
     createTriangle(origami2, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        0, -100, 0,
+        0, -170, 0,
     
-        0, -60, 2,
+        0, -130, 2,
 
-        10, -68, 0
+        10, -138, 0
     ] );
 
     createTriangle(origami2, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        10, -68, 0,
+        10, -138, 0,
     
-        0, -60, 2,
+        0, -130, 2,
 
-        0, -100, 0
+        0, -170, 0
     ] );
 
     createTriangle(origami2, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        0, -100, 0,
+        0, -170, 0,
     
-        0, -60, 2,
+        0, -130, 2,
 
-        -10, -68, 0,
+        -10, -138, 0,
     ] );
 
     createTriangle(origami2, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        -10, -68, 0,
+        -10, -138, 0,
     
-        0, -60, 2,
+        0, -130, 2,
 
-        0, -100, 0
+        0, -170, 0
     ] );
 
     createTriangle(origami2, vertices, 0xFF0000);
 
-    obj.add(origami2);
-
+    origami2.position.set(10, 100, 70);
+    scene.add(origami2);
 }
 
-function createOrigami3(obj){
+function createOrigami3(){
 
     origami3 = new THREE.Object3D();
 
     vertices = new Float32Array( [
-        7, -100, 0,
+        12, -170, 0,
     
-        10, -85, 0,
+        15, -155, 0,
 
-        0, -85, 0
+        5, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        0, -85, 0,
+        5, -155, 0,
     
-        10, -85, 0,
+        15, -155, 0,
 
-        7, -100, 0
+        12, -170, 0
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        7, -100, 0,
+        12, -170, 0,
     
-        0, -100, 0,
+        5, -170, 0,
 
-        0, -85, 0
+        5, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        0, -85, 0,
+        5, -155, 0,
     
-        0, -100, 0,
+        5, -170, 0,
 
-        7, -100, 0
+        12, -170, 0
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        0, -100, 0,
+        5, -170, 0,
     
-        0, -85, 0,
+        5, -155, 0,
 
-        -12, -100, 0
+        -7, -170, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        -12, -100, 0,
+        -7, -170, 0,
     
-        0, -85, 0,
+        5, -155, 0,
 
-        0, -100, 0
+        5, -170, 0
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        0, -85, 0,
+        5, -155, 0,
     
-        -12, -100, 0,
+        -7, -170, 0,
 
-        -12, -85, 0
+        -7, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
-        -12, -85, 0,
+        -7, -155, 0,
     
-        -12, -100, 0,
+        -7, -170, 0,
 
-        0, -85, 0
+        5, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0x0000FF);
 
     vertices = new Float32Array( [
-        -12, -100, 0,
+        -7, -170, 0,
     
-        -12, -85, 0,
+        -7, -155, 0,
 
-        -20, -85, 0
+        -15, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        -20, -85, 0,
+        -15, -155, 0,
     
-        -12, -85, 0,
+        -7, -155, 0,
 
-        -12, -100, 0
+        -7, -170, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        -12, -85, 0,
+        -7, -155, 0,
     
-        -20, -85, 0,
+        -15, -155, 0,
 
-        -16, -50, 0
+        -11, -120, 0
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        -16, -50, 0,
+        -11, -120, 0,
     
-        -20, -85, 0,
+        -15, -155, 0,
 
-        -12, -85, 0
+        -7, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        -12, -85, 0,
+        -7, -155, 0,
     
-        -12, -45, 0,
+        -7, -115, 0,
 
-        -16, -50, 0
+        -11, -120, 0
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54);
 
     vertices = new Float32Array( [
-        -16, -50, 0,
+        -11, -120, 0,
     
-        -12, -45, 0,
+        -7, -115, 0,
 
-        -12, -85, 0
+        -7, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        -12, -45, 0,
+        -7, -115, 0,
     
-        -14, -40, 0,
+        -9, -110, 0,
 
-        -20, -53, 0
+        -15, -123, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000);
 
     vertices = new Float32Array( [
-        -20, -53, 0,
+        -15, -123, 0,
     
-        -14, -40, 0,
+        -9, -110, 0,
 
-        -12, -45, 0
+        -7, -115, 0
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54);
-
-    obj.add(origami3);
-
+    origami3.position.set(80, 100, 70);
+    scene.add(origami3);
 }
 
 function createTriangle(obj, vertices, color){
@@ -456,7 +455,6 @@ function createTriangle(obj, vertices, color){
     material = new THREE.MeshPhongMaterial({
         shininess  :  20,
         map        :  texture,
-        bumpScale  :  0.7,
     });
 
     material.flatShading = THREE.FlatShading;
@@ -485,7 +483,7 @@ function createBigPalanque(){
     material.needsUpdate = true;
     geometry.computeVertexNormals();
 
-    mesh = new THREE.Mesh(geometry, material); 
+    mesh = new THREE.Mesh(geometry, material);
     palanque.add(mesh);
 
     palanque.position.set(0, -100, -40);
@@ -516,10 +514,6 @@ function createSmallPalanque(obj){
 
     smallPalanque.position.set(0, 10, -5);
     smallPalanque.add(mesh);
-
-    /*createStepOne(smallpalanque);
-    createStepTwo(smallPalanque);
-    createStepThree(smallPalanque);*/
 
     obj.add(smallPalanque)
 }
@@ -552,41 +546,31 @@ function createDirectionalLight(){
 
     directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(70, 70, 70);
-    //directionalLight.target.position.set(-70, -70, -70);
-    
-    //directionalLight.visible = false;
 
     scene.add( directionalLight);
-    
-    //helper = new THREE.CameraHelper(directionalLight.shadow.camera);
-    //scene.add(helper);
-    //scene.add(directionalLight.target);
 }
 
 function createSpotLights(){
     'use strict';
 
-    spotLight1 = new THREE.SpotLight( 0xff666f );
-    spotLight1.position.set(-70, 80, -10);
-    createOrigami1(spotLight1);
-    scene.add( spotLight1 );
-    spotLight1.target.position.set(-70,0,-10);
-    scene.add( spotLight1.target );
+    spotLight1 = new THREE.SpotLight(0xff666f, 3, 0, Math.PI/9, 0, 1);
+    spotLight1.position.set(-60, 30, 110);
+    scene.add(spotLight1);
+    spotLight1.target.position.set(-60,20,105);
+    scene.add(spotLight1.target);
 
-    spotLight2 = new THREE.SpotLight( 0xf5463f );
-    spotLight2.position.set(0, 80, 0);
-    createOrigami2(spotLight2);
-    scene.add( spotLight2 );
-    spotLight2.target.position.set(0, 0, 0);
-    scene.add( spotLight2.target );
+    spotLight2 = new THREE.SpotLight(0xff666f, 3, 0, Math.PI/9, 0, 1);
+    spotLight2.position.set(10, 30, 110);
+    scene.add(spotLight2);
+    spotLight2.target.position.set(10, 20, 105);
+    scene.add(spotLight2.target);
 
 
-    spotLight3 = new THREE.SpotLight( 0xf5683f );
-    spotLight3.position.set(100, 80, 30);
-    createOrigami3(spotLight3);
-    scene.add( spotLight3 );
-    spotLight3.target.position.set(100,0,30);
-    scene.add( spotLight3.target );
+    spotLight3 = new THREE.SpotLight(0xff666f, 3, 0, Math.PI/9, 0, 1);
+    spotLight3.position.set(80, 30, 110);
+    scene.add(spotLight3);
+    spotLight3.target.position.set(80, 20, 105);
+    scene.add(spotLight3.target);
 }
 
 function createLamps(x, y, z){
@@ -614,9 +598,9 @@ function createLamps(x, y, z){
     mesh = new THREE.Mesh(geometry, material); 
     lamp3.add(mesh);
 
-    lamp1.position.set(-70, 70, -10);
-    lamp2.position.set(0, 70, 0);
-    lamp3.position.set(100, 70, 30);
+    lamp1.position.set(-60, 100, 80);
+    lamp2.position.set(10, 100, 80);
+    lamp3.position.set(80, 100, 80);
 
     createSphere(lamp1);
     createSphere(lamp2);
@@ -661,6 +645,9 @@ function createScene() {
     createLamps(10, 10, 10);
     createSpotLights();
     createDirectionalLight();
+    createOrigami1();
+    createOrigami2();
+    createOrigami3();
 
 }
 
@@ -671,7 +658,7 @@ function createCamera() {
         1,
         1000);
     camera.position.x = 45 ;
-    camera.position.y = 165 ;
+    camera.position.y = 90 ;
     camera.position.z = 400;
     camera.lookAt(scene.position);
 }
@@ -734,7 +721,6 @@ function animate() {
 
 }
 
-
 function three(){
     'use strict';
     createCamera();
@@ -753,7 +739,6 @@ function three(){
                 node.material = new THREE.MeshPhongMaterial({
                     shininess  :  20,
                     map        :  texture,
-                    bumpScale  :  0.7,
                 });
                 typeBPL = 0;
             }
@@ -763,9 +748,13 @@ function three(){
             }
             node.material.flatShading = THREE.FlatShading;
             node.material.flatShading = THREE.SmoothShading;
-            //node.geometry.computeVertexNormals();
+            node.geometry.computeVertexNormals();
         }
     });
+    spotLight1.visible = true;
+    spotLight2.visible = true;
+    spotLight3.visible = true;
+    directionalLight.visible = true;
 }
 
 function two(){
@@ -852,22 +841,22 @@ function onKeyDown(e) {
     switch (e.key) {
         case "D":
         case "d":
-            if(pause == 0)
+            if(pause == 0 && typeBPL == 0)
                 directionalLight.visible = !directionalLight.visible;
             break;
         case "z":
         case "Z":
-            if(pause == 0)
+            if(pause == 0 && typeBPL == 0)
                 spotLight1.visible = !spotLight1.visible;
             break;
         case "x":
         case "X":
-            if(pause == 0)
+            if(pause == 0 && typeBPL == 0)
                 spotLight2.visible = !spotLight2.visible;
             break;
         case "c":
         case "C":
-            if(pause == 0)
+            if(pause == 0 && typeBPL == 0)
                 spotLight3.visible = !spotLight3.visible;
             break;
         case "a":
@@ -880,7 +869,7 @@ function onKeyDown(e) {
                             node.material = new THREE.MeshLambertMaterial({color: node.material.color});
                             node.material.flatShading = THREE.FlatShading;
                             node.material.flastShading = THREE.SmoothShading;
-                            //node.geometry.computeVertexNormals();
+                            node.geometry.computeVertexNormals();
                         }
                     });
                 }
@@ -892,7 +881,6 @@ function onKeyDown(e) {
                                 node.material = new THREE.MeshPhongMaterial({
                                     shininess  :  20,
                                     map        :  texture,
-                                    bumpScale  :  0.7,
                                 });
                                 typeBPL = 0;
                             }
@@ -902,7 +890,7 @@ function onKeyDown(e) {
                             }
                             node.material.flatShading = THREE.FlatShading;
                             node.material.flatShading = THREE.SmoothShading;
-                            //node.geometry.computeVertexNormals();
+                            node.geometry.computeVertexNormals();
                         }
                     });
                 }
@@ -917,13 +905,16 @@ function onKeyDown(e) {
                             node.material = new THREE.MeshBasicMaterial({color: node.material.color});
                             typeBPL = 1;
                             node = new THREE.Mesh(node.geometry, node.material);
+                            spotLight1.visible = true;
+                            spotLight2.visible = true;
+                            spotLight3.visible = true;
+                            directionalLight.visible = true;
                         }
                         else if(typeBPL == 1 && typePL == 0){
                             if (!node.geometry instanceof THREE.BufferGeometry) {
                                 node.material = new THREE.MeshPhongMaterial({
                                     shininess  :  20,
                                     map        :  texture,
-                                    bumpScale  :  0.7,
                                 });
                                 typeBPL = 0;
                                 node = new THREE.Mesh(node.geometry, node.material);
