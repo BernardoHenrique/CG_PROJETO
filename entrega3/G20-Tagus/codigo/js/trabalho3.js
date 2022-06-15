@@ -1317,38 +1317,6 @@ function animate() {
 
 function three(){
     'use strict';
-    //createCamera();
-
-    /*origami1.rotateY(-stepOrigami1);
-    origami2.rotateY(-stepOrigami2);
-    origami3.rotateY(-stepOrigami3);
-
-    stepOrigami1 = 0;
-    stepOrigami2 = 0;
-    stepOrigami3 = 0;
-
-    scene.traverse(function (node) {
-        if (node instanceof THREE.Mesh) {
-            if (!node.geometry instanceof THREE.BufferGeometry) {
-                node.material = new THREE.MeshPhongMaterial({
-                    shininess  :  20,
-                    map        :  texture,
-                });
-                typeBPL = 0;
-            }
-            else{
-                node.material = new THREE.MeshPhongMaterial({color: node.material.color});
-                typeBPL = 0;
-            }
-            node.material.flatShading = THREE.FlatShading;
-            node.material.flatShading = THREE.SmoothShading;
-            node.geometry.computeVertexNormals();
-        }
-    });
-    spotLight1.visible = true;
-    spotLight2.visible = true;
-    spotLight3.visible = true;
-    directionalLight.visible = true;*/
     createScene();
 }
 
