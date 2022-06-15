@@ -7,15 +7,19 @@
             body {
                 margin: 0px;
                 background-color: #fff;
-                overflow: hidden;
+                overflow: hidden;}
         </style>
-        <script src="js/three.js"></script>
-        <script src="js/trabalho3.js"></script>
+        <script  src="js/three.js"></script>
+        <script  src="js/trabalho3.js"></script>
+        <script type = "module">
+            import { VRButton } from "./VR.js";
+        </script>
     </head>
     <body>      
         <script>
+            setZe(VRButton);
             init();
-            animate()
+            animate();
         </script>
     </body>
 </html>

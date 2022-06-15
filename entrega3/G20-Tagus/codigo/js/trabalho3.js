@@ -1,7 +1,8 @@
 /*global THREE, requestAnimationFrame, console*/
 
-//import { VRButton } from 'CG_PROJETO/entrega3/G20-Tagus/codigo/VR_CONTENT/VR.js';
-//import image from '../texture/textura.jpeg'
+function setZe(VRButton0){
+    VRButton = VRButton0;
+}
 
 var renderer, scene, material, geometry, mesh, camera;
 
@@ -11,11 +12,13 @@ var spotLight1, spotLight2, spotLight3, directionalLight;
 
 let texture;
 
+var VRButton;
+
 var palanque, smallPalanque;
 
 let origami1, origami2, origami3;
 
-var triangle, vertices;
+var triangle, vertices, mapping;
 
 var typeBPL = 0, typePL = 0;
 
@@ -46,20 +49,6 @@ var controller = {
 
 }
 
-/*function createStereoCamera(){
-    'use strict';
-
-    document.body.appendChild( VRButton.createButton( renderer ) );
-
-    renderer.xr.enabled = true;
-
-    renderer.setAnimationLoop( function () {
-
-        renderer.render( scene, camera );
-    
-    } );
-}*/
-
 function createOrigami1(){
 
     origami1 = new THREE.Object3D();
@@ -72,7 +61,7 @@ function createOrigami1(){
         -30, -140, 2
     ] );
 
-    createTriangle(origami1, vertices, 0xFF0000);
+    createTriangle(origami1, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         0, -170, 0,
@@ -82,7 +71,7 @@ function createOrigami1(){
         30, -140, 2
     ] );
 
-    createTriangle(origami1, vertices, 0x76ff54);
+    createTriangle(origami1, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         -30, -140, 2,
@@ -92,7 +81,7 @@ function createOrigami1(){
         0, -170, 0
     ] );
 
-    createTriangle(origami1, vertices, 0xFF0000);
+    createTriangle(origami1, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         30, -140, 2,
@@ -102,7 +91,7 @@ function createOrigami1(){
         0, -170, 0
     ] );
 
-    createTriangle(origami1, vertices, 0x76ff54);
+    createTriangle(origami1, vertices, 0x76ff54, mapping);
 
     origami1.position.set(-60, 100, 70);
     scene.add(origami1);
@@ -120,7 +109,7 @@ function createOrigami2(){
         0, -138, -2
     ] );
 
-    createTriangle(origami2, vertices, 0x8800FF);
+    createTriangle(origami2, vertices, 0x8800FF, mapping);
 
     vertices = new Float32Array( [
         0, -138, -2,
@@ -130,7 +119,7 @@ function createOrigami2(){
         0, -170, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x8800FF);
+    createTriangle(origami2, vertices, 0x8800FF, mapping);
 
     vertices = new Float32Array( [
         0, -170, 0,
@@ -140,7 +129,7 @@ function createOrigami2(){
         0, -138, -2
     ] );
 
-    createTriangle(origami2, vertices, 0x8800FF);
+    createTriangle(origami2, vertices, 0x8800FF, mapping);
 
     vertices = new Float32Array( [
         0, -138, -2,
@@ -150,7 +139,7 @@ function createOrigami2(){
         0, -170, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x8800FF);
+    createTriangle(origami2, vertices, 0x8800FF, mapping);
 
     vertices = new Float32Array( [
         0, -110, 0,
@@ -160,7 +149,7 @@ function createOrigami2(){
         -15, -122, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x0000FF);
+    createTriangle(origami2, vertices, 0x0000FF, mapping);
 
     vertices = new Float32Array( [
         -15, -122, 0,
@@ -170,7 +159,7 @@ function createOrigami2(){
         0, -110, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x0000FF);
+    createTriangle(origami2, vertices, 0x0000FF, mapping);
 
     vertices = new Float32Array( [
         0, -110, 0,
@@ -180,7 +169,7 @@ function createOrigami2(){
         15, -122, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x0000FF);
+    createTriangle(origami2, vertices, 0x0000FF, mapping);
 
     vertices = new Float32Array( [
         15, -122, 0,
@@ -190,7 +179,7 @@ function createOrigami2(){
         0, -110, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x0000FF);
+    createTriangle(origami2, vertices, 0x0000FF, mapping);
 
     vertices = new Float32Array( [
         0, -130, 2,
@@ -200,7 +189,7 @@ function createOrigami2(){
         -15, -122, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         -15, -122, 0,
@@ -210,7 +199,7 @@ function createOrigami2(){
         0, -130, 2
     ] );
 
-    createTriangle(origami2, vertices, 0xFF0000);
+    createTriangle(origami2, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         0, -130, 2,
@@ -220,7 +209,7 @@ function createOrigami2(){
         15, -122, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         15, -122, 0,
@@ -230,7 +219,7 @@ function createOrigami2(){
         0, -130, 2
     ] );
 
-    createTriangle(origami2, vertices, 0xFF0000);
+    createTriangle(origami2, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         0, -170, 0,
@@ -240,7 +229,7 @@ function createOrigami2(){
         10, -138, 0
     ] );
 
-    createTriangle(origami2, vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         10, -138, 0,
@@ -250,7 +239,7 @@ function createOrigami2(){
         0, -170, 0
     ] );
 
-    createTriangle(origami2, vertices, 0xFF0000);
+    createTriangle(origami2, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         0, -170, 0,
@@ -260,7 +249,7 @@ function createOrigami2(){
         -10, -138, 0,
     ] );
 
-    createTriangle(origami2, vertices, 0x76ff54);
+    createTriangle(origami2, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         -10, -138, 0,
@@ -270,7 +259,7 @@ function createOrigami2(){
         0, -170, 0
     ] );
 
-    createTriangle(origami2, vertices, 0xFF0000);
+    createTriangle(origami2, vertices, 0xFF0000, mapping);
 
     origami2.position.set(10, 100, 70);
     scene.add(origami2);
@@ -288,7 +277,7 @@ function createOrigami3(){
         5, -155, 0
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000);
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         5, -155, 0,
@@ -298,7 +287,7 @@ function createOrigami3(){
         12, -170, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x76ff54);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         12, -170, 0,
@@ -308,7 +297,7 @@ function createOrigami3(){
         5, -155, 0
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000);
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         5, -155, 0,
@@ -318,7 +307,7 @@ function createOrigami3(){
         12, -170, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x76ff54);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         5, -170, 0,
@@ -328,7 +317,7 @@ function createOrigami3(){
         -7, -170, 0
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000);
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         -7, -170, 0,
@@ -338,7 +327,7 @@ function createOrigami3(){
         5, -170, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x76ff54);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         5, -155, 0,
@@ -348,7 +337,7 @@ function createOrigami3(){
         -7, -155, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x0000FF);
+    createTriangle(origami3, vertices, 0x0000FF, mapping);
 
     vertices = new Float32Array( [
         -7, -155, 0,
@@ -358,7 +347,7 @@ function createOrigami3(){
         5, -155, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x0000FF);
+    createTriangle(origami3, vertices, 0x0000FF, mapping);
 
     vertices = new Float32Array( [
         -7, -170, 0,
@@ -368,7 +357,7 @@ function createOrigami3(){
         -15, -155, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x76ff54);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         -15, -155, 0,
@@ -378,7 +367,7 @@ function createOrigami3(){
         -7, -170, 0
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000);
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         -7, -155, 0,
@@ -388,7 +377,7 @@ function createOrigami3(){
         -11, -120, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x76ff54);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         -11, -120, 0,
@@ -398,7 +387,7 @@ function createOrigami3(){
         -7, -155, 0
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000);
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         -7, -155, 0,
@@ -408,7 +397,7 @@ function createOrigami3(){
         -11, -120, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x76ff54);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
         -11, -120, 0,
@@ -418,7 +407,7 @@ function createOrigami3(){
         -7, -155, 0
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000);
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         -7, -115, 0,
@@ -428,7 +417,7 @@ function createOrigami3(){
         -15, -123, 0
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000);
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
         -15, -123, 0,
@@ -438,12 +427,12 @@ function createOrigami3(){
         -7, -115, 0
     ] );
 
-    createTriangle(origami3, vertices, 0x76ff54);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
     origami3.position.set(80, 100, 70);
     scene.add(origami3);
 }
 
-function createTriangle(obj, vertices, color){
+function createTriangle(obj, vertices, color, mapping){
 
     texture = new THREE.TextureLoader().load('../texture/textura.jpg');
 
@@ -677,6 +666,9 @@ function onResize() {
 
 function render() {
     'use strict';
+    //'use strict';
+    renderer.autoClear = false;
+    renderer.clear();
     renderer.render(scene, camera);
 }
 
@@ -690,7 +682,10 @@ function init() {
    
     createScene();
     createCamera();
-    
+
+    //document.body.appendChild( VRButton.createButton( renderer ) );
+    renderer.xr.enabled = true;
+
     window.addEventListener("keydown", (e) => {
         if(e.key in controller)
             controller[e.key].pressed = true;
@@ -759,15 +754,13 @@ function three(){
 
 function two(){
     'use strict';
-    if(pause == 0){
-        camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000);
-        camera.position.x = 0;
-        camera.position.y = -100;
-        camera.position.z = 200;
-        camera.zoom = 1.35;
-        camera.updateProjectionMatrix();
-        camera.lookAt(palanque.position);
-    }
+    camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000);
+    camera.position.x = 0;
+    camera.position.y = -100;
+    camera.position.z = 200;
+    camera.zoom = 1.35;
+    camera.updateProjectionMatrix();
+    camera.lookAt(palanque.position);
 }
 
 function one(){
@@ -841,22 +834,22 @@ function onKeyDown(e) {
     switch (e.key) {
         case "D":
         case "d":
-            if(pause == 0 && typeBPL == 0)
+            if(typeBPL == 0)
                 directionalLight.visible = !directionalLight.visible;
             break;
         case "z":
         case "Z":
-            if(pause == 0 && typeBPL == 0)
+            if(typeBPL == 0)
                 spotLight1.visible = !spotLight1.visible;
             break;
         case "x":
         case "X":
-            if(pause == 0 && typeBPL == 0)
+            if(typeBPL == 0)
                 spotLight2.visible = !spotLight2.visible;
             break;
         case "c":
         case "C":
-            if(pause == 0 && typeBPL == 0)
+            if(typeBPL == 0)
                 spotLight3.visible = !spotLight3.visible;
             break;
         case "a":
@@ -898,42 +891,40 @@ function onKeyDown(e) {
             break;
         case "s":
         case "S":
-            if(pause == 0){
-                scene.traverse(function (node) {
-                    if (node instanceof THREE.Mesh) {
-                        if(typeBPL == 0){
-                            node.material = new THREE.MeshBasicMaterial({color: node.material.color});
-                            typeBPL = 1;
-                            node = new THREE.Mesh(node.geometry, node.material);
-                            spotLight1.visible = true;
-                            spotLight2.visible = true;
-                            spotLight3.visible = true;
-                            directionalLight.visible = true;
-                        }
-                        else if(typeBPL == 1 && typePL == 0){
-                            if (!node.geometry instanceof THREE.BufferGeometry) {
-                                node.material = new THREE.MeshPhongMaterial({
-                                    shininess  :  20,
-                                    map        :  texture,
-                                });
-                                typeBPL = 0;
-                                node = new THREE.Mesh(node.geometry, node.material);
-                            }
-                            else{
-                                node.material = new THREE.MeshPhongMaterial({color: node.material.color});
-                                typeBPL = 0;
-                                node = new THREE.Mesh(node.geometry, node.material);
-                            }
-                        }
-                        else if(typeBPL == 1 && typePL == 1){
-                            node.material = new THREE.MeshLambertMaterial({color: node.material.color});
+            scene.traverse(function (node) {
+                if (node instanceof THREE.Mesh) {
+                    if(typeBPL == 0){
+                        node.material = new THREE.MeshBasicMaterial({color: node.material.color});
+                        typeBPL = 1;
+                        node = new THREE.Mesh(node.geometry, node.material);
+                        spotLight1.visible = true;
+                        spotLight2.visible = true;
+                        spotLight3.visible = true;
+                        directionalLight.visible = true;
+                    }
+                    else if(typeBPL == 1 && typePL == 0){
+                        if (!node.geometry instanceof THREE.BufferGeometry) {
+                            node.material = new THREE.MeshPhongMaterial({
+                                shininess  :  20,
+                                map        :  texture,
+                            });
                             typeBPL = 0;
                             node = new THREE.Mesh(node.geometry, node.material);
                         }
-                        
+                        else{
+                            node.material = new THREE.MeshPhongMaterial({color: node.material.color});
+                            typeBPL = 0;
+                            node = new THREE.Mesh(node.geometry, node.material);
+                        }
                     }
-                });
-            }
+                    else if(typeBPL == 1 && typePL == 1){
+                        node.material = new THREE.MeshLambertMaterial({color: node.material.color});
+                        typeBPL = 0;
+                        node = new THREE.Mesh(node.geometry, node.material);
+                    }
+                    
+                }
+            });
             break;
         case " ":
             if(pause == 0){
