@@ -1317,9 +1317,9 @@ function animate() {
 
 function three(){
     'use strict';
-    createCamera();
+    //createCamera();
 
-    origami1.rotateY(-stepOrigami1);
+    /*origami1.rotateY(-stepOrigami1);
     origami2.rotateY(-stepOrigami2);
     origami3.rotateY(-stepOrigami3);
 
@@ -1348,7 +1348,8 @@ function three(){
     spotLight1.visible = true;
     spotLight2.visible = true;
     spotLight3.visible = true;
-    directionalLight.visible = true;
+    directionalLight.visible = true;*/
+    createScene();
 }
 
 function two(){
