@@ -4,6 +4,8 @@ function setZe(VRButton0){
     VRButton = VRButton0;
 }
 
+let vr = false;
+
 var renderer, scene, material, geometry, mesh, camera;
 
 var lamp1, lamp2, lamp3, sphere, box;
@@ -11,8 +13,6 @@ var lamp1, lamp2, lamp3, sphere, box;
 var spotLight1, spotLight2, spotLight3, directionalLight;
 
 let texture;
-
-var VRButton;
 
 var palanque, smallPalanque;
 
@@ -1269,9 +1269,7 @@ function init() {
    
     createScene();
     createCamera();
-
-    //document.body.appendChild( VRButton.createButton( renderer ) );
-    renderer.xr.enabled = true;
+    VR();
 
     window.addEventListener("keydown", (e) => {
         if(e.key in controller)
@@ -1288,6 +1286,13 @@ function init() {
     window.addEventListener("resize", onResize);
 }
 
+
+function VR(){
+    document.body.appendChild( VRButton.createButton( renderer ) );
+    renderer.xr.enabled = true;
+    vr = true;
+}
+
 function animate() {
     'use strict';
 
@@ -1299,7 +1304,14 @@ function animate() {
 
     render();
     
-    requestAnimationFrame(animate);
+    if(!vr){
+        requestAnimationFrame(animate);
+    }
+    else{
+        renderer.setAnimationLoop( function () {
+            animate();
+        });
+    }
 
 }
 
@@ -1458,10 +1470,7 @@ function onKeyDown(e) {
                     scene.traverse(function (node) {
                         if (node instanceof THREE.Mesh) {
                             if (!node.geometry instanceof THREE.BufferGeometry) {
-                                node.material = new THREE.MeshPhongMaterial({
-                                    shininess  :  20,
-                                    map        :  texture,
-                                });
+                                node.material = new THREE.MeshPhongMaterial();
                                 typeBPL = 0;
                             }
                             else{
@@ -1491,10 +1500,7 @@ function onKeyDown(e) {
                     }
                     else if(typeBPL == 1 && typePL == 0){
                         if (!node.geometry instanceof THREE.BufferGeometry) {
-                            node.material = new THREE.MeshPhongMaterial({
-                                shininess  :  20,
-                                map        :  texture,
-                            });
+                            node.material = new THREE.MeshPhongMaterial();
                             typeBPL = 0;
                             node = new THREE.Mesh(node.geometry, node.material);
                         }
