@@ -61,6 +61,14 @@ function createOrigami1(){
         -30, -140, 2
     ] );
 
+    mapping = new Float32Array( [
+        0,0,
+    
+        1,1,
+
+        0,1
+    ] );
+
     createTriangle(origami1, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
@@ -69,6 +77,14 @@ function createOrigami1(){
         0, -110, 0,
 
         30, -140, 2
+    ] );
+
+    mapping = new Float32Array( [
+        0,0,
+    
+        1,1,
+
+        1,0
     ] );
 
     createTriangle(origami1, vertices, 0x76ff54, mapping);
@@ -81,6 +97,14 @@ function createOrigami1(){
         0, -170, 0
     ] );
 
+    mapping = new Float32Array( [
+        0,1,
+    
+        1,1,
+
+        0,0
+    ] );
+
     createTriangle(origami1, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
@@ -89,6 +113,14 @@ function createOrigami1(){
         0, -110, 0,
 
         0, -170, 0
+    ] );
+
+    mapping = new Float32Array( [
+        1,0,
+    
+        1,1,
+
+        0,0
     ] );
 
     createTriangle(origami1, vertices, 0x76ff54, mapping);
@@ -270,7 +302,17 @@ function createOrigami3(){
     origami3 = new THREE.Object3D();
 
     vertices = new Float32Array( [
-        12, -170, 0,
+        12, -170, -5,
+    
+        15, -155, 0,
+
+        5, -155, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
+
+    vertices = new Float32Array( [
+        12, -170, 5,
     
         15, -155, 0,
 
@@ -284,15 +326,25 @@ function createOrigami3(){
     
         15, -155, 0,
 
-        12, -170, 0
+        12, -170, 5
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
-        12, -170, 0,
+        5, -155, 0,
     
-        5, -170, 0,
+        15, -155, 0,
+
+        12, -170, -5
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        12, -170, 5,
+    
+        5, -170, 5,
 
         5, -155, 0
     ] );
@@ -302,29 +354,69 @@ function createOrigami3(){
     vertices = new Float32Array( [
         5, -155, 0,
     
-        5, -170, 0,
+        5, -170, 5,
 
-        12, -170, 0
+        12, -170, 5
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
-        5, -170, 0,
+        12, -170, -5,
     
-        5, -155, 0,
+        5, -170, -5,
 
-        -7, -170, 0
+        5, -155, 0
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
-        -7, -170, 0,
+        5, -155, 0,
+    
+        5, -170, -5,
+
+        12, -170, -5
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        5, -170, 5,
     
         5, -155, 0,
 
-        5, -170, 0
+        -7, -170, 5
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
+
+    vertices = new Float32Array( [
+        -7, -170, 5,
+    
+        5, -155, 0,
+
+        5, -170, 5
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        5, -170, -5,
+    
+        5, -155, 0,
+
+        -7, -170, -5
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
+
+    vertices = new Float32Array( [
+        -7, -170, -5,
+    
+        5, -155, 0,
+
+        5, -170, -5
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54, mapping);
@@ -332,7 +424,7 @@ function createOrigami3(){
     vertices = new Float32Array( [
         5, -155, 0,
     
-        -7, -170, 0,
+        -7, -170, 5,
 
         -7, -155, 0
     ] );
@@ -342,7 +434,7 @@ function createOrigami3(){
     vertices = new Float32Array( [
         -7, -155, 0,
     
-        -7, -170, 0,
+        -7, -170, 5,
 
         5, -155, 0
     ] );
@@ -350,9 +442,30 @@ function createOrigami3(){
     createTriangle(origami3, vertices, 0x0000FF, mapping);
 
     vertices = new Float32Array( [
-        -7, -170, 0,
+        5, -155, 0,
     
+        -7, -170, -5,
+
+        -7, -155, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x0000FF, mapping);
+
+    vertices = new Float32Array( [
         -7, -155, 0,
+    
+        -7, -170, -5,
+
+        5, -155, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x0000FF, mapping);
+
+
+    vertices = new Float32Array( [
+        -7, -170, 5,
+    
+        -7, -155, 3,
 
         -15, -155, 0
     ] );
@@ -362,15 +475,35 @@ function createOrigami3(){
     vertices = new Float32Array( [
         -15, -155, 0,
     
-        -7, -155, 0,
+        -7, -155, 3,
 
-        -7, -170, 0
+        -7, -170, 5
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        -7, -170, -5,
+    
+        -7, -155, -3,
+
+        -15, -155, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        -15, -155, 0,
+    
+        -7, -155, -3,
+
+        -7, -170, -5
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
-        -7, -155, 0,
+        -7, -155, 3,
     
         -15, -155, 0,
 
@@ -384,15 +517,15 @@ function createOrigami3(){
     
         -15, -155, 0,
 
-        -7, -155, 0
+        -7, -155, 3
     ] );
 
-    createTriangle(origami3, vertices, 0xFF0000, mapping);
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
 
     vertices = new Float32Array( [
-        -7, -155, 0,
+        -7, -155, -3,
     
-        -7, -115, 0,
+        -15, -155, 0,
 
         -11, -120, 0
     ] );
@@ -402,15 +535,55 @@ function createOrigami3(){
     vertices = new Float32Array( [
         -11, -120, 0,
     
-        -7, -115, 0,
+        -15, -155, 0,
 
-        -7, -155, 0
+        -7, -155, -3
     ] );
 
     createTriangle(origami3, vertices, 0xFF0000, mapping);
 
     vertices = new Float32Array( [
-        -7, -115, 0,
+        -7, -155, 1,
+    
+        -7, -115, 1,
+
+        -11, -120, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        -11, -120, 0,
+    
+        -7, -115, 1,
+
+        -7, -155, 1
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
+
+    vertices = new Float32Array( [
+        -7, -155, -1,
+    
+        -7, -115, -1,
+
+        -11, -120, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        -11, -120, 0,
+    
+        -7, -115, -1,
+
+        -7, -155, -1
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
+
+    vertices = new Float32Array( [
+        -7, -115, 1,
     
         -9, -110, 0,
 
@@ -424,27 +597,46 @@ function createOrigami3(){
     
         -9, -110, 0,
 
-        -7, -115, 0
+        -7, -115, 1
     ] );
 
     createTriangle(origami3, vertices, 0x76ff54, mapping);
+
+    vertices = new Float32Array( [
+        -7, -115, -1,
+    
+        -9, -110, 0,
+
+        -15, -123, 0
+    ] );
+
+    createTriangle(origami3, vertices, 0xFF0000, mapping);
+
+    vertices = new Float32Array( [
+        -15, -123, 0,
+    
+        -9, -110, 0,
+
+        -7, -115, -1
+    ] );
+
+    createTriangle(origami3, vertices, 0x76ff54, mapping);
+
     origami3.position.set(80, 100, 70);
     scene.add(origami3);
 }
 
 function createTriangle(obj, vertices, color, mapping){
 
-    texture = new THREE.TextureLoader().load('../texture/textura.jpg');
-
     geometry = new THREE.BufferGeometry();
 
     geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
+
     geometry.computeVertexNormals();
 
-    material = new THREE.MeshPhongMaterial({
-        shininess  :  20,
-        map        :  texture,
-    });
+    geometry.setAttribute( 'mapping', new THREE.BufferAttribute( mapping, 2 ) );
+
+    const material = new THREE.MeshPhongMaterial( {map: new THREE.TextureLoader().load('texture/textura.jpeg') } );
 
     material.flatShading = THREE.FlatShading;
     material.flatShading = THREE.SmoothShading;
