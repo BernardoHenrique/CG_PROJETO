@@ -1129,6 +1129,9 @@ function createDirectionalLight(){
 
     directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(70, 70, 70);
+    
+    directionalLight.target.position.set(60, 60, 60);
+    scene.add(directionalLight.target);
 
     scene.add( directionalLight);
 }
@@ -1491,7 +1494,7 @@ function onKeyDown(e) {
                     
                 }
             });
-            
+
             if(typeBPL == 1)
                 typeBPL = 0;
             else
