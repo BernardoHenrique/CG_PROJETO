@@ -1032,7 +1032,13 @@ function createTriangle(obj, vertices, color, uv){
 
     geometry.setAttribute( 'uv', new THREE.BufferAttribute( uv, 2 ) );
 
-    const material = new THREE.MeshPhongMaterial( {map: new THREE.TextureLoader().load('texture/textura.jpg') } );
+    if (typePL == 0){
+        material = new THREE.MeshPhongMaterial( {map: new THREE.TextureLoader().load('texture/textura.jpg') } );
+    }
+    else{
+        material = new THREE.MeshLambertMaterial( {map: new THREE.TextureLoader().load('texture/textura.jpg') } );
+    }
+    
 
     material.flatShading = THREE.FlatShading;
     material.flatShading = THREE.SmoothShading;
@@ -1318,6 +1324,8 @@ function animate() {
 function three(){
     'use strict';
     createScene();
+    typeBPL = 0;
+    typePL = 0;
 }
 
 function two(){
@@ -1402,29 +1410,24 @@ function onKeyDown(e) {
     switch (e.key) {
         case "D":
         case "d":
-            if(typeBPL == 0)
                 directionalLight.visible = !directionalLight.visible;
             break;
         case "z":
         case "Z":
-            if(typeBPL == 0)
                 spotLight1.visible = !spotLight1.visible;
             break;
         case "x":
         case "X":
-            if(typeBPL == 0)
                 spotLight2.visible = !spotLight2.visible;
             break;
         case "c":
         case "C":
-            if(typeBPL == 0)
                 spotLight3.visible = !spotLight3.visible;
             break;
         case "a":
         case "A":
             if(pause == 0){
                 if(typePL == 0){
-                    typePL = 1;
                     scene.traverse(function (node) {
                         if (node instanceof THREE.Mesh) {
                             node.material = new THREE.MeshLambertMaterial({color: node.material.color});
@@ -1435,16 +1438,13 @@ function onKeyDown(e) {
                     });
                 }
                 else{
-                    typePL = 0;
                     scene.traverse(function (node) {
                         if (node instanceof THREE.Mesh) {
                             if (!node.geometry instanceof THREE.BufferGeometry) {
                                 node.material = new THREE.MeshPhongMaterial();
-                                typeBPL = 0;
                             }
                             else{
                                 node.material = new THREE.MeshPhongMaterial({color: node.material.color});
-                                typeBPL = 0;
                             }
                             node.material.flatShading = THREE.FlatShading;
                             node.material.flatShading = THREE.SmoothShading;
@@ -1453,6 +1453,18 @@ function onKeyDown(e) {
                     });
                 }
             }
+            
+            if(typePL == 1)
+                typePL = 0;
+            else
+                typePL = 1;
+                
+            scene.remove(origami1);
+            scene.remove(origami2);
+            scene.remove(origami3);
+            createOrigami1();
+            createOrigami2();
+            createOrigami3();
             break;
         case "s":
         case "S":
@@ -1460,33 +1472,37 @@ function onKeyDown(e) {
                 if (node instanceof THREE.Mesh) {
                     if(typeBPL == 0){
                         node.material = new THREE.MeshBasicMaterial({color: node.material.color});
-                        typeBPL = 1;
                         node = new THREE.Mesh(node.geometry, node.material);
-                        spotLight1.visible = true;
-                        spotLight2.visible = true;
-                        spotLight3.visible = true;
-                        directionalLight.visible = true;
                     }
                     else if(typeBPL == 1 && typePL == 0){
                         if (!node.geometry instanceof THREE.BufferGeometry) {
                             node.material = new THREE.MeshPhongMaterial();
-                            typeBPL = 0;
                             node = new THREE.Mesh(node.geometry, node.material);
                         }
                         else{
                             node.material = new THREE.MeshPhongMaterial({color: node.material.color});
-                            typeBPL = 0;
                             node = new THREE.Mesh(node.geometry, node.material);
                         }
                     }
                     else if(typeBPL == 1 && typePL == 1){
                         node.material = new THREE.MeshLambertMaterial({color: node.material.color});
-                        typeBPL = 0;
                         node = new THREE.Mesh(node.geometry, node.material);
                     }
                     
                 }
             });
+            
+            if(typeBPL == 1)
+                typeBPL = 0;
+            else
+                typeBPL = 1;
+
+            scene.remove(origami1);
+            scene.remove(origami2);
+            scene.remove(origami3);
+            createOrigami1();
+            createOrigami2();
+            createOrigami3();
             break;
         case " ":
             if(pause == 0){
