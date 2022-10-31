@@ -3,8 +3,6 @@
 var camera, scene, renderer;
 
 var geometry, material, mesh;
-
-
 var cube, cubeOrbit, Octahedron, rightCircle, leftCircle, rightBar, leftBar;
 
 var torus1, torus2, torus3, centerSphere;
